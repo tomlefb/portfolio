@@ -1,0 +1,63 @@
+import { TimelineItem } from '../types';
+
+export const timelineItems: TimelineItem[] = [
+  {
+    id: '7',
+    year: '2023',
+    title: 'Baccalauréat',
+    organization: 'Lycée Saint-Martin',
+    description: 'Spécialités Mathématiques et Physique-Chimie.',
+    type: 'education',
+  },
+  {
+    id: '6',
+    year: '2023-2025',
+    title: 'BTS SIO option SLAM',
+    organization: 'Pôle Sup de la Salle',
+    description: 'Formation aux métiers du développement : programmation, bases de données, analyse et conception de solutions logicielles.',
+    type: 'education',
+  },
+  {
+    id: '5',
+    year: 'Mai-Juin 2024',
+    title: 'Stage Développeur Java',
+    organization: 'Ouest-France',
+    location: 'Rennes',
+    description: 'Développement Java au sein de la rédaction numérique du premier quotidien régional français.',
+    type: 'work',
+  },
+  {
+    id: '4',
+    year: 'Jan-Fév 2025',
+    title: 'Stage Développeur Web',
+    organization: 'Lycée hôtelier Sainte-Thérèse',
+    location: 'La Guerche-de-Bretagne',
+    description: 'Conception et développement en autonomie d\'une application de gestion des stages pour l\'établissement.',
+    type: 'work',
+  },
+  {
+    id: '3',
+    year: '2025-2026',
+    title: 'Bachelor 3 Développement Informatique',
+    organization: 'Sup de Vinci',
+    description: 'Approfondissement des compétences en développement full-stack, architecture logicielle et méthodologies de projet.',
+    type: 'education',
+  },
+  {
+    id: '2',
+    year: 'Depuis sept. 2025',
+    title: 'Alternance Développeur',
+    organization: 'Capgemini',
+    location: 'Cesson-Sévigné',
+    description: 'Migration logicielle Java, chiffrage des développements, coordination avec les équipes client. Montée en compétences sur les aspects gestion de projet.',
+    type: 'work',
+  },
+  {
+    id: '1',
+    year: '2026-2028',
+    title: 'Mastère Chef de Projet IT',
+    organization: 'Sup de Vinci',
+    description: 'Formation en alternance pour devenir chef de projet IT — pilotage, coordination d\'équipes, gestion de budgets et planification stratégique.',
+    type: 'objective',
+  },
+];

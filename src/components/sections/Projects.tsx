@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, X, ChevronLeft, ChevronRight, Star, Users } from 'lucide-react';
 import { useInView } from '../../hooks/useInView';
@@ -13,9 +13,29 @@ export function Projects() {
   const [ref, isInView] = useInView<HTMLElement>();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
 
   const featuredProject = getFeaturedProject();
   const otherProjects = projects.filter((p) => !p.featured);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+    }
+    touchStartX.current = null;
+  };
 
   const openModal = (project: Project) => {
     setSelectedProject(project);
@@ -252,11 +272,16 @@ export function Projects() {
 
               {/* Image gallery */}
               {selectedProject.images.length > 0 ? (
-                <div className="relative h-64 md:h-80 bg-neutral-100">
+                <div
+                  className="relative h-64 md:h-80 bg-neutral-100"
+                  onTouchStart={handleTouchStart}
+                  onTouchEnd={handleTouchEnd}
+                >
                   <img
                     src={selectedProject.images[currentImageIndex]}
                     alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
-                    className="w-full h-full object-contain bg-neutral-50"
+                    className="w-full h-full object-contain bg-neutral-50 select-none"
+                    draggable={false}
                   />
                   {selectedProject.images.length > 1 && (
                     <>

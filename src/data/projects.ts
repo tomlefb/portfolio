@@ -137,7 +137,7 @@ export const projects: Project[] = [
     shortDescription: 'Bot de trading automatisé avec analyse IA',
     fullDescription: `Logiciel backend Python qui se connecte à MetaTrader 5 (MT5) pour exécuter du trading automatisé sur les marchés financiers. Le système crée et gère des stratégies de trading, analyse les marchés via un LLM pour prendre des décisions informées, et exécute les ordres de manière autonome. Le programme gère l'ensemble du cycle : collecte de données de marché, analyse technique et fondamentale assistée par IA, création de stratégies, gestion du risque, exécution des ordres et suivi des performances.`,
     role: 'Conception et développement complet — projet solo',
-    context: 'Projet personnel de longue haleine — système de trading algorithmique autonome',
+    context: 'Projet personnel — système de trading algorithmique autonome',
     stack: [
       'Python',
       'MetaTrader 5',

@@ -20,9 +20,9 @@ export function Hero() {
           }}
         />
 
-        {/* Grid pattern */}
+        {/* Grid pattern - hidden on mobile */}
         <div
-          className="absolute inset-0 opacity-[0.02]"
+          className="hidden md:block absolute inset-0 opacity-[0.02]"
           style={{
             backgroundImage: `
               linear-gradient(to right, #000 1px, transparent 1px),
@@ -58,7 +58,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="container-custom relative z-10 pt-20">
+      <div className="container-custom relative z-10 pt-8 md:pt-20">
         <div className="max-w-4xl mx-auto md:mx-0 text-center md:text-left">
           {/* Status badge */}
           <motion.div

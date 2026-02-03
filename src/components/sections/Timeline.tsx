@@ -59,12 +59,11 @@ export function Timeline() {
                 >
                   {/* Icon node */}
                   <div className="absolute left-6 md:left-1/2 md:-translate-x-1/2 z-10">
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
+                    <div
                       className={`w-12 h-12 ${config.color} rounded-xl flex items-center justify-center shadow-lg`}
                     >
                       <Icon className="text-white" size={20} />
-                    </motion.div>
+                    </div>
                   </div>
 
                   {/* Content card */}
@@ -73,9 +72,8 @@ export function Timeline() {
                       isEven ? 'md:pr-8' : 'md:pl-8'
                     }`}
                   >
-                    <motion.div
-                      whileHover={{ y: -4 }}
-                      className="bg-white rounded-xl p-5 border border-neutral-200 shadow-sm hover:shadow-md transition-all duration-300"
+                    <div
+                      className="bg-white rounded-xl p-5 border border-neutral-200 shadow-sm md:hover:shadow-md transition-all duration-300"
                     >
                       {/* Year badge */}
                       <div className="flex items-center gap-2 mb-3">
@@ -109,7 +107,7 @@ export function Timeline() {
                       <p className="text-sm text-neutral-600 leading-relaxed">
                         {item.description}
                       </p>
-                    </motion.div>
+                    </div>
                   </div>
 
                   {/* Spacer for alternate side */}

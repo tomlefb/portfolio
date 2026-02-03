@@ -61,8 +61,8 @@ export function Contact() {
               </h3>
               <p className="text-lg text-white/90 mb-8 max-w-xl mx-auto">
                 Je recherche une alternance de 2 ans en tant que Chef de Projet IT
-                à partir de septembre 2026. Parlons de comment je peux apporter
-                ma double compétence à votre équipe.
+                à partir de septembre 2026. Je serais ravi d'échanger de découvrir comment je pourrais contribuer à vos projets,
+                et continuer à me former.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button
@@ -100,7 +100,7 @@ export function Contact() {
                 {method.href ? (
                   <a
                     href={method.href}
-                    className="flex flex-col items-center p-6 bg-neutral-50 rounded-xl border border-neutral-100 hover:border-orange-200 hover:bg-orange-50/50 transition-all duration-300 group"
+                    className="flex flex-col items-center p-6 bg-neutral-50 rounded-xl border border-neutral-100 md:hover:border-orange-200 md:hover:bg-orange-50/50 active:bg-orange-50/50 transition-all duration-300 group"
                   >
                     <div className="p-3 bg-white rounded-xl shadow-sm group-hover:shadow-md transition-shadow mb-4">
                       <method.icon
@@ -111,7 +111,7 @@ export function Contact() {
                     <span className="text-sm text-neutral-500 mb-1">
                       {method.label}
                     </span>
-                    <span className="font-medium text-neutral-900 group-hover:text-orange-600 transition-colors">
+                    <span className="font-medium text-neutral-900 md:group-hover:text-orange-600 transition-colors">
                       {method.value}
                     </span>
                   </a>
@@ -145,7 +145,7 @@ export function Contact() {
                 href={contactInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-neutral-100 rounded-xl hover:bg-orange-100 text-neutral-600 hover:text-orange-600 transition-all duration-200"
+                className="p-3 bg-neutral-100 rounded-xl md:hover:bg-orange-100 active:bg-orange-100 text-neutral-600 md:hover:text-orange-600 transition-all duration-200"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={22} />
@@ -154,7 +154,7 @@ export function Contact() {
                 href={contactInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-neutral-100 rounded-xl hover:bg-orange-100 text-neutral-600 hover:text-orange-600 transition-all duration-200"
+                className="p-3 bg-neutral-100 rounded-xl md:hover:bg-orange-100 active:bg-orange-100 text-neutral-600 md:hover:text-orange-600 transition-all duration-200"
                 aria-label="GitHub"
               >
                 <Github size={22} />

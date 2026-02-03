@@ -19,7 +19,7 @@ export function Skills() {
       <div className="container-custom">
         <SectionHeading
           title="Compétences"
-          subtitle="Une double expertise technique et pilotage"
+          subtitle="Une double appétence technique et pilotage"
         />
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
@@ -55,8 +55,8 @@ export function Skills() {
                     transition={{ duration: 0.4, delay: 0.3 + i * 0.05 }}
                     className="flex items-center gap-3 group"
                   >
-                    <span className="w-2 h-2 bg-orange-500 rounded-full group-hover:scale-125 transition-transform" />
-                    <span className="text-neutral-700 group-hover:text-neutral-900 transition-colors">
+                    <span className="w-2 h-2 bg-orange-500 rounded-full md:group-hover:scale-125 transition-transform" />
+                    <span className="text-neutral-700 md:group-hover:text-neutral-900 transition-colors">
                       {skill.name}
                     </span>
                     {skill.subcategory && (
@@ -106,13 +106,12 @@ export function Skills() {
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {skills.map((skill) => (
-                        <motion.span
+                        <span
                           key={skill.name}
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          className="px-3 py-1.5 bg-white border border-neutral-200 rounded-lg text-sm font-medium text-neutral-700 hover:border-orange-200 hover:text-orange-600 transition-colors cursor-default"
+                          className="px-3 py-1.5 bg-white border border-neutral-200 rounded-lg text-sm font-medium text-neutral-700 md:hover:border-orange-200 md:hover:text-orange-600 transition-colors cursor-default"
                         >
                           {skill.name}
-                        </motion.span>
+                        </span>
                       ))}
                     </div>
                   </motion.div>
@@ -145,8 +144,7 @@ export function Skills() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.3, delay: 0.6 + i * 0.05 }}
-                whileHover={{ scale: 1.05 }}
-                className="px-4 py-2 bg-neutral-100 rounded-full text-sm font-medium text-neutral-600 hover:bg-orange-100 hover:text-orange-700 transition-colors cursor-default"
+                className="px-4 py-2 bg-neutral-100 rounded-full text-sm font-medium text-neutral-600 md:hover:bg-orange-100 md:hover:text-orange-700 transition-colors cursor-default"
               >
                 {tool}
               </motion.span>

@@ -60,9 +60,9 @@ export function Projects() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-16"
           >
-            <div className="relative bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
-              {/* Featured badge */}
-              <div className="absolute top-4 left-4 z-10 flex items-center gap-2 px-3 py-1.5 bg-orange-500 text-white rounded-full text-sm font-medium">
+            <div className="relative bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm md:hover:shadow-xl transition-shadow duration-300">
+              {/* Featured badge - hidden on mobile, shown on desktop */}
+              <div className="hidden md:flex absolute top-4 left-4 z-10 items-center gap-2 px-3 py-1.5 bg-orange-500 text-white rounded-full text-sm font-medium">
                 <Star size={14} fill="currentColor" />
                 Projet vedette
               </div>
@@ -146,7 +146,7 @@ export function Projects() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
               onClick={() => openModal(project)}
-              className="group bg-white rounded-xl border border-neutral-200 overflow-hidden cursor-pointer hover:border-orange-200 hover:shadow-lg transition-all duration-300"
+              className="group bg-white rounded-xl border border-neutral-200 overflow-hidden cursor-pointer md:hover:border-orange-200 md:hover:shadow-lg transition-all duration-300"
             >
               {/* Image or Visual */}
               <div className="relative h-48 bg-neutral-100 overflow-hidden">
@@ -160,7 +160,7 @@ export function Projects() {
                         key={idx}
                         src={img}
                         alt={`${project.title} screen ${idx + 1}`}
-                        className="h-full w-auto object-contain rounded-lg shadow-lg group-hover:scale-105 transition-transform duration-500"
+                        className="h-full w-auto object-contain rounded-lg shadow-lg md:group-hover:scale-105 transition-transform duration-500"
                         style={{ maxWidth: '30%' }}
                         loading="lazy"
                       />
@@ -170,7 +170,7 @@ export function Projects() {
                   <img
                     src={project.images[0]}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover md:group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 ) : (
@@ -180,13 +180,13 @@ export function Projects() {
                     </span>
                   </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/30 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity" />
               </div>
 
               {/* Content */}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-display font-semibold text-neutral-900 group-hover:text-orange-600 transition-colors">
+                  <h3 className="text-xl font-display font-semibold text-neutral-900 md:group-hover:text-orange-600 transition-colors">
                     {project.title}
                   </h3>
                   <Badge variant="outline" size="sm">
@@ -237,13 +237,17 @@ export function Projects() {
               onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl"
             >
-              {/* Close button */}
+              {/* Close button - fixed on mobile for reliable touch, absolute on desktop */}
               <button
-                onClick={closeModal}
-                className="absolute top-4 right-4 z-10 p-2 bg-white/90 rounded-full shadow-lg hover:bg-neutral-100 transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  closeModal();
+                }}
+                className="fixed md:absolute top-20 md:top-4 right-6 md:right-4 z-[60] p-3 md:p-2 bg-white rounded-full shadow-lg active:bg-neutral-200 md:hover:bg-neutral-100 transition-colors"
                 aria-label="Fermer"
               >
-                <X size={20} />
+                <X size={24} className="md:hidden" />
+                <X size={20} className="hidden md:block" />
               </button>
 
               {/* Image gallery */}

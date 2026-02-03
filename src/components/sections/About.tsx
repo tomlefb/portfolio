@@ -73,13 +73,13 @@ export function About() {
               <p>
                 Actuellement en <span className="text-neutral-900 font-medium">Bachelor 3 Développement Informatique</span> à Sup de Vinci
                 et en alternance chez <span className="text-orange-600 font-medium">Capgemini</span>,
-                je construis un profil qui allie expertise technique et vision projet.
+                je construis un profil qui combine connaissances techniques et sensibilité au pilotage de projets.
               </p>
 
               <p>
-                Mon parcours, du <span className="text-neutral-900 font-medium">BTS SIO</span> aux projets complexes en entreprise,
-                m'a permis de développer une double compétence rare : je comprends le code que je pilote,
-                et je sais communiquer avec les équipes techniques comme avec les métiers.
+                Mon parcours, du <span className="text-neutral-900 font-medium">BTS SIO</span> aux projets en entreprise,
+                m'a donné une double appétence : je comprends le code sur lequel je travaille,
+                et j'apprends à communiquer avec les équipes techniques comme avec les métiers.
               </p>
 
               <p>

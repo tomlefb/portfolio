@@ -8,11 +8,13 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-neutral-50 text-neutral-900 font-body;
     font-feature-settings: "kern" 1, "liga" 1;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -77,6 +79,13 @@
 
 /* Custom utilities */
 @layer utilities {
+  /* Disable hover effects on touch devices */
+  @media (hover: none) {
+    .hover-desktop:hover {
+      all: unset;
+    }
+  }
+
   /* Hide scrollbar but keep functionality */
   .scrollbar-hide {
     -ms-overflow-style: none;

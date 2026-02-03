@@ -46,7 +46,7 @@ export function Hero() {
         <motion.div
           animate={{ rotate: [0, 90, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/3 left-1/3 w-8 h-8 border-2 border-orange-500/20 rounded-lg"
+          className="hidden md:block absolute top-1/3 left-1/3 w-8 h-8 border-2 border-orange-500/20 rounded-lg"
         />
 
         {/* Orange accent line */}
@@ -105,24 +105,22 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center sm:items-start justify-center md:justify-start gap-3 sm:gap-4 mb-12"
+            className="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-4 mb-12"
           >
             <Button
               variant="primary"
-              size="md"
+              size="lg"
               href="#projects"
               icon={ArrowDown}
-              className="sm:!px-8 sm:!py-4 sm:!text-lg"
             >
               Voir mes projets
             </Button>
             <Button
               variant="ghost"
-              size="md"
+              size="lg"
               href="/CV_TOM.pdf"
               download
               icon={Download}
-              className="sm:!px-8 sm:!py-4 sm:!text-lg"
             >
               Télécharger mon CV
             </Button>

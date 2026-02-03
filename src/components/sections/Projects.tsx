@@ -64,7 +64,7 @@ export function Projects() {
               {/* Featured badge - hidden on mobile, shown on desktop */}
               <div className="hidden md:flex absolute top-4 left-4 z-10 items-center gap-2 px-3 py-1.5 bg-orange-500 text-white rounded-full text-sm font-medium">
                 <Star size={14} fill="currentColor" />
-                Projet vedette
+                Projet principal
               </div>
 
               <div className="grid lg:grid-cols-2">

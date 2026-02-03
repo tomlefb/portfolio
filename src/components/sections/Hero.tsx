@@ -59,7 +59,7 @@ export function Hero() {
       </div>
 
       <div className="container-custom relative z-10 pt-20">
-        <div className="max-w-4xl">
+        <div className="max-w-4xl mx-auto md:mx-0 text-center md:text-left">
           {/* Status badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -90,7 +90,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-neutral-600 max-w-2xl mb-8 font-light leading-relaxed"
+            className="text-xl md:text-2xl text-neutral-600 max-w-2xl mx-auto md:mx-0 mb-8 font-light leading-relaxed"
           >
             Du code à la coordination — développeur en alternance chez{' '}
             <span className="text-neutral-900 font-medium">Capgemini</span>,
@@ -106,7 +106,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-wrap gap-4 mb-12"
+            className="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-4 mb-12"
           >
             <Button
               variant="primary"
@@ -132,7 +132,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex items-center gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 sm:gap-6"
           >
             <span className="text-sm text-neutral-400 font-medium">
               Retrouvez-moi sur
@@ -168,12 +168,12 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - hidden on mobile */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

@@ -78,11 +78,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-semibold leading-[0.95] mb-6"
+            className="font-display font-semibold leading-[0.95] mb-6"
           >
-            <span className="text-neutral-900">Tom</span>
-            <br />
-            <span className="text-gradient-orange">Lefevre-Bonzon</span>
+            <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-neutral-900 block">Tom</span>
+            <span className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl text-gradient-orange block">Lefevre-Bonzon</span>
           </motion.h1>
 
           {/* Tagline */}
@@ -106,22 +105,24 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-4 mb-12"
+            className="flex flex-col sm:flex-row items-center sm:items-start justify-center md:justify-start gap-3 sm:gap-4 mb-12"
           >
             <Button
               variant="primary"
-              size="lg"
+              size="md"
               href="#projects"
               icon={ArrowDown}
+              className="sm:!px-8 sm:!py-4 sm:!text-lg"
             >
               Voir mes projets
             </Button>
             <Button
               variant="ghost"
-              size="lg"
+              size="md"
               href="/CV_TOM.pdf"
               download
               icon={Download}
+              className="sm:!px-8 sm:!py-4 sm:!text-lg"
             >
               Télécharger mon CV
             </Button>

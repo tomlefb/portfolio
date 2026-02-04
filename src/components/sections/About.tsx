@@ -8,7 +8,7 @@ export function About() {
 
   const highlights = [
     { icon: MapPin, label: 'Rennes, France' },
-    { icon: Globe, label: 'Anglais C1 (TOEIC 885)' },
+    { icon: Globe, label: 'Anglais C1 (TOEIC 950)' },
     { icon: Award, label: 'Permis B' },
   ];
 
@@ -116,7 +116,7 @@ export function About() {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-neutral-700">Anglais</span>
-                  <span className="text-sm font-medium text-orange-600">C1 (TOEIC 885)</span>
+                  <span className="text-sm font-medium text-orange-600">C1 (TOEIC 950)</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-neutral-700">Espagnol</span>

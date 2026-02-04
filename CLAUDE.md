@@ -92,7 +92,7 @@ portfolio/
 - Parcours résumé en quelques phrases : BTS SIO → Bachelor Dev → alternance Capgemini → objectif Mastère Chef de Projet IT
 - Mettre en avant la double compétence : technique + gestion
 - Localisation : Rennes
-- Langues : Français natif, Anglais C1 (TOEIC 885), Espagnol A2
+- Langues : Français natif, Anglais C1 (TOEIC 950), Espagnol A2
 
 ### 3. Projets (section principale)
 Chaque projet est une card cliquable qui ouvre un détail (modal ou page dédiée). Chaque fiche projet contient :

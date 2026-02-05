@@ -57,12 +57,10 @@ export function Contact() {
 
             <div className="relative z-10">
               <h3 className="text-2xl md:text-3xl font-display font-semibold mb-4">
-                Prêt à collaborer ?
+                Intéressé par mon profil ?
               </h3>
               <p className="text-lg text-white/90 mb-8 max-w-xl mx-auto">
-                Je recherche une alternance de 2 ans en tant que Chef de Projet IT
-                à partir de septembre 2026. Je serais ravi d'échanger de découvrir comment je pourrais contribuer à vos projets,
-                et continuer à me former.
+                En recherche d'alternance Chef de Projet IT · 2 ans · à partir de septembre 2026
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button

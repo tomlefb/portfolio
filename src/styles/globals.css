@@ -2,109 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom base styles */
+:root {
+  --paper: #e7e8e9;
+  --ink: #0e0e0e;
+  --g: 28px; /* marge latérale */
+}
+
+@media (max-width: 859px) {
+  :root {
+    --g: 16px;
+  }
+}
+
 @layer base {
   html {
-    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 
   body {
-    @apply bg-neutral-50 text-neutral-900 font-body;
-    font-feature-settings: "kern" 1, "liga" 1;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Archivo, system-ui, sans-serif;
+    font-size: 16px;
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-semibold tracking-tight;
-  }
-
   ::selection {
-    @apply bg-orange-500/20 text-orange-900;
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 3px;
   }
 }
 
-/* Custom components */
 @layer components {
-  /* Text gradient for accent highlights */
-  .text-gradient-orange {
-    @apply bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent;
+  /* Conteneur de page : les compositions se règlent en unités cqw. */
+  .shell {
+    container-type: inline-size;
+    max-width: 1500px;
+    margin-inline: auto;
+    overflow-x: clip;
   }
 
-  /* Subtle grain texture overlay */
-  .grain-overlay {
-    position: relative;
+  .title-xl {
+    font-weight: 900;
+    font-stretch: 68%;
+    text-transform: uppercase;
+    line-height: 0.82;
+    letter-spacing: -0.015em;
   }
 
-  .grain-overlay::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 1;
+  .title-md {
+    font-weight: 800;
+    font-stretch: 78%;
+    text-transform: uppercase;
+    line-height: 0.98;
   }
 
-  /* Geometric accent shapes */
-  .accent-dot {
-    @apply w-2 h-2 rounded-full bg-orange-500;
+  .rule-3 {
+    border-top: 3px solid var(--ink);
   }
 
-  .accent-line {
-    @apply w-12 h-0.5 bg-gradient-to-r from-orange-500 to-orange-300;
+  .rule-1 {
+    border-top: 1px solid var(--ink);
   }
 
-  /* Card hover effect */
-  .card-hover {
-    @apply transition-all duration-300 ease-out;
-  }
-
-  .card-hover:hover {
-    @apply -translate-y-1 shadow-lg shadow-orange-500/5;
-  }
-
-  /* Section padding consistency */
-  .section-padding {
-    @apply py-20 md:py-28 lg:py-32;
-  }
-
-  /* Container with max-width */
-  .container-custom {
-    @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8;
-  }
-}
-
-/* Custom utilities */
-@layer utilities {
-  /* Disable hover effects on touch devices */
-  @media (hover: none) {
-    .hover-desktop:hover {
-      all: unset;
-    }
-  }
-
-  /* Hide scrollbar but keep functionality */
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Backdrop blur with fallback */
-  .backdrop-blur-safe {
-    @apply backdrop-blur-md;
-    background-color: rgba(250, 250, 250, 0.8);
-  }
-
-  @supports (backdrop-filter: blur(12px)) {
-    .backdrop-blur-safe {
-      background-color: rgba(250, 250, 250, 0.7);
-    }
+  .gutter {
+    padding-inline: var(--g);
   }
 }

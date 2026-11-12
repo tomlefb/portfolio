@@ -1,28 +1,25 @@
 import { Analytics } from '@vercel/analytics/react';
-import { Navbar } from './components/layout/Navbar';
-import { Footer } from './components/layout/Footer';
-import { Hero } from './components/sections/Hero';
-import { About } from './components/sections/About';
-import { Projects } from './components/sections/Projects';
-import { Skills } from './components/sections/Skills';
-import { Timeline } from './components/sections/Timeline';
-import { Contact } from './components/sections/Contact';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ScrollManager } from './components/layout/ScrollManager';
+import { HomePage } from './pages/HomePage';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { OtherProjectsPage } from './pages/OtherProjectsPage';
+import { ParcoursPage } from './pages/ParcoursPage';
+import { ProjectPage } from './pages/ProjectPage';
 
 function App() {
   return (
-    <div className="min-h-screen bg-neutral-50 grain-overlay">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Timeline />
-        <Contact />
-      </main>
-      <Footer />
+    <BrowserRouter>
+      <ScrollManager />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projets/:id" element={<ProjectPage />} />
+        <Route path="/autres-projets" element={<OtherProjectsPage />} />
+        <Route path="/parcours" element={<ParcoursPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
       <Analytics />
-    </div>
+    </BrowserRouter>
   );
 }
 

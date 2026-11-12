@@ -52,3 +52,8 @@ export interface ContactInfo {
   linkedin: string;
   github: string;
 }
+
+export interface ProjectFact {
+  label: string;
+  value: string;
+}

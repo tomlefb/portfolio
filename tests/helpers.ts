@@ -11,12 +11,22 @@ export const ROUTES = [
   '/parcours',
 ] as const;
 
-/** Collecte les erreurs console et les exceptions de la page. */
+/**
+ * Collecte les erreurs de la page : exceptions, erreurs console et ressources
+ * en échec. Le script de mesure Vercel n'existe qu'en production, on l'ignore.
+ */
 export function collectErrors(page: Page): string[] {
   const errors: string[] = [];
   page.on('console', (msg) => {
-    if (msg.type() === 'error') errors.push(msg.text());
+    if (msg.type() === 'error' && !msg.text().startsWith('Failed to load resource')) {
+      errors.push(msg.text());
+    }
   });
   page.on('pageerror', (err) => errors.push(err.message));
+  page.on('response', (res) => {
+    if (res.status() >= 400 && !res.url().includes('/_vercel/')) {
+      errors.push(`${res.status()} ${res.url()}`);
+    }
+  });
   return errors;
 }

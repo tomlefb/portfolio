@@ -40,6 +40,8 @@
 
 .pj-head__back {
   position: relative;
+  z-index: 2;
+  width: max-content;
   padding-top: 8px;
   font-size: 15px;
   font-weight: 600;

@@ -5,8 +5,15 @@
   padding: 0 var(--g) 5cqw;
 }
 
+.hm-hero h1 {
+  width: max-content;
+  max-width: 100%;
+}
+
 .hm-hero h1 span {
   display: block;
+  width: max-content;
+  max-width: 100%;
 }
 
 .hm-hero__first {

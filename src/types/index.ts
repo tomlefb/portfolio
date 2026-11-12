@@ -38,6 +38,8 @@ export interface Project {
   images: ProjectImage[];
   /** Exactement quatre pour un projet majeur. */
   facts?: ProjectFact[];
+  /** Chiffres clés affichés en grand sur la page du projet. */
+  figures?: ProjectFact[];
   /** Au moins deux pour un projet majeur. */
   sections?: ProjectSection[];
   githubUrl?: string;

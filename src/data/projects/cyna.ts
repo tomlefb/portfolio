@@ -33,6 +33,12 @@ export const cyna: Project = {
     { label: 'Période', value: 'Octobre 2025 à mai 2026' },
     { label: 'Technos', value: 'NestJS, Angular / Ionic, RabbitMQ, PostgreSQL, Redis, Stripe' },
   ],
+  figures: [
+    { value: '9', label: 'services' },
+    { value: '47', label: 'pages de cadrage' },
+    { value: '4', label: 'développeurs' },
+    { value: '2', label: 'tâches en cours au plus, par personne' },
+  ],
   sections: [
     {
       title: "Ce que j'ai fait",

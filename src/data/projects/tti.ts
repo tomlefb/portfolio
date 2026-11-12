@@ -29,6 +29,12 @@ export const tti: Project = {
     { label: 'Période', value: 'Depuis avril 2026' },
     { label: 'Technos', value: 'Python, pandas, Databento, ProjectX, pytest, Claude Code' },
   ],
+  figures: [
+    { value: '1 738', label: 'sprints de recherche' },
+    { value: '147', label: 'rétractations' },
+    { value: '6', label: 'familles au cimetière' },
+    { value: '1', label: 'stratégie en production' },
+  ],
   sections: [
     {
       title: 'La méthode',

@@ -30,6 +30,12 @@ export const vizly: Project = {
     { label: 'Période', value: 'Mars à mai 2026' },
     { label: 'Technos', value: 'Next.js 15, TypeScript, Supabase, Stripe, Resend, Railway' },
   ],
+  figures: [
+    { value: '400', label: 'commits' },
+    { value: '8', label: 'templates' },
+    { value: '19', label: 'migrations de base' },
+    { value: '33', label: 'tests de bout en bout' },
+  ],
   sections: [
     {
       title: "Ce que j'ai fait",

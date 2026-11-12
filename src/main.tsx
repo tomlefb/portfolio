@@ -8,6 +8,7 @@ import './styles/project.css';
 import './styles/home.css';
 import './styles/secondary.css';
 import './styles/parcours.css';
+import './styles/wide.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

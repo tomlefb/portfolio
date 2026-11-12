@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { ROUTES } from './helpers';
 
-const LAYOUT_WIDTHS = [390, 640, 700, 768, 860, 1000, 1024, 1180, 1440];
+const LAYOUT_WIDTHS = [390, 640, 700, 768, 860, 1000, 1024, 1180, 1440, 1920, 2560];
 
 /** Fait défiler toute la page pour charger les images différées, puis remonte. */
 async function loadWholePage(page: import('@playwright/test').Page) {

@@ -51,6 +51,7 @@ Le contact n'est pas une page : c'est le bloc noir « Écrivez-moi » en pied de
 - **Imbrication** : titres, aplats de couleur et captures se chevauchent. Les compositions se règlent en unités `cqw` (le conteneur `.shell` a `container-type: inline-size`). Un chevauchement peut mordre une lettre, jamais rendre un mot illisible.
 - **Schémas** : SVG dans le langage du site (traits 2 px, angles droits, liaisons orthogonales, un seul élément en couleur par schéma), avec une composition large et une composition étroite.
 - **Photo** : portrait détouré, couleurs naturelles, sans filtre, uniquement sur Parcours et masqué sur mobile.
+- **Grands écrans** : le contenu grandit avec l'écran jusqu'à 1920 px. Au-delà, il reste centré mais les filets, les aplats de couleur et le pied de page filent jusqu'aux bords (`src/styles/wide.css`). Jamais de colonne encadrée flottant au milieu de l'écran.
 - **Mouvement** : sobre. Le contenu doit rester visible sans animation, et `prefers-reduced-motion` est respecté.
 
 ### À ne jamais faire

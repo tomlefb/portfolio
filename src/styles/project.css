@@ -274,6 +274,8 @@
 }
 
 .pj-next {
+  background: var(--pc);
+  color: var(--pon);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;

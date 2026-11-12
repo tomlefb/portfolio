@@ -57,16 +57,9 @@
   /* Conteneur de page : les compositions se règlent en unités cqw. */
   .shell {
     container-type: inline-size;
-    max-width: 1500px;
+    max-width: 1920px;
     margin-inline: auto;
     overflow-x: clip;
-  }
-
-  /* Au-delà de la largeur maximale, la page est cernée comme une affiche. */
-  @media (min-width: 1506px) {
-    .shell {
-      border-inline: 3px solid var(--ink);
-    }
   }
 
   .title-xl {

@@ -1,0 +1,86 @@
+/*
+ * Écrans plus larges que la page (au-delà de 1920 px).
+ * Le contenu reste centré, mais les filets, les aplats et le pied de page filent
+ * jusqu'aux bords de l'écran : le site occupe toute la largeur, sans cadre.
+ */
+
+@media (min-width: 1921px) {
+  .shell {
+    overflow-x: visible;
+  }
+
+  /* Filets horizontaux prolongés des deux côtés. */
+  .hm-rubric,
+  .hm-spread,
+  .pj-facts,
+  .pj-band,
+  .pj-figures,
+  .pj-section,
+  .pj-next,
+  .pc-head,
+  .pc-cols,
+  .pc-col__label--wide,
+  .mn-grid {
+    border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 100vw;
+  }
+
+  /* Filets des colonnes : celle de gauche file à gauche, celle de droite à droite. */
+  .pc-col:first-child .pc-col__label,
+  .pc-col:first-child .pc-row,
+  .mn:nth-child(odd) {
+    border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 0 0 100vw;
+  }
+
+  .pc-col:last-child .pc-col__label,
+  .pc-col:last-child .pc-row,
+  .mn:nth-child(even) {
+    border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 100vw 0 0;
+  }
+
+  .mn:nth-child(odd) {
+    border-right: 3px solid var(--ink);
+  }
+
+  /* Fonds pleins prolongés des deux côtés. */
+  .site-footer {
+    box-shadow: 0 0 0 100vmax var(--ink);
+    clip-path: inset(0 -100vmax);
+  }
+
+  .pj-next,
+  .pj-figures--color {
+    box-shadow: 0 0 0 100vmax var(--pc);
+    clip-path: inset(0 -100vmax);
+  }
+
+  .pc-col:first-child .pc-row[data-current='true'] {
+    border-image: conic-gradient(var(--ink) 0 0) fill 0 / 0 / 0 0 0 100vw;
+  }
+
+  /* Aplats de couleur : chacun file vers le bord qu'il touche. */
+  .hm-vizly .hm-block {
+    border-image: conic-gradient(var(--pc) 0 0) fill 0 / 0 / 0 0 0 100vw;
+  }
+
+  .hm-tti .hm-block,
+  .hm-cyna .hm-block,
+  .pj-head__block,
+  .pj-band__block,
+  .mn:nth-child(even) .mn__block {
+    border-image: conic-gradient(var(--pc) 0 0) fill 0 / 0 / 0 100vw 0 0;
+  }
+
+  /* Les zones rognées ne le sont plus qu'en hauteur, pour laisser filer aplats et images. */
+  .hm-spread,
+  .pj-band,
+  .pc-head,
+  .mn:nth-child(even) .mn__stage {
+    overflow: visible;
+    clip-path: inset(0 -100vw);
+  }
+
+  /* Le portrait reste calé contre le bord de l'écran. */
+  .pc-head__portrait {
+    right: calc((100cqw - 100vw) / 2);
+  }
+}

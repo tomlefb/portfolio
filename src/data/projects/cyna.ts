@@ -26,7 +26,13 @@ export const cyna: Project = {
     'Figma',
     'ClickUp',
   ],
-  images: [],
+  images: [
+    { src: '/images/projects/cyna/landing.webp', alt: "Page d'accueil CYNA : « La protection de votre entreprise commence ici »", kind: 'desktop' },
+    { src: '/images/projects/cyna/mobile-accueil.webp', alt: "Accueil de l'application mobile CYNA, offres de cybersécurité mises en avant", kind: 'phone' },
+    { src: '/images/projects/cyna/mobile-catalogue.webp', alt: "Catalogue CYNA sur mobile : services et produits", kind: 'phone' },
+    { src: '/images/projects/cyna/mobile-produit.webp', alt: "Fiche produit SOC Premium dans l'application mobile CYNA", kind: 'phone' },
+    { src: '/images/projects/cyna/mobile-compte.webp', alt: "Espace compte CYNA : commandes, abonnements et paramètres", kind: 'phone' },
+  ],
   facts: [
     { label: 'Mon rôle', value: 'Développeur backend et sous-chef de projet' },
     { label: 'Équipe', value: '4 développeurs' },

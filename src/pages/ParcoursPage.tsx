@@ -1,13 +1,19 @@
 import { PageShell } from '../components/layout/PageShell';
-import { BigTitle } from '../components/ui/BigTitle';
+import { ParcoursHeader } from '../components/parcours/ParcoursHeader';
+import { ParcoursTable } from '../components/parcours/ParcoursTable';
+import { TechnoLines } from '../components/parcours/TechnoLines';
+import { parcours, technos } from '../data/parcours';
 import { site } from '../data/site';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export function ParcoursPage() {
+  useDocumentTitle('Parcours');
+
   return (
     <PageShell navLabel={site.name}>
-      <BigTitle as="h1" className="gutter text-[12cqw]">
-        Parcours
-      </BigTitle>
+      <ParcoursHeader />
+      <ParcoursTable items={parcours} />
+      <TechnoLines groups={technos} />
     </PageShell>
   );
 }

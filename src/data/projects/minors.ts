@@ -11,7 +11,11 @@ export const minorProjects: Project[] = [
     color: '#22B573',
     onColor: '#0E0E0E',
     stack: ['Express', 'Next.js', 'React Native', 'PostgreSQL', 'API Claude'],
-    images: [],
+    images: [
+      { src: '/images/projects/nutriai/accueil.webp', alt: "Accueil NutriAI : calories restantes et suivi des macros", kind: 'phone' },
+      { src: '/images/projects/nutriai/generateur-ia.webp', alt: "Générateur de repas par IA de NutriAI", kind: 'phone' },
+      { src: '/images/projects/nutriai/ajout-repas.webp', alt: "Ajout d'un repas NutriAI : recherche, scan de code-barres, texte libre", kind: 'phone' },
+    ],
   },
   {
     id: 'ialocal',
@@ -23,7 +27,10 @@ export const minorProjects: Project[] = [
     color: '#2456E6',
     onColor: '#FFFFFF',
     stack: ['React', 'TypeScript', 'Vite', 'Node.js', 'Ollama'],
-    images: [],
+    images: [
+      { src: '/images/projects/ialocal/conversation.webp', alt: "Conversation avec un modèle local dans IALocal", kind: 'desktop' },
+      { src: '/images/projects/ialocal/accueil.webp', alt: "Écran d'accueil d'IALocal avec suggestions de requêtes", kind: 'desktop' },
+    ],
     githubUrl: 'https://github.com/tomlefb/IALocal',
   },
   {
@@ -36,7 +43,10 @@ export const minorProjects: Project[] = [
     color: '#E9C07A',
     onColor: '#0E0E0E',
     stack: ['Angular', 'TypeScript', 'Docker', 'Git'],
-    images: [],
+    images: [
+      { src: '/images/projects/lycee-hotelier/accueil.webp', alt: "Accueil de l'application de gestion des stages du lycée hôtelier", kind: 'desktop' },
+      { src: '/images/projects/lycee-hotelier/fiche-stage.webp', alt: "Fiche d'un stage : établissement, dates, missions et photos", kind: 'desktop' },
+    ],
   },
   {
     id: 'ecopursue',
@@ -48,7 +58,10 @@ export const minorProjects: Project[] = [
     color: '#0F7B45',
     onColor: '#FFFFFF',
     stack: ['Spring Boot', 'Angular', 'React Native', 'PostgreSQL', 'Chart.js'],
-    images: [],
+    images: [
+      { src: '/images/projects/ecopursue/dashboard.webp', alt: "Tableau de bord EcoPursue : émissions carbone par source et matériau", kind: 'desktop' },
+      { src: '/images/projects/ecopursue/connexion.webp', alt: "Page de connexion EcoPursue", kind: 'desktop' },
+    ],
   },
   {
     id: 'fairsonjob',

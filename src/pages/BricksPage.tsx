@@ -1,6 +1,14 @@
 import { PhoneFrame } from '../components/ui/PhoneFrame';
 import { Shot } from '../components/ui/Shot';
-import type { ProjectImage } from '../types';
+import { Diagram } from '../components/diagrams/Diagram';
+import type { DiagramId, ProjectImage } from '../types';
+
+/** Couleurs de contrôle, une par projet. */
+const diagramSamples: { id: DiagramId; color: string }[] = [
+  { id: 'cyna-architecture', color: '#5B3FF0' },
+  { id: 'tti-boucle', color: '#F2431D' },
+  { id: 'vizly-parcours', color: '#F1B434' },
+];
 
 const missingPhone: ProjectImage = {
   src: '/images/absent-telephone.webp',
@@ -26,6 +34,12 @@ export function BricksPage() {
       <PhoneFrame image={missingPhone} className="w-[220px]" testId="phone-missing" />
       <PhoneFrame image={present} className="w-[220px]" testId="phone-ok" eager />
       <Shot image={missingShot} className="h-[240px] w-[420px]" testId="shot-missing" />
+      {diagramSamples.map((d) => (
+        <section key={d.id} className="w-full rule-3 pt-6" data-testid={`diagram-${d.id}`}>
+          <h2 className="title-md mb-6 text-[20px]">{d.id}</h2>
+          <Diagram id={d.id} color={d.color} />
+        </section>
+      ))}
     </div>
   );
 }

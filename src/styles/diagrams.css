@@ -1,0 +1,46 @@
+/* Schémas SVG : deux compositions par schéma, choisies selon la largeur disponible. */
+
+.diagram {
+  container: diagram / inline-size;
+}
+
+.dg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: Archivo, system-ui, sans-serif;
+  font-kerning: normal;
+}
+
+.dg--wide {
+  display: none;
+  max-width: 1080px;
+}
+
+.dg--narrow {
+  max-width: 480px;
+}
+
+@container diagram (min-width: 640px) {
+  .dg--wide {
+    display: block;
+  }
+
+  .dg--narrow {
+    display: none;
+  }
+}
+
+.dg-label {
+  font-weight: 800;
+  font-stretch: 78%;
+}
+
+.dg-sub {
+  font-weight: 500;
+  font-stretch: 100%;
+}
+
+.dg-strong {
+  font-weight: 800;
+}

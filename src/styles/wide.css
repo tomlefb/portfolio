@@ -44,7 +44,7 @@
   }
 
   /* Fonds pleins prolongés des deux côtés. */
-  .site-footer {
+  .ft {
     box-shadow: 0 0 0 100vmax var(--ink);
     clip-path: inset(0 -100vmax);
   }

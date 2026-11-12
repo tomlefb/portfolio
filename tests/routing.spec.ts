@@ -29,11 +29,30 @@ test('la navigation mobile montre ses liens sans menu', async ({ page }) => {
 test('le pied de page donne les moyens de contact', async ({ page }) => {
   await page.goto('/parcours');
   const footer = page.locator('#contact');
-  await expect(footer.getByRole('heading', { name: 'Écrivez-moi' })).toBeVisible();
-  await expect(footer.getByRole('link', { name: 'tom.lefevrebonzon@gmail.com' })).toHaveAttribute(
-    'href',
-    'mailto:tom.lefevrebonzon@gmail.com',
-  );
-  await expect(footer.getByRole('link', { name: 'LinkedIn' })).toBeVisible();
-  await expect(footer.getByRole('link', { name: 'GitHub' })).toBeVisible();
+  await expect(footer.getByRole('heading', { level: 2, name: 'Contact' })).toBeVisible();
+  for (const name of ['LinkedIn', 'GitHub', 'CV (PDF)', '06 50 33 60 95', 'Code source']) {
+    await expect(footer.getByRole('link', { name })).toBeVisible();
+  }
+  await expect(footer.getByText(/Écrivez-moi|fait à la main|Mis à jour/i)).toHaveCount(0);
+});
+
+test('un clic sur l’adresse la copie et le confirme', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await page.goto('/');
+  const copy = page.locator('#contact').getByRole('button', { name: /tom\.lefevrebonzon@gmail\.com/ });
+  await copy.click();
+  await expect(page.locator('#contact').getByText('Adresse copiée')).toBeVisible();
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('tom.lefevrebonzon@gmail.com');
+});
+
+test('le pied de page reste discret', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  const box = await page.locator('#contact').boundingBox();
+  expect(box!.height).toBeLessThanOrEqual(340);
+  const size = await page
+    .locator('#contact')
+    .getByRole('button', { name: /tom\.lefevrebonzon@gmail\.com/ })
+    .evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
+  expect(size).toBeLessThanOrEqual(64);
 });

@@ -1,0 +1,137 @@
+/* Pied de page : un colophon en grille, sur fond encre. */
+
+.ft {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.ft__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: clamp(26px, 2.6cqw, 40px) var(--g) clamp(30px, 3cqw, 46px);
+}
+
+.ft__cell + .ft__cell {
+  border-left: 1px solid rgb(231 232 233 / 0.32);
+}
+
+.ft__label {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.62;
+}
+
+.ft__text {
+  font-size: 17px;
+  line-height: 1.45;
+  max-width: 36ch;
+}
+
+.ft-mail {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: clamp(26px, 2.9cqw, 44px);
+  font-weight: 800;
+  font-stretch: 76%;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ft-mail__address {
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.ft-mail:hover .ft-mail__address,
+.ft-mail:focus-visible .ft-mail__address {
+  border-color: currentColor;
+}
+
+.ft-mail:focus-visible {
+  outline-color: var(--paper);
+}
+
+.ft-mail__hint {
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: 100%;
+  letter-spacing: 0;
+  opacity: 0.62;
+  white-space: nowrap;
+}
+
+.ft__links {
+  display: grid;
+  gap: 6px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ft__links a,
+.ft__source {
+  border-bottom: 2px solid transparent;
+}
+
+.ft__links a:hover,
+.ft__source:hover {
+  border-color: currentColor;
+}
+
+.ft a:focus-visible {
+  outline-color: var(--paper);
+}
+
+.ft__source {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.ft__source::after {
+  content: ' ↗';
+}
+
+@container (max-width: 859px) {
+  .ft {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ft__cell--contact {
+    grid-column: 1 / -1;
+  }
+
+  .ft__cell--contact + .ft__cell {
+    border-left: 0;
+  }
+
+  .ft__cell:not(.ft__cell--contact) {
+    border-top: 1px solid rgb(231 232 233 / 0.32);
+  }
+
+  .ft-mail {
+    font-size: 6.4cqw;
+    flex-direction: column;
+  }
+}
+
+@container (max-width: 479px) {
+  .ft {
+    grid-template-columns: 1fr;
+  }
+
+  .ft__cell + .ft__cell {
+    border-left: 0;
+  }
+}

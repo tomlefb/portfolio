@@ -41,7 +41,7 @@ Commandes : `npm run dev`, `npm run build`, `npm run lint`, `npm test`, `npm run
 | `/parcours` | Portrait, expériences et formation, technos |
 | `/__bricks` | Page de contrôle des briques visuelles et des schémas, non liée |
 
-Le contact n'est pas une page : c'est le bloc noir « Écrivez-moi » en pied de chaque page.
+Le contact n'est pas une page : c'est le pied de page noir en colophon (Contact avec l'adresse e-mail copiable d'un clic, Ailleurs, Ce site), présent sur chaque page. Pas de formule d'appel ni de signature.
 
 ## Design : style « affiche »
 

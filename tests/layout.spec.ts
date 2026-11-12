@@ -115,17 +115,17 @@ for (const route of ROUTES) {
   });
 }
 
-test('chaque lien de l’accueil reçoit un contour de focus visible', async ({ page }) => {
+test('chaque lien ou bouton de l’accueil reçoit un contour de focus visible', async ({ page }) => {
   await page.goto('/');
-  const count = await page.locator('a').count();
-  for (let i = 0; i < Math.min(count, 12); i += 1) {
+  const count = await page.locator('a, button').count();
+  for (let i = 0; i < count; i += 1) {
     await page.keyboard.press('Tab');
     const outline = await page.evaluate(() => {
       const el = document.activeElement as HTMLElement;
       const style = getComputedStyle(el);
       return { tag: el.tagName, width: parseFloat(style.outlineWidth), style: style.outlineStyle };
     });
-    expect(outline.tag).toBe('A');
+    expect(['A', 'BUTTON']).toContain(outline.tag);
     expect(outline.width).toBeGreaterThanOrEqual(2);
     expect(outline.style).not.toBe('none');
   }

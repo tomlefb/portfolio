@@ -131,7 +131,7 @@ séparées). Prévoir la réécriture SPA côté Vercel.
 - **Navigation** : mention à gauche (« Développeur, Rennes » sur l'accueil, le
   nom de Tom ailleurs), liens Projets / Parcours / Contact à droite. Sur mobile
   les trois liens restent visibles, pas de menu hamburger (choix Claude).
-- **Contact** : pas de page. Un bloc « Écrivez-moi » en pied de chaque page,
+- **Contact** : pas de page. Un pied de page en colophon sur chaque page (adresse e-mail copiable, liens, ligne « Ce site »),
   avec e-mail, LinkedIn, GitHub, téléphone. Le lien « Contact » y fait défiler.
 - **CV** : le lien de téléchargement est conservé (demande de Tom, qui mettra
   le PDF à jour plus tard), dans la navigation et dans le bloc de contact.

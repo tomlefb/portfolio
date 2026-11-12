@@ -20,17 +20,18 @@
 
 .pc-head__title {
   position: absolute;
+  z-index: 1;
   left: var(--g);
   bottom: 1.6cqw;
   font-size: var(--pc-title);
 }
 
-/* Calé contre le bord droit de la page : la coupe de l'épaule se confond avec le bord. */
+/* Le portrait est calé contre le bord droit ; l'épaule gauche, prolongée, passe derrière la fin du titre. */
 .pc-head__portrait {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 25.5cqw;
+  width: 34.5cqw;
   height: auto;
 }
 

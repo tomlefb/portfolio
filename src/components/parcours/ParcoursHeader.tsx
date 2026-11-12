@@ -10,7 +10,7 @@ export function ParcoursHeader() {
       <BigTitle as="h1" className="pc-head__title">
         Parcours
       </BigTitle>
-      <img className="pc-head__portrait" src={site.portrait.src} alt={site.portrait.alt} width={1000} height={1431} />
+      <img className="pc-head__portrait" src={site.portrait.src} alt={site.portrait.alt} width={1300} height={1376} />
     </header>
   );
 }

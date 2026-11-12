@@ -1,0 +1,8 @@
+node_modules
+dist
+.superpowers
+.playwright-mcp
+test-results
+playwright-report
+.DS_Store
+*.tsbuildinfo

@@ -27,7 +27,12 @@ export function ProjectPage() {
         <ProjectHeader project={project} />
         {project.facts && <FactCells facts={project.facts} />}
         <ImageBand project={project} />
-        {project.figures && <FigureStrip figures={project.figures} />}
+        {project.figures && (
+          <FigureStrip
+            figures={project.figures}
+            {...(project.images.length === 0 ? { color: project.color, onColor: project.onColor } : {})}
+          />
+        )}
         {project.sections?.map((section) => (
           <SectionBlock key={section.title} section={section} color={project.color} />
         ))}

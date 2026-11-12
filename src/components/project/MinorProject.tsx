@@ -12,23 +12,21 @@ export function MinorProject({ project }: MinorProjectProps) {
   const style = { '--pc': project.color, '--pon': project.onColor } as CSSProperties;
   const desktop = project.images.find((image) => image.kind === 'desktop');
   const phones = project.images.filter((image) => image.kind === 'phone').slice(0, 2);
-  const kind = desktop ? 'desktop' : phones.length > 0 ? 'phones' : 'type';
+  const kind = desktop ? 'desktop' : 'phones';
 
   return (
     <article className={`mn mn--${kind}`} style={style} data-testid="minor-project">
       <div className="mn__art">
-        <span className="mn__block" aria-hidden="true" />
         <h2 className="title-xl mn__title">{project.title}</h2>
-        {desktop && <Shot image={desktop} className="mn__shot" />}
-        {!desktop &&
-          phones.map((image, index) => (
-            <PhoneFrame key={image.src} image={image} className={`mn__phone mn__phone--${index + 1}`} />
-          ))}
-        {kind === 'type' && (
-          <p className="title-xl mn__type" aria-hidden="true">
-            Nouvelle mission <span>→</span> notification
-          </p>
-        )}
+        {/* La scène remonte sous la dernière ligne du titre : l'aplat mord le bas des lettres. */}
+        <div className="mn__stage">
+          <span className="mn__block" aria-hidden="true" />
+          {desktop && <Shot image={desktop} className="mn__shot" />}
+          {!desktop &&
+            phones.map((image, index) => (
+              <PhoneFrame key={image.src} image={image} className={`mn__phone mn__phone--${index + 1}`} />
+            ))}
+        </div>
       </div>
       <div className="mn__text">
         <p data-testid="minor-tagline">{project.tagline}</p>

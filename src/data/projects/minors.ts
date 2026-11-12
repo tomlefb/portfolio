@@ -12,9 +12,9 @@ export const minorProjects: Project[] = [
     onColor: '#0E0E0E',
     stack: ['Express', 'Next.js', 'React Native', 'PostgreSQL', 'API Claude'],
     images: [
-      { src: '/images/projects/nutriai/accueil.webp', alt: "Accueil NutriAI : calories restantes et suivi des macros", kind: 'phone' },
+      { src: '/images/projects/nutriai/accueil.webp', alt: "Accueil NutriAI : calories restantes et suivi des macros", kind: 'phone' },
       { src: '/images/projects/nutriai/generateur-ia.webp', alt: "Générateur de repas par IA de NutriAI", kind: 'phone' },
-      { src: '/images/projects/nutriai/ajout-repas.webp', alt: "Ajout d'un repas NutriAI : recherche, scan de code-barres, texte libre", kind: 'phone' },
+      { src: '/images/projects/nutriai/ajout-repas.webp', alt: "Ajout d'un repas NutriAI : recherche, scan de code-barres, texte libre", kind: 'phone' },
     ],
   },
   {
@@ -45,7 +45,7 @@ export const minorProjects: Project[] = [
     stack: ['Angular', 'TypeScript', 'Docker', 'Git'],
     images: [
       { src: '/images/projects/lycee-hotelier/accueil.webp', alt: "Accueil de l'application de gestion des stages du lycée hôtelier", kind: 'desktop' },
-      { src: '/images/projects/lycee-hotelier/fiche-stage.webp', alt: "Fiche d'un stage : établissement, dates, missions et photos", kind: 'desktop' },
+      { src: '/images/projects/lycee-hotelier/fiche-stage.webp', alt: "Fiche d'un stage : établissement, dates, missions et photos", kind: 'desktop' },
     ],
   },
   {
@@ -59,7 +59,7 @@ export const minorProjects: Project[] = [
     onColor: '#FFFFFF',
     stack: ['Spring Boot', 'Angular', 'React Native', 'PostgreSQL', 'Chart.js'],
     images: [
-      { src: '/images/projects/ecopursue/dashboard.webp', alt: "Tableau de bord EcoPursue : émissions carbone par source et matériau", kind: 'desktop' },
+      { src: '/images/projects/ecopursue/dashboard.webp', alt: "Tableau de bord EcoPursue : émissions carbone par source et matériau", kind: 'desktop' },
       { src: '/images/projects/ecopursue/connexion.webp', alt: "Page de connexion EcoPursue", kind: 'desktop' },
     ],
   },

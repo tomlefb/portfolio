@@ -60,9 +60,10 @@
   font-weight: 600;
 }
 
+/* Le téléphone mord le bord droit du « N » final, sans plus. */
 .hm-hero__phone {
   position: absolute;
-  right: 3cqw;
+  left: calc(var(--g) + 76cqw);
   top: 0.6cqw;
   width: 17.5cqw;
   z-index: 4;
@@ -75,11 +76,14 @@
   font-weight: 600;
 }
 
-/* Compositions des projets */
+/* Compositions des projets.
+   Grand écran : les images sont posées en absolu (cqw) ; le texte reste dans le flux,
+   décalé sous le titre, pour que la composition s'allonge au lieu de le recouvrir. */
 
 .hm-spread {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border-bottom: 3px solid var(--ink);
 }
@@ -94,16 +98,17 @@
   transition: inset 0.35s ease;
 }
 
+/* Au-dessus du texte, dont la marge haute s'étend sous le titre. */
 .hm-title {
   position: absolute;
   left: var(--g);
-  z-index: 3;
+  z-index: 4;
 }
 
 .hm-cap {
-  position: absolute;
-  left: var(--g);
+  position: relative;
   z-index: 3;
+  margin: 0 0 2.6cqw var(--g);
   font-size: 17px;
   line-height: 1.4;
   font-weight: 500;
@@ -132,7 +137,8 @@
 
 /* Vizly */
 .hm-vizly {
-  height: 50cqw;
+  min-height: 50cqw;
+  justify-content: flex-end;
 }
 
 .hm-vizly .hm-block {
@@ -146,6 +152,11 @@
 .hm-vizly .hm-title {
   top: 1.4cqw;
   font-size: 23cqw;
+}
+
+/* Les captures de Vizly gardent leur logo et leur titre quand le cadre les recadre. */
+.hm-vizly .shot img {
+  object-position: left top;
 }
 
 .hm-vizly__back {
@@ -164,47 +175,49 @@
   z-index: 2;
 }
 
+/* Le téléphone ne mord que la marge gauche de la landing, jamais son titre. */
 .hm-vizly__phone {
-  left: 32.5cqw;
-  top: 24cqw;
+  left: 32cqw;
+  top: 25cqw;
   width: 12cqw;
   z-index: 4;
 }
 
 .hm-vizly .hm-cap {
-  bottom: 2.6cqw;
   width: 27cqw;
+  padding-top: 23cqw;
 }
 
-/* TTI */
+/* TTI : « TT » sur le papier, « I » sur l'aplat. */
 .hm-tti {
-  height: 36cqw;
+  min-height: 38cqw;
+  justify-content: flex-end;
 }
 
 .hm-tti .hm-block {
-  inset: 0 0 0 44cqw;
+  inset: 5cqw 0 0 calc(var(--g) + 27cqw);
 }
 
 .hm-tti:hover .hm-block {
-  inset: 0 0 0 34cqw;
+  inset: 0 0 0 calc(var(--g) + 27cqw);
 }
 
 .hm-tti .hm-title {
-  top: 2.4cqw;
-  font-size: 24cqw;
+  top: 2cqw;
+  font-size: 26cqw;
 }
 
 .hm-tti__figures {
   position: absolute;
   z-index: 3;
+  left: calc(var(--g) + 40cqw);
   right: var(--g);
-  top: 3cqw;
-  bottom: 3cqw;
-  width: 36cqw;
+  top: 8cqw;
+  bottom: 3.4cqw;
   color: var(--pon);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2cqw 2.4cqw;
+  gap: 2cqw 3cqw;
   align-content: space-between;
 }
 
@@ -217,7 +230,7 @@
 }
 
 .hm-tti__figures strong {
-  font-size: 8.4cqw;
+  font-size: 10cqw;
   white-space: nowrap;
 }
 
@@ -228,13 +241,13 @@
 }
 
 .hm-tti .hm-cap {
-  bottom: 2.6cqw;
-  width: 34cqw;
+  width: 25cqw;
+  padding-top: 25.5cqw;
 }
 
 /* CYNA */
 .hm-cyna {
-  height: 40cqw;
+  min-height: 40cqw;
 }
 
 .hm-cyna .hm-block {
@@ -271,8 +284,8 @@
 }
 
 .hm-cyna .hm-cap {
-  top: 22cqw;
-  width: 28cqw;
+  width: 29cqw;
+  padding-top: 22cqw;
 }
 
 /* Renvoi vers les autres projets */
@@ -312,7 +325,201 @@
   content: ' →';
 }
 
-@container (max-width: 859px) {
+/* Haut de page, jusqu'à 1199 px : les deux faits passent sous le nom, la phrase reste à droite de « TOM ». */
+@container (max-width: 1199px) {
+  .hm-hero {
+    padding-bottom: 4cqw;
+  }
+
+  .hm-hero__text {
+    display: contents;
+  }
+
+  .hm-hero__text p {
+    position: absolute;
+    left: 43cqw;
+    top: 1.2cqw;
+    width: 35cqw;
+    font-size: clamp(16px, 1.9cqw, 21px);
+  }
+
+  .hm-hero__text dl {
+    margin-top: 2.6cqw;
+    max-width: 74cqw;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    column-gap: 4cqw;
+  }
+
+  .hm-hero__text dl div {
+    grid-template-columns: auto;
+    gap: 2px;
+  }
+
+  .hm-hero__last {
+    font-size: 10.6cqw;
+  }
+
+  .hm-hero__phone {
+    left: calc(var(--g) + 74cqw);
+    top: auto;
+    bottom: -5cqw;
+  }
+}
+
+/* Intermédiaire : mêmes imbrications, textes sortis des zones absolues. */
+@container (max-width: 999px) {
+  /* Vizly : l'aplat porte les images puis le texte. */
+  .hm-vizly {
+    display: block;
+    min-height: 0;
+  }
+
+  .hm-vizly .hm-art {
+    display: block;
+    position: relative;
+    height: 64cqw;
+    overflow: hidden;
+  }
+
+  .hm-vizly .hm-block,
+  .hm-vizly:hover .hm-block {
+    inset: 13cqw 0 0 0;
+  }
+
+  .hm-vizly .hm-title {
+    top: 0.5cqw;
+    font-size: 30cqw;
+  }
+
+  .hm-vizly__back {
+    top: 3cqw;
+    width: 31cqw;
+    height: 25cqw;
+  }
+
+  .hm-vizly__shot {
+    right: -3px;
+    top: 26cqw;
+    width: 68cqw;
+    height: 42.5cqw;
+  }
+
+  .hm-vizly__phone {
+    left: 17cqw;
+    top: 27cqw;
+    width: 16cqw;
+  }
+
+  .hm-vizly .hm-cap {
+    width: auto;
+    margin: 0;
+    padding: 3cqw var(--g) 4cqw;
+    background: var(--pc);
+  }
+
+  .hm-vizly .hm-cap > * {
+    max-width: 40em;
+  }
+
+  /* TTI : le titre plus grand, les chiffres à sa droite sur l'aplat, le texte dessous. */
+  .hm-tti {
+    display: block;
+    min-height: 0;
+  }
+
+  .hm-tti .hm-art {
+    display: block;
+    position: relative;
+    height: 46cqw;
+    overflow: hidden;
+  }
+
+  .hm-tti .hm-block {
+    inset: 5cqw 0 0 calc(var(--g) + 37.4cqw);
+  }
+
+  .hm-tti:hover .hm-block {
+    inset: 0 0 0 calc(var(--g) + 37.4cqw);
+  }
+
+  .hm-tti .hm-title {
+    top: 1.5cqw;
+    font-size: 36cqw;
+  }
+
+  .hm-tti__figures {
+    left: calc(var(--g) + 51cqw);
+    top: 8.5cqw;
+    bottom: 4cqw;
+    gap: 2cqw 3cqw;
+  }
+
+  .hm-tti__figures strong {
+    font-size: 7.6cqw;
+  }
+
+  .hm-tti .hm-cap {
+    width: auto;
+    margin: 0;
+    padding: 3cqw var(--g) 4cqw;
+  }
+
+  .hm-tti .hm-cap > * {
+    max-width: 40em;
+  }
+
+  /* CYNA : le texte reste à gauche, sous le titre, les téléphones descendent en escalier. */
+  .hm-cyna {
+    min-height: 62cqw;
+  }
+
+  .hm-cyna .hm-block {
+    inset: 12cqw 0 0 calc(var(--g) + 39cqw);
+  }
+
+  .hm-cyna:hover .hm-block {
+    inset: 0 0 0 calc(var(--g) + 39cqw);
+  }
+
+  .hm-cyna .hm-title {
+    top: 1cqw;
+    font-size: 28cqw;
+  }
+
+  .hm-cyna__phone {
+    width: 19cqw;
+  }
+
+  .hm-cyna__phone--1 {
+    left: 40cqw;
+    top: 28cqw;
+  }
+
+  .hm-cyna__phone--2 {
+    left: 60cqw;
+    top: 33cqw;
+  }
+
+  .hm-cyna__phone--3 {
+    left: 80cqw;
+    top: 38cqw;
+  }
+
+  .hm-cyna .hm-cap {
+    width: 33cqw;
+    padding-top: 27.5cqw;
+    margin-bottom: 4cqw;
+    font-size: 16px;
+  }
+
+  .hm-others__names li {
+    font-size: 7cqw;
+  }
+}
+
+/* Mobile */
+@container (max-width: 639px) {
   .hm-hero {
     padding-bottom: 0;
   }
@@ -327,23 +534,33 @@
   }
 
   .hm-hero__phone {
-    right: -5cqw;
     top: 1cqw;
+    bottom: auto;
+    left: auto;
+    right: -5cqw;
     width: 27cqw;
   }
 
-  .hm-hero__text {
+  .hm-hero__text p {
     position: static;
     width: auto;
-    padding: 22px 0 20px;
+    padding-top: 22px;
   }
 
   .hm-hero__text dl {
-    margin-top: 16px;
+    margin: 16px 0 20px;
+    max-width: none;
+    grid-template-columns: 1fr;
+  }
+
+  .hm-hero__text dl div {
+    grid-template-columns: 6.2em 1fr;
+    gap: 12px;
   }
 
   .hm-spread {
-    height: auto;
+    display: block;
+    min-height: 0;
   }
 
   .hm-art {
@@ -352,9 +569,9 @@
     overflow: hidden;
   }
 
-  .hm-cap {
-    position: static;
-    width: auto !important;
+  .hm-spread .hm-cap {
+    width: auto;
+    margin: 0;
     padding: 16px var(--g) 20px;
     font-size: 16px;
   }
@@ -389,13 +606,13 @@
   }
 
   .hm-vizly__phone {
-    left: 5cqw;
+    left: 3cqw;
     top: 37cqw;
     width: 22cqw;
   }
 
   .hm-tti .hm-art {
-    height: 96cqw;
+    height: 102cqw;
   }
 
   .hm-tti .hm-block,
@@ -411,7 +628,6 @@
   .hm-tti__figures {
     left: var(--g);
     right: var(--g);
-    width: auto;
     top: 44cqw;
     bottom: 5cqw;
     gap: 4cqw;

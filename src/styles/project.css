@@ -1,22 +1,26 @@
 /* Page projet */
 
+/* En-tête : le titre fixe la largeur de la première colonne, l'aplat commence sous sa
+   dernière lettre (--bite), la phrase d'accroche reste sur le papier. */
 .pj-head {
-  position: relative;
+  --bite: calc(var(--title-size) * 0.3);
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
   padding: 0 var(--g) 3.2cqw;
-  min-height: 34cqw;
 }
 
 .pj-head__block {
-  position: absolute;
-  inset: 0 0 0 auto;
-  width: 40cqw;
+  grid-column: 2;
+  grid-row: 1 / -1;
+  margin: 0 calc(-1 * var(--g)) -3.2cqw calc(-1 * var(--bite));
+  padding: 3cqw var(--g) 3.2cqw calc(var(--bite) + 3cqw);
   background: var(--pc);
   color: var(--pon);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 14px;
-  padding: 0 var(--g) 3.2cqw 14cqw;
+  gap: 12px;
 }
 
 .pj-head__meta {
@@ -25,6 +29,7 @@
 }
 
 .pj-head__stack {
+  max-width: 36em;
   font-size: 15px;
   font-weight: 500;
   line-height: 1.5;
@@ -39,8 +44,10 @@
 }
 
 .pj-head__back {
+  grid-column: 1;
+  grid-row: 1;
   position: relative;
-  z-index: 2;
+  z-index: 3; /* au-dessus de la zone de clic du titre, qui déborde de ses lignes */
   width: max-content;
   padding-top: 8px;
   font-size: 15px;
@@ -60,16 +67,24 @@
 }
 
 .pj-head__title {
+  grid-column: 1;
+  grid-row: 2;
   position: relative;
+  z-index: 2;
   margin-top: 1.6cqw;
   font-size: var(--title-size);
   width: max-content;
 }
 
+/* La phrase ne participe pas à la largeur de la colonne : elle prend celle du titre. */
 .pj-head__tagline {
+  grid-column: 1;
+  grid-row: 3;
   position: relative;
-  margin-top: 2cqw;
-  max-width: 40cqw;
+  z-index: 3;
+  contain: inline-size;
+  margin-top: 2.2cqw;
+  padding-right: calc(var(--bite) + 3cqw);
   font-size: clamp(19px, 2.1cqw, 28px);
   font-weight: 500;
   line-height: 1.25;
@@ -118,6 +133,11 @@
 
 .pj-band__shot {
   position: absolute;
+}
+
+/* Les captures gardent leur coin haut gauche (logo, titre) quand le cadre les recadre. */
+.pj-band__shot img {
+  object-position: left top;
 }
 
 .pj-band__shot--1 {
@@ -184,6 +204,16 @@
 
 .pj-figures li:last-child {
   border-right: 0;
+}
+
+/* Sans bande d'images (TTI), les chiffres prennent l'aplat du projet. */
+.pj-figures--color {
+  background: var(--pc);
+  color: var(--pon);
+}
+
+.pj-figures--color li {
+  border-color: currentColor;
 }
 
 .pj-figures strong {
@@ -256,33 +286,6 @@
 }
 
 @container (max-width: 859px) {
-  .pj-head {
-    min-height: 0;
-    padding-bottom: 0;
-  }
-
-  .pj-head__block {
-    position: absolute;
-    inset: 9cqw 0 auto auto;
-    width: 44cqw;
-    height: calc(var(--title-size) * 1.05);
-    padding: 0;
-  }
-
-  .pj-head__block > * {
-    display: none;
-  }
-
-  .pj-head__title {
-    font-size: calc(var(--title-size) * 1.25);
-    max-width: 100%;
-  }
-
-  .pj-head__tagline {
-    max-width: none;
-    margin: 20px 0 22px;
-  }
-
   .pj-facts {
     grid-template-columns: 1fr 1fr;
   }
@@ -299,20 +302,52 @@
   .pj-facts > div:nth-last-child(-n + 2) {
     border-bottom: 0;
   }
+}
+
+/* Mobile */
+@container (max-width: 639px) {
+  /* L'aplat se réduit à une bande derrière la fin du titre ; ses informations sont dans les faits. */
+  .pj-head {
+    --bite: calc(var(--title-size-sm) * 0.3);
+    grid-template-rows: auto auto auto;
+    padding-bottom: 0;
+  }
+
+  .pj-head__block {
+    grid-row: 2;
+    margin: 4cqw calc(-1 * var(--g)) -2cqw calc(-1 * var(--bite));
+    padding: 0;
+  }
+
+  .pj-head__block > * {
+    display: none;
+  }
+
+  .pj-head__title {
+    font-size: var(--title-size-sm);
+    margin-top: 3cqw;
+  }
+
+  .pj-head__tagline {
+    grid-column: 1 / -1;
+    contain: none;
+    padding-right: 0;
+    margin: 20px 0 22px;
+  }
 
   .pj-band {
-    height: 92cqw;
+    height: 82cqw;
   }
 
   .pj-band__block {
-    inset: 14cqw 0 0 30cqw;
+    inset: 22cqw 0 0 26cqw;
   }
 
   .pj-band__shot--1 {
-    left: var(--g);
-    top: 6cqw;
-    width: 100cqw;
-    height: 56cqw;
+    left: -3px;
+    top: 5cqw;
+    width: 86cqw;
+    height: 53.75cqw;
   }
 
   .pj-band__shot--2 {
@@ -323,9 +358,10 @@
     width: 30cqw;
   }
 
+  /* Le téléphone se pose sur le bas droit de la capture, loin de son titre. */
   .pj-band__phone--1 {
-    left: 8cqw;
-    top: 30cqw;
+    left: 62cqw;
+    top: 36cqw;
   }
 
   .pj-band--phones .pj-band__phone--1 {
@@ -345,6 +381,10 @@
   .pj-figures li {
     padding: 18px var(--g);
     border-bottom: 1px solid var(--ink);
+  }
+
+  .pj-figures--color li {
+    border-color: currentColor;
   }
 
   .pj-figures li:nth-child(2n) {
@@ -374,4 +414,15 @@
   .pj-next__title {
     font-size: 16cqw;
   }
+}
+
+.pj-head__link {
+  align-self: flex-start;
+  font-size: 16px;
+  font-weight: 700;
+  border-bottom: 3px solid currentColor;
+}
+
+.pj-head__link::after {
+  content: ' →';
 }

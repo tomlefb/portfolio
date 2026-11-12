@@ -8,7 +8,14 @@
   --g: 28px; /* marge latérale */
 }
 
-@media (max-width: 859px) {
+/* Trois largeurs : mobile (< 640 px), intermédiaire (640 à 999 px), large. */
+@media (max-width: 999px) {
+  :root {
+    --g: 24px;
+  }
+}
+
+@media (max-width: 639px) {
   :root {
     --g: 16px;
   }

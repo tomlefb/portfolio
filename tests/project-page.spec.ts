@@ -45,6 +45,13 @@ test('la page TTI ne montre aucun montant ni pourcentage', async ({ page }) => {
   expect(text).not.toMatch(/[€$%]/);
 });
 
+test('la page Vizly mène au site en ligne, pas la page TTI', async ({ page }) => {
+  await page.goto('/projets/vizly');
+  await expect(page.getByRole('link', { name: 'Voir le site' })).toHaveAttribute('href', 'https://www.vizly.fr');
+  await page.goto('/projets/tti');
+  await expect(page.getByRole('link', { name: 'Voir le site' })).toHaveCount(0);
+});
+
 for (const id of ['ialocal', 'xyz']) {
   test(`/projets/${id} affiche « Projet introuvable »`, async ({ page }) => {
     await page.goto(`/projets/${id}`);

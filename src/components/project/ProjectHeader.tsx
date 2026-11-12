@@ -7,16 +7,22 @@ interface ProjectHeaderProps {
   project: Project;
 }
 
-/** Taille du titre selon sa longueur, pour qu'il déborde sur l'aplat sans sortir de la page. */
-function titleSize(title: string): string {
-  return `${Math.min(30, 112 / title.length).toFixed(1)}cqw`;
+/** Largeur approchée du titre en em (Archivo 900, largeur 68 %) : le « I » est étroit. */
+function titleEm(title: string): number {
+  return [...title.toUpperCase()].reduce((width, char) => width + (char === 'I' ? 0.23 : char === ' ' ? 0.2 : 0.53), 0);
+}
+
+/** Taille du titre pour qu'il occupe à peu près la même largeur quel que soit le projet. */
+function titleSize(title: string, width: number, max: number): string {
+  return `${Math.min(max, width / titleEm(title)).toFixed(2)}cqw`;
 }
 
 export function ProjectHeader({ project }: ProjectHeaderProps) {
   const style = {
     '--pc': project.color,
     '--pon': project.onColor,
-    '--title-size': titleSize(project.title),
+    '--title-size': titleSize(project.title, 50, 30),
+    '--title-size-sm': titleSize(project.title, 62, 44),
   } as CSSProperties;
 
   return (
@@ -28,6 +34,11 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
             <li key={tech}>{tech}</li>
           ))}
         </ul>
+        {project.liveUrl && (
+          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="pj-head__link">
+            Voir le site
+          </a>
+        )}
       </div>
       <p className="pj-head__back">
         <Link to="/#projets">Tous les projets</Link>

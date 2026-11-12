@@ -5,7 +5,7 @@ export const tti: Project = {
   title: 'TTI',
   tier: 'majeur',
   tagline:
-    'Un laboratoire de recherche de stratégies de trading : formuler une idée, la tester, la réfuter, et comprendre le marché.',
+    'Un laboratoire de recherche de stratégies de trading : formuler une idée, la tester, la réfuter, et comprendre le marché.',
   meta: 'Projet personnel de recherche, seul · depuis 2026',
   color: '#F2431D',
   onColor: '#0E0E0E',
@@ -58,18 +58,18 @@ export const tti: Project = {
         },
         {
           lead: 'Un cerveau, des mains',
-          text: 'Un agent IA cadre l’hypothèse et audite ; d’autres, sans mémoire du contexte, lancent les calculs lourds.',
+          text: 'Un agent IA cadre l’hypothèse et audite ; d’autres, sans mémoire du contexte, lancent les calculs lourds.',
         },
       ],
     },
     {
       title: 'Comment c’est construit',
-      body: 'La recherche et l’exécution sont séparées. Le laboratoire peut tout casser sans toucher au moteur d’exécution, du Python classique qui passe ses ordres via Quantower, et via ProjectX pour Topstep. À ce jour, aucune stratégie n’a passé toutes les portes : le projet reste de la recherche.',
+      body: 'La recherche et l’exécution sont séparées. Le laboratoire peut tout casser sans toucher au moteur d’exécution, du Python classique qui passe ses ordres via Quantower, et via ProjectX pour Topstep. À ce jour, aucune stratégie n’a passé toutes les portes : le projet reste de la recherche.',
       diagram: 'tti-boucle',
     },
     {
       title: 'Ce qui n’a pas marché',
-      body: 'Quatre familles de stratégies sont mortes sur le même mur : leur avantage reposait sur un prix d’exécution que le marché n’offrait pas réellement. Une stratégie prête à déployer a été réfutée quand je l’ai rejouée minute par minute : elle sortait parfois sur un prix antérieur à son entrée. Un audit interne a aussi montré que des centaines de sprints reposaient sur un outil de mesure mal calibré, et j’ai reconstruit l’infrastructure.',
+      body: 'Quatre familles de stratégies sont mortes sur le même mur : leur avantage reposait sur un prix d’exécution que le marché n’offrait pas réellement. Une stratégie prête à déployer a été réfutée quand je l’ai rejouée minute par minute : elle sortait parfois sur un prix antérieur à son entrée. Un audit interne a aussi montré que des centaines de sprints reposaient sur un outil de mesure mal calibré, et j’ai reconstruit l’infrastructure.',
     },
     {
       title: 'Le plus dur',

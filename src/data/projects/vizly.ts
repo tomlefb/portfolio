@@ -25,10 +25,10 @@ export const vizly: Project = {
   ],
   liveUrl: 'https://www.vizly.fr',
   images: [
-    { src: '/images/projects/vizly/landing.webp', alt: "Page d'accueil de Vizly : « Crée ton portfolio en 5 minutes »", kind: 'desktop' },
+    { src: '/images/projects/vizly/landing.webp', alt: "Page d'accueil de Vizly : « Crée ton portfolio en 5 minutes »", kind: 'desktop' },
     { src: '/images/projects/vizly/dashboard.webp', alt: "Tableau de bord Vizly listant un portfolio en ligne", kind: 'desktop' },
     { src: '/images/projects/vizly/templates.webp', alt: "Catalogue des templates Vizly, filtres gratuits et premium", kind: 'desktop' },
-    { src: '/images/projects/vizly/tarifs.webp', alt: "Page tarifs Vizly : offres Gratuit, Starter et Pro", kind: 'desktop' },
+    { src: '/images/projects/vizly/tarifs.webp', alt: "Page tarifs Vizly : offres Gratuit, Starter et Pro", kind: 'desktop' },
     { src: '/images/projects/vizly/portfolio-brutalist.webp', alt: "Portfolio généré avec le template Brutalist, fond noir et typographie massive", kind: 'desktop' },
     { src: '/images/projects/vizly/portfolio-colore.webp', alt: "Portfolio généré avec le template Coloré, tons roses et projets illustrés", kind: 'desktop' },
     { src: '/images/projects/vizly/editeur.webp', alt: "Éditeur Vizly, étape de publication avec récapitulatif et adresse personnalisée", kind: 'desktop' },
@@ -81,7 +81,7 @@ export const vizly: Project = {
     },
     {
       title: 'Le plus dur',
-      body: 'Migrer le paiement d’une page hébergée par Stripe vers un paiement intégré, en sept phases. Le plus délicat a été la réception des confirmations de Stripe : il fallait qu’un même événement reçu deux fois ne produise ni double écriture ni double e-mail. Un champ absent de la réponse réelle, alors que les types TypeScript l’annonçaient, m’a appris à vérifier les réponses plutôt que la documentation.',
+      body: 'Migrer le paiement d’une page hébergée par Stripe vers un paiement intégré, en sept phases. Le plus délicat a été la réception des confirmations de Stripe : il fallait qu’un même événement reçu deux fois ne produise ni double écriture ni double e-mail. Un champ absent de la réponse réelle, alors que les types TypeScript l’annonçaient, m’a appris à vérifier les réponses plutôt que la documentation.',
     },
   ],
 };

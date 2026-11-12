@@ -5,7 +5,7 @@ export const cyna: Project = {
   title: 'CYNA',
   tier: 'majeur',
   tagline:
-    'Une plateforme e-commerce B2B de solutions de cybersécurité, conçue à quatre : site web, application mobile et back-office.',
+    'Une plateforme e-commerce B2B de solutions de cybersécurité, conçue à quatre : site web, application mobile et back-office.',
   meta: "Projet d'école, équipe de 4 · 2025–2026",
   color: '#5B3FF0',
   onColor: '#FFFFFF',
@@ -27,11 +27,11 @@ export const cyna: Project = {
     'ClickUp',
   ],
   images: [
-    { src: '/images/projects/cyna/landing.webp', alt: "Page d'accueil CYNA : « La protection de votre entreprise commence ici »", kind: 'desktop' },
+    { src: '/images/projects/cyna/landing.webp', alt: "Page d'accueil CYNA : « La protection de votre entreprise commence ici »", kind: 'desktop' },
     { src: '/images/projects/cyna/mobile-accueil.webp', alt: "Accueil de l'application mobile CYNA, offres de cybersécurité mises en avant", kind: 'phone' },
-    { src: '/images/projects/cyna/mobile-catalogue.webp', alt: "Catalogue CYNA sur mobile : services et produits", kind: 'phone' },
+    { src: '/images/projects/cyna/mobile-catalogue.webp', alt: "Catalogue CYNA sur mobile : services et produits", kind: 'phone' },
     { src: '/images/projects/cyna/mobile-produit.webp', alt: "Fiche produit SOC Premium dans l'application mobile CYNA", kind: 'phone' },
-    { src: '/images/projects/cyna/mobile-compte.webp', alt: "Espace compte CYNA : commandes, abonnements et paramètres", kind: 'phone' },
+    { src: '/images/projects/cyna/mobile-compte.webp', alt: "Espace compte CYNA : commandes, abonnements et paramètres", kind: 'phone' },
   ],
   facts: [
     { label: 'Mon rôle', value: 'Développeur backend et sous-chef de projet' },
@@ -74,11 +74,11 @@ export const cyna: Project = {
     },
     {
       title: "L'organisation",
-      body: 'J’étais sous-chef de projet, aux côtés du chef de projet. J’ai rédigé le dossier de cadrage : périmètre, risques, planning et matrice RACI. Le suivi passait par des réunions hebdomadaires et un tableau Kanban d’une centaine de tâches, avec deux tâches en cours au maximum par développeur.',
+      body: 'J’étais sous-chef de projet, aux côtés du chef de projet. J’ai rédigé le dossier de cadrage : périmètre, risques, planning et matrice RACI. Le suivi passait par des réunions hebdomadaires et un tableau Kanban d’une centaine de tâches, avec deux tâches en cours au maximum par développeur.',
     },
     {
       title: 'Le plus dur',
-      body: 'Le plus dur n’a pas été technique. J’ai peu délégué : à deux, nous avons porté l’essentiel du développement au lieu de faire monter toute l’équipe en compétence. Avec le recul, neuf services, c’était beaucoup pour une équipe de quatre.',
+      body: 'Le plus dur n’a pas été technique. J’ai peu délégué : à deux, nous avons porté l’essentiel du développement au lieu de faire monter toute l’équipe en compétence. Avec le recul, neuf services, c’était beaucoup pour une équipe de quatre.',
     },
   ],
 };

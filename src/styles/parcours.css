@@ -35,16 +35,6 @@
   height: auto;
 }
 
-.pc-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-bottom: 3px solid var(--ink);
-}
-
-.pc-col + .pc-col {
-  border-left: 3px solid var(--ink);
-}
-
 .pc-col__label {
   padding: 20px var(--g);
   border-bottom: 3px solid var(--ink);
@@ -52,41 +42,218 @@
   font-weight: 600;
 }
 
-.pc-row {
-  padding: clamp(24px, 2.6cqw, 40px) var(--g);
+/* ---------- Frise ---------- */
+
+.tl {
+  --pt: clamp(18px, 1.6cqw, 28px);
+  --pb: clamp(28px, 2.4cqw, 40px);
+  --lane-w: 110px;
+  --today: #ff3b1f;
+  position: relative;
+  margin: 0;
+  padding: var(--pt) var(--g) var(--pb);
+  border-bottom: 3px solid var(--ink);
+}
+
+.tl__axis {
+  position: relative;
+  height: 64px;
+  margin-left: var(--lane-w);
   border-bottom: 1px solid var(--ink);
 }
 
-.pc-row:last-child {
-  border-bottom: 0;
+.tl__year {
+  position: absolute;
+  left: calc(var(--a) * 100%);
+  bottom: 8px;
+  padding-left: 6px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.pc-row[data-current='true'] {
+.tl__today {
+  position: absolute;
+  z-index: 3;
+  left: calc(var(--now) * 100%);
+  top: 2px;
+  transform: translateX(calc(-100% + 3px));
+  padding: 4px 7px 3px;
+  background: var(--today);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  font-stretch: 80%;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Ligne du jour : elle descend derrière les barres. */
+.tl__now {
+  position: absolute;
+  z-index: 0;
+  width: 3px;
+  top: calc(var(--pt) + 20px);
+  bottom: var(--pb);
+  left: calc(var(--g) + var(--lane-w) + (100% - 2 * var(--g) - var(--lane-w)) * var(--now) - 3px);
+  background: var(--today);
+}
+
+.tl__lanes {
+  position: relative;
+}
+
+.tl__lane {
+  display: flex;
+  border-bottom: 1px solid var(--ink);
+}
+
+.tl__lane-title {
+  width: var(--lane-w);
+  flex: none;
+  align-self: center;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.tl__track {
+  position: relative;
+  flex: 1;
+  height: 124px;
+}
+
+.tl__grid {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--a) * 100%);
+  border-left: 1px solid rgb(14 14 14 / 0.13);
+}
+
+.tl__bar {
+  position: absolute;
+  z-index: 2;
+  left: calc(var(--a) * 100%);
+  width: calc((var(--b) - var(--a)) * 100%);
+  top: 24px;
+  height: 76px;
+  padding: 10px;
+  overflow: hidden;
   background: var(--ink);
   color: var(--paper);
 }
 
-.pc-row__period {
+/* En cours : plein jusqu'à aujourd'hui, hachuré ensuite, sur un fond opaque. */
+.tl__bar--ongoing {
+  overflow: visible;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  background:
+    linear-gradient(to right, var(--ink) 0 var(--done), transparent var(--done)),
+    repeating-linear-gradient(-45deg, var(--ink) 0 2px, transparent 2px 9px),
+    var(--paper);
+}
+
+.tl__label {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.tl__bar--ongoing .tl__label {
+  margin: -2px 0 0 -2px;
+  padding: 6px 9px 7px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+}
+
+.tl__title {
+  display: block;
+  font-size: clamp(15px, 1.45cqw, 21px);
+  font-weight: 800;
+  font-stretch: 78%;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tl__detail {
+  display: block;
+  margin-top: 6px;
+  font-size: 13.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0.82;
+}
+
+.tl__bar--ongoing .tl__detail {
+  opacity: 1;
+}
+
+/* Stages : un trait fin à sa date, le libellé aligné juste avant. */
+.tl__stage {
+  position: absolute;
+  z-index: 2;
+  left: calc(var(--a) * 100%);
+  width: calc((var(--b) - var(--a)) * 100%);
+  top: calc(18px + var(--row) * 42px);
+  height: 12px;
+}
+
+.tl__tick {
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+}
+
+.tl__stage-label {
+  position: absolute;
+  right: calc(100% + 10px);
+  top: -7px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tl__stage .tl__title {
   font-size: 15px;
+}
+
+.tl__stage .tl__detail {
+  margin-top: 3px;
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+/* ---------- Trois cases sous la frise ---------- */
+
+.pc-high {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 3px solid var(--ink);
+}
+
+.pc-high__item {
+  padding: clamp(22px, 2.2cqw, 34px) var(--g) clamp(26px, 2.6cqw, 40px);
+}
+
+.pc-high__item + .pc-high__item {
+  border-left: 1px solid var(--ink);
+}
+
+.pc-high__label {
+  font-size: 14px;
   font-weight: 600;
-  margin-bottom: 12px;
+  opacity: 0.66;
 }
 
-.pc-row h3 {
-  font-size: clamp(26px, 3cqw, 44px);
+.pc-high__title {
+  margin: 8px 0 6px;
+  font-size: clamp(22px, 2cqw, 30px);
 }
 
-.pc-row__place {
-  font-size: 16px;
-  font-weight: 600;
-  margin-top: 8px;
-}
-
-.pc-row__text {
+.pc-high__text {
   font-size: 17px;
   line-height: 1.45;
-  margin-top: 14px;
-  max-width: 46ch;
+  max-width: 42ch;
 }
 
 .pc-techs {
@@ -116,13 +283,13 @@
 }
 
 @container (max-width: 859px) {
-  .pc-cols {
+  .pc-high {
     grid-template-columns: 1fr;
   }
 
-  .pc-col + .pc-col {
+  .pc-high__item + .pc-high__item {
     border-left: 0;
-    border-top: 3px solid var(--ink);
+    border-top: 1px solid var(--ink);
   }
 
   .pc-techs {
@@ -158,5 +325,139 @@
 
   .pc-head__portrait {
     display: none;
+  }
+}
+
+/* Frise verticale : le temps descend, formation et expérience côte à côte. */
+@container (max-width: 999px) {
+  .tl {
+    --axis-w: 80px;
+    --head: 44px;
+    --hv: 880px;
+  }
+
+  .tl__axis {
+    position: absolute;
+    left: var(--g);
+    top: calc(var(--pt) + var(--head));
+    width: var(--axis-w);
+    height: var(--hv);
+    margin: 0;
+    border: 0;
+  }
+
+  .tl__year {
+    left: 0;
+    top: calc(var(--a) * 100%);
+    bottom: auto;
+    padding: 0;
+    transform: translateY(5px);
+    font-size: 13px;
+  }
+
+  .tl__today {
+    left: 0;
+    top: calc(var(--now) * 100%);
+    transform: translateY(-50%);
+    max-width: calc(var(--axis-w) - 8px);
+    padding: 3px 4px 2px;
+    font-size: 11px;
+    font-stretch: 68%;
+  }
+
+  .tl__now {
+    left: var(--g);
+    right: var(--g);
+    width: auto;
+    height: 3px;
+    top: calc(var(--pt) + var(--head) + var(--hv) * var(--now) - 1px);
+    bottom: auto;
+  }
+
+  .tl__lanes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 8px;
+    margin-left: var(--axis-w);
+  }
+
+  .tl__lane {
+    display: block;
+    border: 0;
+  }
+
+  .tl__lane-title {
+    width: auto;
+    height: var(--head);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .tl__track {
+    height: var(--hv);
+  }
+
+  .tl__grid {
+    left: 0;
+    right: 0;
+    top: calc(var(--a) * 100%);
+    bottom: auto;
+    border-left: 0;
+    border-top: 1px solid rgb(14 14 14 / 0.13);
+  }
+
+  .tl__bar {
+    left: 0;
+    width: 100%;
+    top: calc(var(--a) * 100%);
+    height: calc((var(--b) - var(--a)) * 100%);
+    padding: 8px;
+  }
+
+  .tl__bar--ongoing {
+    background:
+      linear-gradient(to bottom, var(--ink) 0 var(--done), transparent var(--done)),
+      repeating-linear-gradient(-45deg, var(--ink) 0 2px, transparent 2px 9px),
+      var(--paper);
+  }
+
+  /* L'étiquette se pose juste après la partie déjà faite. */
+  .tl__bar--ongoing .tl__label {
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    top: calc(var(--done) + 6px);
+    margin: 0;
+    padding: 5px 7px 6px;
+  }
+
+  .tl__title,
+  .tl__detail {
+    white-space: normal;
+  }
+
+  .tl__title {
+    font-size: 15px;
+  }
+
+  .tl__stage {
+    left: 0;
+    width: 100%;
+    top: calc(var(--a) * 100%);
+    height: max(14px, calc((var(--b) - var(--a)) * 100%));
+  }
+
+  .tl__tick {
+    inset: 0 auto 0 0;
+    width: 10px;
+  }
+
+  .tl__stage-label {
+    left: 18px;
+    right: 0;
+    top: -2px;
+    text-align: left;
+    white-space: normal;
   }
 }

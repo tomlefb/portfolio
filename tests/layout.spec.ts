@@ -46,7 +46,7 @@ for (const route of ROUTES) {
           const nodes = document.querySelectorAll('main h1, main h2, main p, main li, main dd, main dt, footer a');
           for (const node of nodes) {
             const el = node as HTMLElement;
-            if (el.offsetParent === null || el.closest('[aria-hidden="true"]') || el.closest('svg')) continue;
+            if (el.offsetParent === null || el.closest('[aria-hidden="true"], .sr-only') || el.closest('svg')) continue;
             const range = document.createRange();
             range.selectNodeContents(el);
             const base = window.scrollY;
@@ -104,7 +104,8 @@ for (const route of ROUTES) {
         .filter((el) => {
           let node: Element | null = el;
           while (node) {
-            if (parseFloat(getComputedStyle(node).opacity) < 1 && !node.matches('.hm-cap__meta, .mn__meta, .pc-row__place, dt')) return true;
+            // Les libellés secondaires sont volontairement estompés ; seul un texte quasi invisible compte.
+            if (parseFloat(getComputedStyle(node).opacity) < 0.5) return true;
             node = node.parentElement;
           }
           return false;

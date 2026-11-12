@@ -31,25 +31,74 @@ test.describe('autres projets', () => {
 });
 
 test.describe('parcours', () => {
-  test('commence par le poste actuel et descend dans le temps', async ({ page }) => {
+  test('reste lisible par un lecteur d’écran, du plus récent au plus ancien', async ({ page }) => {
     await page.goto('/parcours');
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Parcours');
     const rows = page.getByTestId('parcours-row');
     await expect(rows).toHaveCount(7);
     await expect(rows.first()).toContainText('Capgemini');
-    await expect(rows.first()).toHaveAttribute('data-current', 'true');
     await expect(rows.last()).toContainText('Baccalauréat');
-    await expect(page.locator('[data-current="true"]')).toHaveCount(1);
   });
 
-  test('sépare les expériences de la formation', async ({ page }) => {
+  test('montre la frise avec ses deux lignes, ses barres et ses stages', async ({ page }) => {
     await page.goto('/parcours');
-    const groups = page.getByTestId('parcours-group');
-    await expect(groups).toHaveCount(2);
-    await expect(groups.nth(0).getByRole('heading', { level: 2, name: 'Expériences' })).toBeVisible();
-    await expect(groups.nth(0).getByTestId('parcours-row')).toHaveCount(3);
-    await expect(groups.nth(1).getByRole('heading', { level: 2, name: 'Formation' })).toBeVisible();
-    await expect(groups.nth(1).getByTestId('parcours-row')).toHaveCount(4);
+    const frise = page.getByRole('figure', { name: /Frise du parcours/ });
+    await expect(frise).toBeVisible();
+    await expect(frise.getByRole('heading', { name: 'Formation' })).toBeVisible();
+    await expect(frise.getByRole('heading', { name: 'Expérience' })).toBeVisible();
+    for (const title of ['Lycée', 'BTS SIO', 'Bachelor', 'Mastère', 'Alternance Capgemini']) {
+      await expect(frise.getByTestId('tl-bar').filter({ hasText: title })).toBeVisible();
+    }
+    await expect(frise.getByTestId('tl-stage')).toHaveCount(2);
+    await expect(frise.getByText('Stage Ouest-France')).toBeVisible();
+    await expect(frise.getByText('Stage lycée hôtelier')).toBeVisible();
+    await expect(frise.getByText('Aujourd’hui')).toBeVisible();
+    await expect(frise.locator('[data-ongoing="true"]')).toHaveCount(2);
+  });
+
+  for (const width of [390, 640, 768, 999, 1000, 1024, 1180, 1440, 1920]) {
+    test(`aucun libellé ne déborde de sa barre à ${width} px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/parcours');
+      const overflow = await page.evaluate(() =>
+        [...document.querySelectorAll('[data-testid="tl-bar"]')].flatMap((bar) => {
+          const b = bar.getBoundingClientRect();
+          return [...bar.querySelectorAll('.tl__label > *')]
+            .filter((el) => {
+              const r = el.getBoundingClientRect();
+              return r.left < b.left - 1 || r.right > b.right + 1 || r.top < b.top - 1 || r.bottom > b.bottom + 1;
+            })
+            .map((el) => el.textContent);
+        }),
+      );
+      expect(overflow).toEqual([]);
+    });
+  }
+
+  for (const width of [390, 768, 1440]) {
+    test(`l’étiquette « Aujourd’hui » ne chevauche ni une année ni une barre à ${width} px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/parcours');
+      const hits = await page.evaluate(() => {
+        const tag = document.querySelector('.tl__today')!.getBoundingClientRect();
+        const others = [...document.querySelectorAll('.tl__year, [data-testid="tl-bar"]')];
+        return others
+          .filter((el) => {
+            const r = el.getBoundingClientRect();
+            return r.left < tag.right && r.right > tag.left && r.top < tag.bottom && r.bottom > tag.top;
+          })
+          .map((el) => el.textContent);
+      });
+      expect(hits).toEqual([]);
+    });
+  }
+
+  test('résume le présent en trois cases', async ({ page }) => {
+    await page.goto('/parcours');
+    const cards = page.getByTestId('parcours-highlight');
+    await expect(cards).toHaveCount(3);
+    await expect(cards.nth(0)).toContainText('Alternant développeur');
+    await expect(cards.nth(1)).toContainText('Mastère');
   });
 
   test('range les technos sur trois lignes', async ({ page }) => {

@@ -38,7 +38,7 @@ Commandes : `npm run dev`, `npm run build`, `npm run lint`, `npm test`, `npm run
 | `/` | Nom en très grand, présentation, les trois projets majeurs, renvoi vers les autres |
 | `/projets/:id` | Une page par projet majeur : `vizly`, `tti`, `cyna` |
 | `/autres-projets` | NutriAI, IALocal, Gestion des stages, EcoPursue |
-| `/parcours` | Portrait, expériences et formation, technos |
+| `/parcours` | Portrait, frise du parcours (formation et expérience sur un axe en années), trois cases sur le présent, technos |
 | `/__bricks` | Page de contrôle des briques visuelles et des schémas, non liée |
 
 Le contact n'est pas une page : c'est le pied de page noir en colophon (Contact avec l'adresse e-mail copiable d'un clic, Ailleurs, Ce site), présent sur chaque page. Pas de formule d'appel ni de signature.

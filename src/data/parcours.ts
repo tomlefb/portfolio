@@ -1,11 +1,61 @@
-import type { ParcoursGroup, ParcoursItem, TechnoGroup } from '../types';
+import type { ParcoursGroup, ParcoursHighlight, ParcoursItem, TechnoGroup, Timeline } from '../types';
 
 export const parcoursIntro =
   'Développeur à Rennes. BTS SIO, puis bachelor et mastère à Sup de Vinci, en alternance chez Capgemini depuis 2025.';
 
 export const parcoursGroups: ParcoursGroup[] = [
-  { kind: 'experience', label: 'Expériences' },
   { kind: 'formation', label: 'Formation' },
+  { kind: 'experience', label: 'Expérience' },
+];
+
+/** Frise : dates en années décimales (2025.67 ≈ septembre 2025). */
+export const timeline: Timeline = {
+  start: 2022,
+  end: 2028.75,
+  lanes: parcoursGroups,
+  bars: [
+    { lane: 'formation', from: 2022, to: 2023.5, title: 'Lycée', detail: 'Bac 2023' },
+    { lane: 'formation', from: 2023.67, to: 2025.5, title: 'BTS SIO', detail: 'Pôle Sup de la Salle' },
+    { lane: 'formation', from: 2025.67, to: 2026.5, title: 'Bachelor', detail: 'Sup de Vinci' },
+    { lane: 'formation', from: 2026.67, to: 2028.5, title: 'Mastère', detail: 'Sup de Vinci', ongoing: true },
+    {
+      lane: 'experience',
+      from: 2025.67,
+      to: 2028.5,
+      title: 'Alternance Capgemini',
+      detail: 'Développeur',
+      ongoing: true,
+    },
+  ],
+  stages: [
+    { from: 2024.33, to: 2024.5, title: 'Stage Ouest-France', detail: 'Java · mai – juin 2024' },
+    { from: 2025, to: 2025.16, title: 'Stage lycée hôtelier', detail: 'Web · janv. – févr. 2025' },
+  ],
+};
+
+export const timelineLabels = {
+  caption: 'Frise du parcours, de 2022 à 2028',
+  today: 'Aujourd’hui',
+  ongoing: 'en cours',
+};
+
+/** Les trois cases sous la frise. */
+export const parcoursHighlights: ParcoursHighlight[] = [
+  {
+    label: 'Aujourd’hui · Capgemini',
+    title: 'Alternant développeur',
+    text: "Migration d'un logiciel Java pour un client grand compte, chiffrage, suivi des mises en production.",
+  },
+  {
+    label: 'Aujourd’hui · Sup de Vinci',
+    title: 'Mastère Full Stack',
+    text: "Deux ans en alternance, jusqu'en 2028.",
+  },
+  {
+    label: 'Avant',
+    title: 'BTS, Bachelor, deux stages',
+    text: 'Ouest-France (Java, outils internes) et un lycée hôtelier (application livrée seul).',
+  },
 ];
 
 export const technosLabel = 'Ce avec quoi je travaille';

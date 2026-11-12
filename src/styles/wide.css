@@ -20,21 +20,18 @@
   .pj-section,
   .pj-next,
   .pc-head,
-  .pc-cols,
+  .tl,
+  .pc-high,
   .pc-col__label--wide,
   .mn-grid {
     border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 100vw;
   }
 
   /* Filets des colonnes : celle de gauche file à gauche, celle de droite à droite. */
-  .pc-col:first-child .pc-col__label,
-  .pc-col:first-child .pc-row,
   .mn:nth-child(odd) {
     border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 0 0 100vw;
   }
 
-  .pc-col:last-child .pc-col__label,
-  .pc-col:last-child .pc-row,
   .mn:nth-child(even) {
     border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 100vw 0 0;
   }
@@ -55,9 +52,6 @@
     clip-path: inset(0 -100vmax);
   }
 
-  .pc-col:first-child .pc-row[data-current='true'] {
-    border-image: conic-gradient(var(--ink) 0 0) fill 0 / 0 / 0 0 0 100vw;
-  }
 
   /* Aplats de couleur : chacun file vers le bord qu'il touche. */
   .hm-vizly .hm-block {

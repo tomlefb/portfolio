@@ -74,3 +74,36 @@ export interface ContactInfo {
   linkedin: string;
   github: string;
 }
+
+/** Période longue sur la frise du parcours (dates en années décimales : 2025.67 ≈ sept. 2025). */
+export interface TimelineBar {
+  lane: ParcoursKind;
+  from: number;
+  to: number;
+  title: string;
+  detail: string;
+  /** En cours : plein jusqu'à aujourd'hui, hachuré ensuite. */
+  ongoing?: boolean;
+}
+
+/** Période courte (stage), dessinée comme un trait fin avec son libellé à côté. */
+export interface TimelineStage {
+  from: number;
+  to: number;
+  title: string;
+  detail: string;
+}
+
+export interface Timeline {
+  start: number;
+  end: number;
+  lanes: ParcoursGroup[];
+  bars: TimelineBar[];
+  stages: TimelineStage[];
+}
+
+export interface ParcoursHighlight {
+  label: string;
+  title: string;
+  text: string;
+}

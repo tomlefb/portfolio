@@ -4,6 +4,7 @@ import { expect, test, type Page } from '@playwright/test';
 async function measure(page: Page, width: number) {
   await page.setViewportSize({ width, height: Math.round((width * 9) / 16) });
   await page.goto('/');
+  await page.evaluate(() => document.fonts.ready);
   return page.evaluate(() => {
     const view = document.documentElement.clientWidth;
     const rect = (selector: string) => document.querySelector(selector)!.getBoundingClientRect();

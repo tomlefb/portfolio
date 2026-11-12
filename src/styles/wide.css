@@ -1,10 +1,12 @@
 /*
- * Écrans plus larges que la page (au-delà de 1920 px).
+ * Écrans démesurés (au-delà de 3840 px), où la page a fini de grossir (voir index.html).
  * Le contenu reste centré, mais les filets, les aplats et le pied de page filent
  * jusqu'aux bords de l'écran : le site occupe toute la largeur, sans cadre.
+ * La page étant agrandie deux fois ici, 100vw vaut le double de l'écran : c'est voulu,
+ * les prolongements dépassent largement les bords.
  */
 
-@media (min-width: 1921px) {
+@media (min-width: 3841px) {
   .shell {
     overflow-x: visible;
   }
@@ -81,6 +83,6 @@
 
   /* Le portrait reste calé contre le bord de l'écran. */
   .pc-head__portrait {
-    right: calc((100cqw - 100vw) / 2);
+    right: calc((100cqw - 50vw) / 2);
   }
 }

@@ -58,6 +58,8 @@
   .shell {
     container-type: inline-size;
     max-width: 1920px;
+    /* Sur plus grand que 1920 px, tout grossit ensemble : voir le script de index.html. */
+    zoom: var(--page-zoom, 1);
     margin-inline: auto;
     overflow-x: clip;
   }

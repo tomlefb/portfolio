@@ -79,8 +79,9 @@ Trois projets majeurs, dans cet ordre :
    Railway. Source : `~/IdeaProjects/appPortfolio` (dépôt `tomlefb/vizly`,
    400 commits, 152 captures à la racine, `CLAUDE.md` décrivant stack et design
    system). Pas de lien « voir le site » tant que Vizly n'est pas en ligne.
-2. **TTI — système de trading.** Système de trading systématique en Python,
-   en production, fruit de milliers d'heures. Source : `~/IdeaProjects/tti`
+2. **TTI — système de trading.** Projet de recherche de stratégies de trading en Python,
+   fruit de milliers d'heures. Il ne tourne pas en production : aucune
+   stratégie n'a été retenue à ce jour. Source : `~/IdeaProjects/tti`
    (4 181 commits), kit public dérivé `tomlefb/archi-autonomous-prop-research`.
    Tom autorise à tout dire **sauf les rendements et montants**. L'angle voulu
    est la recherche et l'apprentissage : comment on cherche une stratégie,
@@ -104,8 +105,7 @@ court texte, ses technos et un lien GitHub s'il existe.
   `~/IdeaProjects/projethackaton` (captures dans `slides-assets/`). D'après
   l'historique git, Tom a fait l'essentiel du front web ; rôle exact à
   confirmer.
-- **FairsonJob Notifier** : service Python qui notifie sur iPhone les nouvelles
-  missions d'inventaire autour de Rennes. Source : `~/IdeaProjects/FaireSonJobNotif`.
+- FairsonJob Notifier : retiré à la demande de Tom.
 
 L'ancienne fiche « Algo Trading » disparaît, remplacée par TTI.
 

@@ -5,8 +5,8 @@ export const tti: Project = {
   title: 'TTI',
   tier: 'majeur',
   tagline:
-    'Un système qui cherche, teste puis exécute automatiquement des stratégies de trading sur des comptes financés.',
-  meta: 'Projet personnel, seul · depuis 2026',
+    'Un laboratoire de recherche de stratégies de trading : formuler une idée, la tester, la réfuter, et comprendre le marché.',
+  meta: 'Projet personnel de recherche, seul · depuis 2026',
   color: '#F2431D',
   onColor: '#0E0E0E',
   stack: [
@@ -16,6 +16,7 @@ export const tti: Project = {
     'PyArrow',
     'pytest',
     'Databento',
+    'Quantower',
     'API ProjectX',
     'C#',
     'Pine Script',
@@ -27,13 +28,13 @@ export const tti: Project = {
     { label: 'Mon rôle', value: 'Conception, développement, direction de la recherche' },
     { label: 'Équipe', value: 'Seul, avec des agents IA' },
     { label: 'Période', value: 'Depuis avril 2026' },
-    { label: 'Technos', value: 'Python, pandas, Databento, ProjectX, pytest, Claude Code' },
+    { label: 'Technos', value: 'Python, pandas, Databento, Quantower, pytest, Claude Code' },
   ],
   figures: [
     { value: '1 738', label: 'sprints de recherche' },
     { value: '147', label: 'rétractations' },
     { value: '6', label: 'familles au cimetière' },
-    { value: '1', label: 'stratégie en production' },
+    { value: '18', label: 'familles de stratégies explorées' },
   ],
   sections: [
     {
@@ -63,7 +64,7 @@ export const tti: Project = {
     },
     {
       title: 'Comment c’est construit',
-      body: 'La recherche et l’exécution sont séparées. Le laboratoire peut tout casser sans toucher au moteur qui tourne en production, figé et protégé par un test de non-régression.',
+      body: 'La recherche et l’exécution sont séparées. Le laboratoire peut tout casser sans toucher au moteur d’exécution, du Python classique qui passe ses ordres via Quantower, et via ProjectX pour Topstep. À ce jour, aucune stratégie n’a passé toutes les portes : le projet reste de la recherche.',
       diagram: 'tti-boucle',
     },
     {

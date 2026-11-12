@@ -37,7 +37,7 @@ Commandes : `npm run dev`, `npm run build`, `npm run lint`, `npm test`, `npm run
 |---|---|
 | `/` | Nom en très grand, présentation, les trois projets majeurs, renvoi vers les autres |
 | `/projets/:id` | Une page par projet majeur : `vizly`, `tti`, `cyna` |
-| `/autres-projets` | NutriAI, IALocal, Gestion des stages, EcoPursue, FairsonJob Notifier |
+| `/autres-projets` | NutriAI, IALocal, Gestion des stages, EcoPursue |
 | `/parcours` | Portrait, expériences et formation, technos |
 | `/__bricks` | Page de contrôle des briques visuelles et des schémas, non liée |
 
@@ -65,11 +65,13 @@ Le contact n'est pas une page : c'est le bloc noir « Écrivez-moi » en pied de
 - Tout le contenu vit dans `src/data/`. Rien en dur dans les composants.
 - N'écrire que ce qui est attesté par les dépôts et documents de Tom. Sinon `{À COMPLÉTER}`, à lister dans `docs/superpowers/plans/contenu-a-valider.md`.
 - Ton : phrases simples, première personne, sans superlatifs.
-- **TTI** : jamais de montant, de rendement ni de pourcentage de performance. L'angle est la recherche et l'apprentissage. Pas de capture de code ni du journal de trading.
+- **TTI** : projet de recherche, qui ne tourne pas en production (aucune stratégie retenue à ce jour). Jamais de montant, de rendement ni de pourcentage de performance. L'angle est la recherche et l'apprentissage. Pas de capture de code ni du journal de trading.
 - **CYNA** : projet terminé, soutenu en mai 2026 ; textes au passé.
 - Le projet Ouest-France n'apparaît que dans le parcours.
+- FairsonJob Notifier n'est pas montré (choix de Tom).
+- Ne pas mentionner l'usage de Claude Code sur Vizly.
 
-Sources des projets sur la machine de Tom : Vizly `~/IdeaProjects/appPortfolio`, TTI `~/IdeaProjects/tti`, CYNA `~/Documents/projetsCours/Cyna`, EcoPursue `~/IdeaProjects/projethackaton`, FairsonJob Notifier `~/IdeaProjects/FaireSonJobNotif`.
+Sources des projets sur la machine de Tom : Vizly `~/IdeaProjects/appPortfolio`, TTI `~/IdeaProjects/tti`, CYNA `~/Documents/projetsCours/Cyna`, EcoPursue `~/IdeaProjects/projethackaton`.
 
 ## Règles de code
 

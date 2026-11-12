@@ -23,6 +23,7 @@ export const vizly: Project = {
     'Zod',
     'next-intl',
   ],
+  liveUrl: 'https://www.vizly.fr',
   images: [
     { src: '/images/projects/vizly/landing.webp', alt: "Page d'accueil de Vizly : « Crée ton portfolio en 5 minutes »", kind: 'desktop' },
     { src: '/images/projects/vizly/dashboard.webp', alt: "Tableau de bord Vizly listant un portfolio en ligne", kind: 'desktop' },

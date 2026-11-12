@@ -5,7 +5,6 @@ const MINORS = [
   { title: 'IALocal', tech: 'Ollama', github: true },
   { title: 'Gestion des stages', tech: 'Angular', github: false },
   { title: 'EcoPursue', tech: 'Spring Boot', github: false },
-  { title: 'FairsonJob Notifier', tech: 'ntfy', github: false },
 ];
 
 test.describe('autres projets', () => {

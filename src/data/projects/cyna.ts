@@ -74,7 +74,7 @@ export const cyna: Project = {
     },
     {
       title: "L'organisation",
-      body: 'J’étais sous-chef de projet, aux côtés du chef de projet. J’ai rédigé le dossier de cadrage : périmètre, risques, planning et matrice RACI. Le suivi passait par un tableau Kanban d’une centaine de tâches, avec deux tâches en cours au maximum par développeur.',
+      body: 'J’étais sous-chef de projet, aux côtés du chef de projet. J’ai rédigé le dossier de cadrage : périmètre, risques, planning et matrice RACI. Le suivi passait par des réunions hebdomadaires et un tableau Kanban d’une centaine de tâches, avec deux tâches en cours au maximum par développeur.',
     },
     {
       title: 'Le plus dur',

@@ -53,8 +53,8 @@ export const minorProjects: Project[] = [
     title: 'EcoPursue',
     tier: 'mineur',
     tagline:
-      "Une application qui calcule l'empreinte carbone d'un site physique, réalisée en hackathon sur un sujet Capgemini.",
-    meta: 'Hackathon, Rennes · mars 2026',
+      "Une application qui calcule l'empreinte carbone d'un site physique, réalisée en deux jours de hackathon sur un sujet Capgemini, qui a validé la solution.",
+    meta: 'Hackathon de 2 jours, équipe de 4 · mars 2026',
     color: '#0F7B45',
     onColor: '#FFFFFF',
     stack: ['Spring Boot', 'Angular', 'React Native', 'PostgreSQL', 'Chart.js'],
@@ -62,17 +62,5 @@ export const minorProjects: Project[] = [
       { src: '/images/projects/ecopursue/dashboard.webp', alt: "Tableau de bord EcoPursue : émissions carbone par source et matériau", kind: 'desktop' },
       { src: '/images/projects/ecopursue/connexion.webp', alt: "Page de connexion EcoPursue", kind: 'desktop' },
     ],
-  },
-  {
-    id: 'fairsonjob',
-    title: 'FairsonJob Notifier',
-    tier: 'mineur',
-    tagline:
-      'Un service qui envoie une notification sur iPhone dès qu’une nouvelle mission apparaît près de Rennes.',
-    meta: 'Projet personnel, seul · novembre 2026',
-    color: '#FF2E7E',
-    onColor: '#0E0E0E',
-    stack: ['Python', 'Firebase Auth', 'ntfy', 'Railway', 'pytest'],
-    images: [],
   },
 ];

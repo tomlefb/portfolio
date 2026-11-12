@@ -66,7 +66,7 @@ export function TtiBoucle({ color }: TtiBoucleProps) {
         {/* Toutes les portes franchies. */}
         <Edge name="portes → production" points={[[744, 328], [744, 360]]} />
         <Node x={664} y={360} w={160} h={40} variant="accent" label="Production" />
-        <Note x={744} y={426} lead="1" lines={['stratégie en production']} anchor="middle" />
+        <Note x={744} y={426} lead="0" lines={['stratégie retenue à ce jour']} anchor="middle" />
       </DiagramFrame>
 
       <DiagramFrame layout="narrow" width={360} height={664} title={TITLE} accent={color}>
@@ -113,7 +113,7 @@ export function TtiBoucle({ color }: TtiBoucleProps) {
 
         <Edge name="portes → production" points={[[132, 448], [132, 480]]} />
         <Node x={72} y={480} w={120} h={36} variant="accent" label="Production" />
-        <Note x={132} y={538} lead="1" lines={['stratégie en production']} anchor="middle" />
+        <Note x={132} y={538} lead="0" lines={['stratégie retenue à ce jour']} anchor="middle" />
       </DiagramFrame>
     </>
   );

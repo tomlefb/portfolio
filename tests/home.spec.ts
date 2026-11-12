@@ -32,9 +32,13 @@ test.describe('accueil', () => {
   test('renvoie vers la page des autres projets en les nommant', async ({ page }) => {
     const teaser = page.getByTestId('others-teaser');
     await expect(teaser).toHaveAttribute('href', '/autres-projets');
-    for (const name of ['NutriAI', 'IALocal', 'Gestion des stages', 'EcoPursue', 'FairsonJob Notifier']) {
+    for (const name of ['NutriAI', 'IALocal', 'Gestion des stages', 'EcoPursue']) {
       await expect(teaser.getByText(name)).toBeVisible();
     }
+  });
+
+  test('ne mentionne plus FairsonJob', async ({ page }) => {
+    await expect(page.getByText(/FairsonJob/i)).toHaveCount(0);
   });
 
   test('ne montre pas le portrait', async ({ page }) => {

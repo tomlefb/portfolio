@@ -40,7 +40,6 @@ describe('projets', () => {
       'ialocal',
       'lycee-hotelier',
       'ecopursue',
-      'fairsonjob',
     ]);
   });
 
@@ -77,6 +76,12 @@ describe('projets', () => {
     expect(getNextMajor('vizly').id).toBe('tti');
     expect(getNextMajor('tti').id).toBe('cyna');
     expect(getNextMajor('cyna').id).toBe('vizly');
+  });
+
+  it('ne présente pas TTI comme étant en production', () => {
+    for (const text of strings(getProject('tti'))) {
+      expect(text).not.toMatch(/en production/i);
+    }
   });
 
   it('ne publie aucun montant ni rendement sur TTI', () => {

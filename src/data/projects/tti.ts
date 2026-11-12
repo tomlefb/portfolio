@@ -64,7 +64,7 @@ export const tti: Project = {
     },
     {
       title: 'Comment c’est construit',
-      body: 'La recherche et l’exécution sont séparées. Le laboratoire peut tout casser sans toucher au moteur d’exécution, du Python classique qui passe ses ordres via Quantower, et via ProjectX pour Topstep. À ce jour, aucune stratégie n’a passé toutes les portes : le projet reste de la recherche.',
+      body: 'La recherche et l’exécution sont séparées. Le laboratoire peut tout casser sans toucher au moteur d’exécution, du Python classique conçu pour passer ses ordres via Quantower, et via ProjectX pour Topstep. À ce jour, aucune stratégie n’a passé toutes les portes : le projet reste de la recherche.',
       diagram: 'tti-boucle',
     },
     {

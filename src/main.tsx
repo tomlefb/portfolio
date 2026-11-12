@@ -7,6 +7,7 @@ import './styles/diagrams.css';
 import './styles/project.css';
 import './styles/home.css';
 import './styles/secondary.css';
+import './styles/parcours.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

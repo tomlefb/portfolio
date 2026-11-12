@@ -1,4 +1,4 @@
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { contactInfo } from '../contact';
@@ -84,10 +84,24 @@ describe('projets', () => {
     }
   });
 
+  it('ne parle pas de production dans le schéma de TTI', () => {
+    const source = readFileSync(join(process.cwd(), 'src/components/diagrams/TtiBoucle.tsx'), 'utf8');
+    expect(source).not.toMatch(/production/i);
+  });
+
   it('ne publie aucun montant ni rendement sur TTI', () => {
     for (const text of strings(getProject('tti'))) {
       expect(text).not.toMatch(/[€$%]|k\/an|payout/i);
     }
+  });
+});
+
+describe('images publiées', () => {
+  it('ne déploie que des images WebP', () => {
+    const files = readdirSync(join(process.cwd(), 'public/images'), { recursive: true })
+      .map(String)
+      .filter((file) => /\.[a-z0-9]+$/i.test(file) && !file.endsWith('.DS_Store'));
+    expect(files.filter((file) => !file.toLowerCase().endsWith('.webp'))).toEqual([]);
   });
 });
 

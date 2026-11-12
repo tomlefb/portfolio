@@ -49,20 +49,26 @@ for (const route of ROUTES) {
             if (el.offsetParent === null || el.closest('[aria-hidden="true"]') || el.closest('svg')) continue;
             const range = document.createRange();
             range.selectNodeContents(el);
-            for (const rect of range.getClientRects()) {
-              if (rect.width < 4 || rect.height < 4) continue;
-              const x = rect.left + rect.width / 2;
-              const y = rect.top + rect.height / 2 + window.scrollY;
-              window.scrollTo(0, Math.max(0, y - window.innerHeight / 2));
-              const top = document.elementFromPoint(x, y - window.scrollY);
-              if (!top) continue;
+            const base = window.scrollY;
+            for (const first of [...range.getClientRects()]) {
+              if (first.width < 4 || first.height < 4) continue;
+              // Amène la ligne au milieu de l'écran, sans animation, puis remesure.
+              const absoluteY = first.top + base + first.height / 2;
+              window.scrollTo({ top: Math.max(0, absoluteY - window.innerHeight / 2), behavior: 'instant' });
+              const x = first.left + first.width / 2;
+              const y = absoluteY - window.scrollY;
+              const top = document.elementFromPoint(x, y);
+              if (!top) {
+                results.push(`${el.tagName} « ${el.textContent?.trim().slice(0, 40)} » hors écran en (${Math.round(x)}, ${Math.round(y)})`);
+                break;
+              }
               if (!(el.contains(top) || top.contains(el))) {
                 results.push(`${el.tagName} « ${el.textContent?.trim().slice(0, 40)} » recouvert par ${top.tagName}.${top.className}`);
                 break;
               }
             }
           }
-          window.scrollTo(0, 0);
+          window.scrollTo({ top: 0, behavior: 'instant' });
           return results;
         });
         expect(covered).toEqual([]);
@@ -70,7 +76,7 @@ for (const route of ROUTES) {
     });
   }
 
-  test(`${route} : texte courant d'au moins 16 px sur mobile`, async ({ page }) => {
+  test(`${route} : aucun texte sous 14 px et texte courant d'au moins 16 px sur mobile`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(route);
     const small = await page.evaluate(() =>

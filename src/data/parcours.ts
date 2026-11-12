@@ -1,11 +1,19 @@
-import type { ParcoursItem, TechnoGroup } from '../types';
+import type { ParcoursGroup, ParcoursItem, TechnoGroup } from '../types';
 
 export const parcoursIntro =
   'Développeur à Rennes. BTS SIO, puis bachelor et mastère à Sup de Vinci, en alternance chez Capgemini depuis 2025.';
 
+export const parcoursGroups: ParcoursGroup[] = [
+  { kind: 'experience', label: 'Expériences' },
+  { kind: 'formation', label: 'Formation' },
+];
+
+export const technosLabel = 'Ce avec quoi je travaille';
+
 /** Du plus récent au plus ancien. */
 export const parcours: ParcoursItem[] = [
   {
+    kind: 'experience',
     period: 'Depuis sept. 2025',
     title: 'Alternant développeur',
     place: 'Capgemini, Cesson-Sévigné',
@@ -13,36 +21,42 @@ export const parcours: ParcoursItem[] = [
     current: true,
   },
   {
+    kind: 'formation',
     period: 'Depuis sept. 2026',
     title: 'Mastère Développement Full Stack',
     place: 'Sup de Vinci, Rennes',
     text: 'En alternance, toujours chez Capgemini.',
   },
   {
+    kind: 'formation',
     period: '2025 – 2026',
     title: 'Bachelor 3 Développement',
     place: 'Sup de Vinci, Rennes',
     text: 'Projet annuel CYNA en équipe de quatre, comme développeur backend et sous-chef de projet.',
   },
   {
+    kind: 'experience',
     period: 'Janv. – févr. 2025',
     title: 'Stage développeur web',
     place: 'Lycée hôtelier Sainte-Thérèse, La Guerche-de-Bretagne',
     text: "Conception et livraison, seul, de l'application de gestion des stages de l'établissement.",
   },
   {
+    kind: 'experience',
     period: 'Mai – juin 2024',
     title: 'Stage développeur Java',
     place: 'Ouest-France, Rennes',
     text: "Développement d'outils internes au sein du service informatique.",
   },
   {
+    kind: 'formation',
     period: '2023 – 2025',
     title: 'BTS SIO option SLAM',
     place: 'Pôle Sup de la Salle, Rennes',
     text: 'Programmation, bases de données, analyse et conception de logiciels.',
   },
   {
+    kind: 'formation',
     period: '2023',
     title: 'Baccalauréat',
     place: 'Lycée Saint-Martin, Rennes',

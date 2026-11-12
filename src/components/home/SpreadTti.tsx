@@ -13,7 +13,7 @@ export function SpreadTti({ project }: SpreadTtiProps) {
   const figures = project.figures ?? [];
 
   return (
-    <Link to={`/projets/${project.id}`} className="hm-spread hm-tti" style={style} data-testid="spread">
+    <Link to={`/projets/${project.id}`} className="hm-spread hm-tti" style={style} data-testid="spread" aria-label={`Voir le projet ${project.title}`}>
       <div className="hm-art">
         <span className="hm-block" aria-hidden="true" />
         <h2 className="title-xl hm-title">{project.title}</h2>

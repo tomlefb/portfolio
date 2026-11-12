@@ -16,7 +16,7 @@ export function SpreadVizly({ project }: SpreadVizlyProps) {
   const style = { '--pc': project.color, '--pon': project.onColor } as CSSProperties;
 
   return (
-    <Link to={`/projets/${project.id}`} className="hm-spread hm-vizly" style={style} data-testid="spread">
+    <Link to={`/projets/${project.id}`} className="hm-spread hm-vizly" style={style} data-testid="spread" aria-label={`Voir le projet ${project.title}`}>
       <div className="hm-art">
         <span className="hm-block" aria-hidden="true" />
         <h2 className="title-xl hm-title">{project.title}</h2>

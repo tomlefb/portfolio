@@ -8,7 +8,7 @@ interface TtiBoucleProps {
 }
 
 const TITLE =
-  'Boucle de recherche de TTI : cadrage, sprint au labo, trois lectures puis cinq portes successives ; un échec renvoie à une modification et au sprint suivant, ou range la famille au garage ou au cimetière, un bug mène à une rétractation, et seule une stratégie a franchi toutes les portes jusqu’à la production.';
+  'Boucle de recherche de TTI : cadrage, sprint au labo, trois lectures puis cinq portes successives ; un échec renvoie à une modification et au sprint suivant, ou range la famille au garage ou au cimetière, un bug mène à une rétractation. Aucune stratégie n’a franchi toutes les portes à ce jour.';
 
 const GATES = ['Cohérence', 'Causalité', 'Significativité', 'Viabilité', 'Processus'] as const;
 
@@ -64,8 +64,8 @@ export function TtiBoucle({ color }: TtiBoucleProps) {
         <Note x={484} y={426} lead="6" lines={['au cimetière']} anchor="middle" />
 
         {/* Toutes les portes franchies. */}
-        <Edge name="portes → production" points={[[744, 328], [744, 360]]} />
-        <Node x={664} y={360} w={160} h={40} variant="accent" label="Production" />
+        <Edge name="portes → retenue" points={[[744, 328], [744, 360]]} />
+        <Node x={664} y={360} w={160} h={40} variant="accent" label="Retenue" />
         <Note x={744} y={426} lead="0" lines={['stratégie retenue à ce jour']} anchor="middle" />
       </DiagramFrame>
 
@@ -111,8 +111,8 @@ export function TtiBoucle({ color }: TtiBoucleProps) {
         <Node x={40} y={624} w={144} h={36} label="Cimetière" />
         <Note x={200} y={647} lead="6" lines={['au cimetière']} />
 
-        <Edge name="portes → production" points={[[132, 448], [132, 480]]} />
-        <Node x={72} y={480} w={120} h={36} variant="accent" label="Production" />
+        <Edge name="portes → retenue" points={[[132, 448], [132, 480]]} />
+        <Node x={72} y={480} w={120} h={36} variant="accent" label="Retenue" />
         <Note x={132} y={538} lead="0" lines={['stratégie retenue à ce jour']} anchor="middle" />
       </DiagramFrame>
     </>

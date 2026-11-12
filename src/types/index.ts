@@ -46,7 +46,15 @@ export interface Project {
   liveUrl?: string;
 }
 
+export type ParcoursKind = 'experience' | 'formation';
+
+export interface ParcoursGroup {
+  kind: ParcoursKind;
+  label: string;
+}
+
 export interface ParcoursItem {
+  kind: ParcoursKind;
   period: string;
   title: string;
   place: string;

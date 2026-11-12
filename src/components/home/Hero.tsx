@@ -1,11 +1,8 @@
-import { getProject } from '../../data/projects';
 import { site } from '../../data/site';
-import { PhoneFrame } from '../ui/PhoneFrame';
 
-/** Haut de page : le nom en très grand, la présentation dans le vide à droite, un écran de Vizly qui déborde. */
+/** Haut de page : le nom en très grand, la présentation dans le vide à droite de « TOM ». */
 export function Hero() {
   const [first, ...rest] = site.name.split(' ');
-  const phone = getProject('vizly')?.images.find((image) => image.kind === 'phone');
 
   return (
     <section className="hm-hero" data-testid="hero">
@@ -23,7 +20,6 @@ export function Hero() {
           ))}
         </dl>
       </div>
-      {phone && <PhoneFrame image={phone} className="hm-hero__phone" eager />}
     </section>
   );
 }

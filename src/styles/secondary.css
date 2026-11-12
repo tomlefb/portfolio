@@ -134,113 +134,27 @@
   border-bottom: 3px solid currentColor;
 }
 
-/* Parcours */
 
-.pc-head {
-  --pc-title: 17.6cqw;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 3cqw;
-  min-height: 31.5cqw;
-  padding: 2cqw var(--g) 1.6cqw;
-}
 
-.pc-head__intro {
-  max-width: 34cqw;
-  font-size: clamp(17px, 1.75cqw, 24px);
-  font-weight: 500;
-  line-height: 1.28;
-  letter-spacing: -0.01em;
-}
 
-.pc-head__title {
-  font-size: var(--pc-title);
-}
+
 
 /* Le portrait passe devant le « S » final et n'en couvre que le dernier quart :
    « PARCOURS » s'étend sur 4,26 em, le portrait commence à 4,15 em. */
-.pc-head__portrait {
-  position: absolute;
-  left: calc(var(--g) + var(--pc-title) * 4.15);
-  bottom: 0;
-  width: 21.5cqw;
-  height: auto;
-}
 
-.pc-row {
-  display: grid;
-  grid-template-columns: 170px 1.2fr 1.5fr;
-  gap: 24px;
-  padding: 20px var(--g);
-  border-bottom: 1px solid var(--ink);
-  align-items: baseline;
-}
 
-.pc-row[data-current='true'] {
-  background: var(--ink);
-  color: var(--paper);
-}
 
-.pc-row__period {
-  font-size: 15px;
-  font-weight: 600;
-}
 
-.pc-row h2 {
-  font-size: 25px;
-}
 
-.pc-row__place {
-  font-size: 15px;
-  font-weight: 600;
-  margin-top: 6px;
-  opacity: 0.74;
-}
 
-.pc-row__text {
-  font-size: 16.5px;
-  line-height: 1.45;
-}
 
-.pc-tech {
-  display: grid;
-  grid-template-columns: 170px 1fr;
-  gap: 24px;
-  padding: 16px var(--g);
-  border-bottom: 1px solid var(--ink);
-  align-items: baseline;
-}
 
-.pc-tech dt {
-  font-size: 15px;
-  opacity: 0.7;
-}
 
-.pc-tech dd {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.4;
-}
 
 @container (max-width: 999px) {
-  .pc-head__intro {
-    max-width: 60cqw;
-  }
 
-  .pc-row {
-    grid-template-columns: 9.5em 1fr;
-    row-gap: 8px;
-  }
 
-  .pc-row__text {
-    grid-column: 2;
-  }
 
-  .pc-tech {
-    grid-template-columns: 9.5em 1fr;
-  }
 }
 
 @container (max-width: 639px) {
@@ -298,41 +212,10 @@
     top: 13cqw;
   }
 
-  .pc-head {
-    min-height: 0;
-    gap: 0;
-    padding: 0 var(--g) 20px;
-    justify-content: flex-start;
-  }
 
-  .pc-head__intro {
-    max-width: none;
-    margin-top: 18px;
-    order: 2;
-  }
 
-  .pc-head__title {
-    font-size: 21cqw;
-    margin-top: 2cqw;
-  }
 
-  .pc-head__portrait {
-    display: none;
-  }
 
-  .pc-row {
-    grid-template-columns: 1fr;
-    gap: 6px;
-    padding: 18px var(--g);
-  }
 
-  .pc-row__text {
-    grid-column: auto;
-  }
 
-  .pc-tech {
-    grid-template-columns: 1fr;
-    gap: 2px;
-    padding: 14px var(--g);
-  }
 }

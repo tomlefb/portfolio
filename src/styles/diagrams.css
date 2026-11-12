@@ -14,11 +14,11 @@
 
 .dg--wide {
   display: none;
-  max-width: 1080px;
 }
 
 .dg--narrow {
   max-width: 480px;
+  margin-inline: auto;
 }
 
 @container diagram (min-width: 640px) {

@@ -1,0 +1,161 @@
+/* Parcours */
+
+.pc-head {
+  --pc-title: 17.6cqw;
+  position: relative;
+  height: 37cqw;
+  padding: 0 var(--g);
+  border-bottom: 3px solid var(--ink);
+  overflow: hidden;
+}
+
+.pc-head__intro {
+  padding-top: 2.6cqw;
+  max-width: 26ch;
+  font-size: clamp(20px, 2.5cqw, 36px);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+}
+
+.pc-head__title {
+  position: absolute;
+  left: var(--g);
+  bottom: 1.6cqw;
+  font-size: var(--pc-title);
+}
+
+/* Calé contre le bord droit de la page : la coupe de l'épaule se confond avec le bord. */
+.pc-head__portrait {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 25.5cqw;
+  height: auto;
+}
+
+.pc-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 3px solid var(--ink);
+}
+
+.pc-col + .pc-col {
+  border-left: 3px solid var(--ink);
+}
+
+.pc-col__label {
+  padding: 20px var(--g);
+  border-bottom: 3px solid var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.pc-row {
+  padding: clamp(24px, 2.6cqw, 40px) var(--g);
+  border-bottom: 1px solid var(--ink);
+}
+
+.pc-row:last-child {
+  border-bottom: 0;
+}
+
+.pc-row[data-current='true'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.pc-row__period {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.pc-row h3 {
+  font-size: clamp(26px, 3cqw, 44px);
+}
+
+.pc-row__place {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.pc-row__text {
+  font-size: 17px;
+  line-height: 1.45;
+  margin-top: 14px;
+  max-width: 46ch;
+}
+
+.pc-techs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.pc-tech {
+  padding: clamp(24px, 2.6cqw, 40px) var(--g) clamp(28px, 3.4cqw, 52px);
+}
+
+.pc-tech + .pc-tech {
+  border-left: 1px solid var(--ink);
+}
+
+.pc-tech dt {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.pc-tech dd {
+  font-size: clamp(20px, 2.1cqw, 30px);
+  font-weight: 600;
+  font-stretch: 88%;
+  line-height: 1.25;
+}
+
+@container (max-width: 859px) {
+  .pc-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .pc-col + .pc-col {
+    border-left: 0;
+    border-top: 3px solid var(--ink);
+  }
+
+  .pc-techs {
+    grid-template-columns: 1fr;
+  }
+
+  .pc-tech + .pc-tech {
+    border-left: 0;
+    border-top: 1px solid var(--ink);
+  }
+}
+
+@container (max-width: 639px) {
+  .pc-head {
+    --pc-title: 21cqw;
+    height: auto;
+    padding-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pc-head__title {
+    position: static;
+    margin-top: 2cqw;
+  }
+
+  .pc-head__intro {
+    order: 2;
+    padding-top: 0;
+    margin-top: 18px;
+    max-width: none;
+  }
+
+  .pc-head__portrait {
+    display: none;
+  }
+}

@@ -62,6 +62,13 @@
     overflow-x: clip;
   }
 
+  /* Au-delà de la largeur maximale, la page est cernée comme une affiche. */
+  @media (min-width: 1506px) {
+    .shell {
+      border-inline: 3px solid var(--ink);
+    }
+  }
+
   .title-xl {
     font-weight: 900;
     font-stretch: 68%;
@@ -83,6 +90,30 @@
 
   .rule-1 {
     border-top: 1px solid var(--ink);
+  }
+
+  /* Pied de page : le titre occupe toute la largeur. */
+  .site-footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3.4cqw var(--g) 30px;
+  }
+
+  .site-footer__title {
+    font-size: 18cqw;
+    white-space: nowrap;
+  }
+
+  .site-footer__links {
+    margin-top: 3cqw;
+    padding-top: 22px;
+    border-top: 3px solid var(--paper);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px 32px;
+    font-size: 17px;
+    font-weight: 600;
   }
 
   .gutter {

@@ -21,35 +21,40 @@
 }
 
 .hm-hero__last {
-  font-size: 10.9cqw;
-  margin-top: 0.08em;
+  font-size: 13.3cqw;
+  margin-top: 0.06em;
 }
 
 .hm-hero__text {
   position: absolute;
-  left: 45cqw;
-  top: 2.4cqw;
-  width: 28cqw;
+  left: 46cqw;
+  right: var(--g);
+  top: 2.6cqw;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3.4cqw;
+  align-items: start;
 }
 
 .hm-hero__text p {
-  font-size: clamp(17px, 1.75cqw, 24px);
-  line-height: 1.28;
+  font-size: clamp(18px, 1.9cqw, 28px);
+  line-height: 1.26;
   font-weight: 500;
   letter-spacing: -0.01em;
 }
 
 .hm-hero__text dl {
-  margin-top: 1.6cqw;
   display: grid;
-  gap: 6px;
+  gap: 1.2cqw;
   font-size: 15px;
+  padding-top: 0.3cqw;
 }
 
 .hm-hero__text dl div {
   display: grid;
-  grid-template-columns: 6.2em 1fr;
-  gap: 12px;
+  gap: 2px;
+  border-top: 3px solid var(--ink);
+  padding-top: 8px;
 }
 
 .hm-hero__text dt {
@@ -60,17 +65,8 @@
   font-weight: 600;
 }
 
-/* Le téléphone mord le bord droit du « N » final, sans plus. */
-.hm-hero__phone {
-  position: absolute;
-  left: calc(var(--g) + 76cqw);
-  top: 0.6cqw;
-  width: 17.5cqw;
-  z-index: 4;
-}
-
 .hm-rubric {
-  padding: 16px var(--g);
+  padding: 20px var(--g);
   border-block: 3px solid var(--ink);
   font-size: 15px;
   font-weight: 600;
@@ -100,6 +96,8 @@
 
 /* Au-dessus du texte, dont la marge haute s'étend sous le titre. */
 .hm-title {
+  /* Les capitales n'ont pas de jambage : on rogne la zone vide sous la ligne, qui recouvrait le texte voisin. */
+  clip-path: inset(-0.3em -0.1em 0 -0.1em);
   position: absolute;
   left: var(--g);
   z-index: 4;
@@ -338,14 +336,14 @@
   .hm-hero__text p {
     position: absolute;
     left: 43cqw;
-    top: 1.2cqw;
-    width: 35cqw;
-    font-size: clamp(16px, 1.9cqw, 21px);
+    top: 1.6cqw;
+    width: 50cqw;
+    max-width: none;
+    font-size: clamp(17px, 2.5cqw, 25px);
   }
 
   .hm-hero__text dl {
     margin-top: 2.6cqw;
-    max-width: 74cqw;
     grid-template-columns: auto auto;
     justify-content: start;
     column-gap: 4cqw;
@@ -356,15 +354,6 @@
     gap: 2px;
   }
 
-  .hm-hero__last {
-    font-size: 10.6cqw;
-  }
-
-  .hm-hero__phone {
-    left: calc(var(--g) + 74cqw);
-    top: auto;
-    bottom: -5cqw;
-  }
 }
 
 /* Intermédiaire : mêmes imbrications, textes sortis des zones absolues. */
@@ -530,15 +519,6 @@
 
   .hm-hero__last {
     font-size: 19cqw;
-    max-width: 74cqw;
-  }
-
-  .hm-hero__phone {
-    top: 1cqw;
-    bottom: auto;
-    left: auto;
-    right: -5cqw;
-    width: 27cqw;
   }
 
   .hm-hero__text p {

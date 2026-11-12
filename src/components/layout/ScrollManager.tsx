@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 /** Remonte en haut à chaque changement de page, ou va à l'ancre demandée. */
 export function ScrollManager() {
-  const { pathname, hash } = useLocation();
+  const { pathname, hash, key } = useLocation();
 
   useEffect(() => {
     if (hash) {
@@ -11,7 +11,7 @@ export function ScrollManager() {
       return;
     }
     window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [pathname, hash]);
+  }, [pathname, hash, key]);
 
   return null;
 }

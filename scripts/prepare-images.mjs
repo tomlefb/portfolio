@@ -38,7 +38,7 @@ const RATIO_DESKTOP = 16 / 10;
 const RATIO_PHONE = 430 / 932;
 
 const vizly = (f) => path.resolve(racine, '../appPortfolio', f);
-const local = (p) => path.join(racine, 'public/images/projects', p);
+const local = (p) => path.join(racine, 'assets-src/projects', p);
 const hackathon = (p) => path.resolve(racine, '../projethackaton', p);
 
 const IMAGES = [

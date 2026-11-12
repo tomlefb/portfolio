@@ -1,3 +1,4 @@
+import { site } from '../../data/site';
 import { Link, NavLink } from 'react-router-dom';
 
 interface SiteNavProps {
@@ -26,7 +27,7 @@ export function SiteNav({ label }: SiteNavProps) {
         <a href="#contact" className={linkClass}>
           Contact
         </a>
-        <a href="/CV_TOM.pdf" download className={linkClass}>
+        <a href={site.cv} download className={linkClass}>
           CV
         </a>
       </div>

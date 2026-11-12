@@ -17,7 +17,7 @@ test.describe('autres projets', () => {
     await expect(page).toHaveTitle(/Autres projets/);
   });
 
-  test('liste les cinq projets dans l’ordre, avec phrase et technos', async ({ page }) => {
+  test('liste les projets dans l’ordre, avec phrase et technos', async ({ page }) => {
     const cards = page.getByTestId('minor-project');
     await expect(cards).toHaveCount(MINORS.length);
     for (const [index, minor] of MINORS.entries()) {
@@ -40,6 +40,16 @@ test.describe('parcours', () => {
     await expect(rows.first()).toHaveAttribute('data-current', 'true');
     await expect(rows.last()).toContainText('Baccalauréat');
     await expect(page.locator('[data-current="true"]')).toHaveCount(1);
+  });
+
+  test('sépare les expériences de la formation', async ({ page }) => {
+    await page.goto('/parcours');
+    const groups = page.getByTestId('parcours-group');
+    await expect(groups).toHaveCount(2);
+    await expect(groups.nth(0).getByRole('heading', { level: 2, name: 'Expériences' })).toBeVisible();
+    await expect(groups.nth(0).getByTestId('parcours-row')).toHaveCount(3);
+    await expect(groups.nth(1).getByRole('heading', { level: 2, name: 'Formation' })).toBeVisible();
+    await expect(groups.nth(1).getByTestId('parcours-row')).toHaveCount(4);
   });
 
   test('range les technos sur trois lignes', async ({ page }) => {

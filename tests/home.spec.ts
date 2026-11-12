@@ -37,6 +37,21 @@ test.describe('accueil', () => {
     }
   });
 
+  test('donne un nom court à chaque lien de projet', async ({ page }) => {
+    for (const title of ['Vizly', 'TTI', 'CYNA']) {
+      await expect(page.getByRole('link', { name: `Voir le projet ${title}`, exact: true })).toBeVisible();
+    }
+  });
+
+  test('ramène aux projets à chaque clic sur « Projets », même deux fois de suite', async ({ page }) => {
+    const link = page.getByRole('navigation').getByRole('link', { name: 'Projets', exact: true });
+    await link.click();
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(200);
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+    await link.click();
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(200);
+  });
+
   test('ne mentionne plus FairsonJob', async ({ page }) => {
     await expect(page.getByText(/FairsonJob/i)).toHaveCount(0);
   });
@@ -49,4 +64,22 @@ test.describe('accueil', () => {
     const text = await page.locator('body').innerText();
     expect(text).not.toMatch(/recherche (d['’])?alternance|chef de projet it/i);
   });
+
+  for (const width of [640, 860, 1000, 1200, 1440]) {
+    test(`ne pose pas la présentation sur le nom à ${width} px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/');
+      const overlaps = await page.evaluate(() => {
+        const name = [...document.querySelectorAll('[data-testid="hero"] h1 span')].map((el) => el.getBoundingClientRect());
+        const texts = [...document.querySelectorAll('[data-testid="hero"] p, [data-testid="hero"] dt, [data-testid="hero"] dd')];
+        return texts
+          .filter((el) => {
+            const r = el.getBoundingClientRect();
+            return name.some((n) => r.left < n.right && r.right > n.left && r.top < n.bottom - 4 && r.bottom > n.top + 4);
+          })
+          .map((el) => el.textContent?.slice(0, 30));
+      });
+      expect(overlaps).toEqual([]);
+    });
+  }
 });

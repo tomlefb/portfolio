@@ -1,0 +1,72 @@
+import type { Project } from '../../types';
+
+export const cyna: Project = {
+  id: 'cyna',
+  title: 'CYNA',
+  tier: 'majeur',
+  tagline:
+    'Une plateforme e-commerce B2B de solutions de cybersécurité, conçue à quatre : site web, application mobile et back-office.',
+  meta: "Projet d'école, équipe de 4 · 2025–2026",
+  color: '#5B3FF0',
+  onColor: '#FFFFFF',
+  stack: [
+    'NestJS',
+    'TypeScript',
+    'Angular 20',
+    'Ionic 8',
+    'Capacitor',
+    'RabbitMQ',
+    'PostgreSQL 16',
+    'Redis 7',
+    'Stripe',
+    'Cloudflare R2',
+    'Railway',
+    'GitHub Actions',
+    'Docker',
+    'Figma',
+    'ClickUp',
+  ],
+  images: [],
+  facts: [
+    { label: 'Mon rôle', value: 'Développeur backend et sous-chef de projet' },
+    { label: 'Équipe', value: '4 développeurs' },
+    { label: 'Période', value: 'Octobre 2025 à mai 2026' },
+    { label: 'Technos', value: 'NestJS, Angular / Ionic, RabbitMQ, PostgreSQL, Redis, Stripe' },
+  ],
+  sections: [
+    {
+      title: "Ce que j'ai fait",
+      items: [
+        {
+          lead: 'Le backend',
+          text: 'J’ai développé des services NestJS et leur communication par messages avec RabbitMQ.',
+        },
+        {
+          lead: 'Le paiement',
+          text: 'J’ai intégré Stripe, pour des abonnements et des achats ponctuels dans un même panier, et travaillé sur la base PostgreSQL.',
+        },
+        {
+          lead: 'Le front',
+          text: 'J’ai aussi développé sur l’application Angular / Ionic et sur le back-office.',
+        },
+        {
+          lead: 'La documentation',
+          text: 'J’ai rédigé le dossier de cadrage de 47 pages et mis en forme le dossier technique, le backlog et les supports de soutenance.',
+        },
+      ],
+    },
+    {
+      title: 'Comment c’est construit',
+      body: 'Une passerelle reçoit tous les appels et parle aux huit services par messages. Aucun service n’en appelle un autre directement.',
+      diagram: 'cyna-architecture',
+    },
+    {
+      title: "L'organisation",
+      body: 'J’étais sous-chef de projet, aux côtés du chef de projet. J’ai rédigé le dossier de cadrage : périmètre, risques, planning et matrice RACI. Le suivi passait par un tableau Kanban d’une centaine de tâches, avec deux tâches en cours au maximum par développeur.',
+    },
+    {
+      title: 'Le plus dur',
+      body: 'Le plus dur n’a pas été technique. J’ai peu délégué : à deux, nous avons porté l’essentiel du développement au lieu de faire monter toute l’équipe en compétence. Avec le recul, neuf services, c’était beaucoup pour une équipe de quatre.',
+    },
+  ],
+};

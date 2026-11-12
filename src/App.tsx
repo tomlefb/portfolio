@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ScrollManager } from './components/layout/ScrollManager';
+import { BricksPage } from './pages/BricksPage';
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { OtherProjectsPage } from './pages/OtherProjectsPage';
@@ -16,6 +17,7 @@ function App() {
         <Route path="/projets/:id" element={<ProjectPage />} />
         <Route path="/autres-projets" element={<OtherProjectsPage />} />
         <Route path="/parcours" element={<ParcoursPage />} />
+        <Route path="/__bricks" element={<BricksPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Analytics />

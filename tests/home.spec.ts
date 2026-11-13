@@ -135,7 +135,7 @@ test.describe('page de garde', () => {
 
 test.describe('renvoi vers le parcours', () => {
   for (const width of [1440, 1024, 390]) {
-    test(`l’accueil se termine par PARCOURS sur un aplat anis, texte calé sur le pied du mot, à ${width} px`, async ({ page }) => {
+    test(`l’accueil se termine par PARCOURS sur un aplat anis, texte centré dans l’aplat, à ${width} px`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 });
       await page.goto('/');
       await page.evaluate(() => document.fonts.ready);
@@ -144,12 +144,20 @@ test.describe('renvoi vers le parcours', () => {
       await expect(teaser.locator('.hm-pc__block')).toHaveCSS('background-color', 'rgb(201, 232, 106)');
       await expect(teaser.getByText('Voir le parcours')).toBeVisible();
       if (width >= 640) {
-        const gap = await teaser.evaluate((el) => {
+        // Le texte est centré dans la partie visible de l'aplat (après le « S » mordu), en hauteur et en largeur.
+        const offsets = await teaser.evaluate((el) => {
+          const band = el.getBoundingClientRect();
+          const block = el.querySelector('.hm-pc__block')!.getBoundingClientRect();
           const title = el.querySelector('.hm-pc__title')!.getBoundingClientRect();
-          const more = el.querySelector('.hm-pc__more')!.getBoundingClientRect();
-          return Math.abs(title.bottom - more.bottom);
+          const cap = el.querySelector('.hm-pc__cap')!.getBoundingClientRect();
+          const visibleLeft = Math.max(block.left, title.right);
+          return {
+            vertical: Math.abs((cap.top + cap.bottom) / 2 - (band.top + band.bottom) / 2),
+            horizontal: Math.abs((cap.left + cap.right) / 2 - (visibleLeft + block.right) / 2),
+          };
         });
-        expect(gap).toBeLessThanOrEqual(6);
+        expect(offsets.vertical).toBeLessThanOrEqual(4);
+        expect(offsets.horizontal).toBeLessThanOrEqual(8);
       }
     });
   }

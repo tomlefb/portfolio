@@ -18,11 +18,12 @@ src/
 ├── components/
 │   ├── layout/       # PageShell, SiteNav, ContactFooter, ScrollManager
 │   ├── home/         # Hero, SpreadVizly, SpreadTti, SpreadCyna, OthersIndex
-│   ├── project/      # en-tête, faits, bande d'images, chiffres, sections, projet mineur
+│   ├── project/      # en-tête, faits, bande d'images, chiffres, sections ; MinorShelf et ses tranches
 │   ├── parcours/     # en-tête au portrait, tableau, lignes de technos
 │   ├── diagrams/     # kit SVG + un schéma par projet majeur
 │   └── ui/           # BigTitle, PhoneFrame, Shot, ColorBlock, MediaImage
 ├── data/             # site, contact, parcours, projects/{vizly,tti,cyna,minors}
+├── lib/              # titleMetrics (largeur des titres pour les ajuster à une place donnée)
 ├── styles/           # globals, compositions, home, project, secondary, diagrams
 └── types/
 tests/                # Playwright

@@ -7,3 +7,6 @@ playwright-report
 .DS_Store
 *.tsbuildinfo
 /screen
+
+# Documents personnels de Tom (CV source, etc.) : jamais dans le dépôt
+/docs/docperso

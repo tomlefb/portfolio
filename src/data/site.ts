@@ -15,7 +15,7 @@ export const site: Site = {
   role: 'Développeur',
   city: 'Rennes',
   intro:
-    "Je développe des applications complètes, de l’API au mobile. Ces derniers temps, surtout avec de l’IA dedans.",
+    "Je développe des applications complètes, de l’API au mobile, avec l’IA dans le produit comme dans ma façon de les construire.",
   portrait: { src: '/images/profile/tom-detoure.webp', alt: 'Portrait de Tom Lefevre-Bonzon' },
   cv: '/CV_TOM.pdf',
   facts: [

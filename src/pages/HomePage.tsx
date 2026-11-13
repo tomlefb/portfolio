@@ -7,6 +7,7 @@ import { PageShell } from '../components/layout/PageShell';
 import { getProject, minorProjects, othersIndexLabels } from '../data/projects';
 import { site } from '../data/site';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { ParcoursTeaser } from '../components/home/ParcoursTeaser';
 
 export function HomePage() {
   useDocumentTitle();
@@ -24,6 +25,7 @@ export function HomePage() {
         {cyna && <SpreadCyna project={cyna} />}
         <OthersIndex projects={minorProjects} title={othersIndexLabels.title} allLabel={othersIndexLabels.all} />
       </section>
+      <ParcoursTeaser />
     </PageShell>
   );
 }

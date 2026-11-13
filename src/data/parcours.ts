@@ -1,5 +1,12 @@
 import type { ParcoursGroup, ParcoursHighlight, ParcoursItem, TechnoGroup, Timeline } from '../types';
 
+/** Renvoi vers la page Parcours, à la fin de l’accueil. */
+export const parcoursTeaser = {
+  title: 'Parcours',
+  text: 'Formation, alternance chez Capgemini, technos.',
+  more: 'Voir le parcours',
+};
+
 export const parcoursIntro =
   'Développeur à Rennes. BTS SIO, puis bachelor et mastère à Sup de Vinci, en alternance chez Capgemini depuis 2025.';
 

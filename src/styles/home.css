@@ -76,6 +76,98 @@
   font-weight: 600;
 }
 
+/* Fin de l'accueil : renvoi vers le parcours, comme une composition de projet en une ligne. */
+.hm-pc {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3cqw;
+  padding: 1.4cqw var(--g) 2.2cqw;
+  border-top: 3px solid var(--ink);
+  overflow: hidden;
+}
+
+/* L'aplat file jusqu'au bord droit et mord le « S » final (le mot fait environ 4,24 em). */
+.hm-pc__block {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: calc(var(--g) + 13.6cqw * 4.24 - 4cqw);
+  background: var(--present);
+}
+
+.hm-pc__title {
+  position: relative;
+  font-size: 13.6cqw;
+  white-space: nowrap;
+}
+
+.hm-pc__cap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 30cqw;
+}
+
+.hm-pc__text {
+  font-size: clamp(17px, 1.6cqw, 22px);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.hm-pc__more {
+  display: inline-block;
+  font-weight: 700;
+  border-bottom: 3px solid currentColor;
+}
+
+/* Comme pour les projets : seule la flèche avance au survol. */
+.hm-pc__more::after {
+  content: '\00a0→';
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.hm-pc:hover .hm-pc__more::after,
+.hm-pc:focus-visible .hm-pc__more::after {
+  transform: translateX(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hm-pc__more::after {
+    transition: none;
+  }
+}
+
+@container (max-width: 639px) {
+  .hm-pc {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 14px var(--g) 0;
+  }
+
+  .hm-pc__title {
+    font-size: 19cqw;
+  }
+
+  /* Sur mobile, l'aplat passe sous le mot, en mord le bas et porte le texte. */
+  .hm-pc__block {
+    top: calc(14px + 19cqw * 0.82 * 0.55);
+    left: 16cqw;
+  }
+
+  .hm-pc__cap {
+    width: auto;
+    margin-left: calc(16cqw - var(--g) + 20px);
+    padding: 22px 0 26px;
+  }
+}
+
 .hm-rubric {
   padding: 20px var(--g);
   border-block: 3px solid var(--ink);
@@ -140,7 +232,7 @@
 
 /* Seul signe au survol d'un projet : la flèche avance. Les aplats ne bougent pas. */
 .hm-cap__more::after {
-  content: ' →';
+  content: '\00a0→';
   display: inline-block;
   transition: transform 0.2s ease;
 }
@@ -331,7 +423,7 @@
 }
 
 .hm-index__all::after {
-  content: ' →';
+  content: '\00a0→';
 }
 
 .hm-index__row {

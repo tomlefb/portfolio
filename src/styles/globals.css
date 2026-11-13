@@ -6,6 +6,8 @@
   --paper: #e7e8e9;
   --ink: #0e0e0e;
   --g: 28px; /* marge latérale */
+  /* La couleur du présent (Parcours) : barres en cours, cases « Aujourd’hui », renvoi depuis l’accueil. */
+  --present: #c9e86a;
 }
 
 /* Trois largeurs : mobile (< 640 px), intermédiaire (640 à 999 px), large. */

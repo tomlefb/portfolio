@@ -132,3 +132,25 @@ test.describe('page de garde', () => {
     });
   }
 });
+
+test.describe('renvoi vers le parcours', () => {
+  for (const width of [1440, 1024, 390]) {
+    test(`l’accueil se termine par PARCOURS sur un aplat anis, texte calé sur le pied du mot, à ${width} px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/');
+      await page.evaluate(() => document.fonts.ready);
+      const teaser = page.getByRole('link', { name: /Parcours/ }).filter({ has: page.locator('.hm-pc__title') });
+      await expect(teaser).toHaveAttribute('href', '/parcours');
+      await expect(teaser.locator('.hm-pc__block')).toHaveCSS('background-color', 'rgb(201, 232, 106)');
+      await expect(teaser.getByText('Voir le parcours')).toBeVisible();
+      if (width >= 640) {
+        const gap = await teaser.evaluate((el) => {
+          const title = el.querySelector('.hm-pc__title')!.getBoundingClientRect();
+          const more = el.querySelector('.hm-pc__more')!.getBoundingClientRect();
+          return Math.abs(title.bottom - more.bottom);
+        });
+        expect(gap).toBeLessThanOrEqual(6);
+      }
+    });
+  }
+});

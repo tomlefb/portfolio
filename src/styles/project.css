@@ -359,7 +359,7 @@
 }
 
 .pj-next__title::after {
-  content: ' →';
+  content: '\00a0→';
 }
 
 @container (max-width: 859px) {
@@ -502,7 +502,7 @@
 }
 
 .pj-head__link::after {
-  content: ' →';
+  content: '\00a0→';
 }
 
 @container (max-width: 859px) {

@@ -1,11 +1,5 @@
 /* Parcours */
 
-/* La couleur du présent, propre à cette page : les barres en cours et les cases « Aujourd’hui ». */
-.tl,
-.pc-high {
-  --present: #c9e86a;
-}
-
 .pc-head {
   --pc-title: 17.6cqw;
   position: relative;

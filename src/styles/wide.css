@@ -12,6 +12,7 @@ html[data-capped='true'] .shell {
 
 /* Filets horizontaux prolongés des deux côtés. */
 html[data-capped='true'] .hm-rubric,
+html[data-capped='true'] .hm-pc,
 html[data-capped='true'] .hm-spread,
 html[data-capped='true'] .pj-facts,
 html[data-capped='true'] .pj-band,
@@ -55,8 +56,13 @@ html[data-capped='true'] .pj-band__block {
   border-image: conic-gradient(var(--pc) 0 0) fill 0 / 0 / 0 100vw 0 0;
 }
 
+html[data-capped='true'] .hm-pc__block {
+  border-image: conic-gradient(var(--present) 0 0) fill 0 / 0 / 0 100vw 0 0;
+}
+
 /* Les zones rognées ne le sont plus qu'en hauteur, pour laisser filer aplats et images. */
 html[data-capped='true'] .hm-spread,
+html[data-capped='true'] .hm-pc,
 html[data-capped='true'] .pj-band,
 html[data-capped='true'] .pc-head {
   overflow: visible;

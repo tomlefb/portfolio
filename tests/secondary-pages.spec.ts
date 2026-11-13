@@ -126,15 +126,9 @@ test.describe('parcours', () => {
     await expect(page.getByAltText('Portrait de Tom Lefevre-Bonzon')).toBeVisible();
   });
 
-  test('montre aussi le portrait sur mobile, sans masquer le titre ni le texte', async ({ page }) => {
+  test('masque le portrait sur mobile', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/parcours');
-    const portrait = page.getByAltText('Portrait de Tom Lefevre-Bonzon');
-    await expect(portrait).toBeVisible();
-    const box = await portrait.boundingBox();
-    expect(box!.x + box!.width).toBeLessThanOrEqual(391);
-    const intro = await page.locator('.pc-head__intro').boundingBox();
-    // Le portrait ne recouvre pas le texte d'introduction.
-    expect(box!.y + box!.height).toBeLessThanOrEqual(intro!.y + 1);
+    await expect(page.getByAltText('Portrait de Tom Lefevre-Bonzon')).toBeHidden();
   });
 });

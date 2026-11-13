@@ -357,16 +357,17 @@
 
 /* Mobile */
 @container (max-width: 639px) {
-  /* L'aplat se réduit à une bande derrière la fin du titre ; ses informations sont dans les faits. */
+  /* L'aplat se réduit à une bande à droite du titre ; ses informations sont dans les faits. */
   .pj-head {
     --bite: calc(var(--title-size-sm) * 0.3);
     grid-template-rows: auto auto auto;
     padding-bottom: 0;
   }
 
+  /* Sur mobile, l'aplat commence juste après la dernière lettre : il ne coupe jamais le titre. */
   .pj-head__block {
     grid-row: 2;
-    margin: 4cqw calc(-1 * var(--g)) -2cqw calc(-1 * var(--bite));
+    margin: 4cqw calc(-1 * var(--g)) -2cqw 1.5cqw;
     padding: 0;
   }
 

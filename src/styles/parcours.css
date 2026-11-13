@@ -326,19 +326,13 @@
     flex-direction: column;
   }
 
-  /* Mobile : le portrait en haut à droite, contre le bord, le titre passe devant le bas des épaules. */
   .pc-head__portrait {
-    position: relative;
-    order: 0;
-    align-self: flex-end;
-    width: 52cqw;
-    margin: 2cqw calc(-1 * var(--g)) -3.5cqw 0;
+    display: none;
   }
 
   .pc-head__title {
-    position: relative;
-    order: 1;
-    margin-top: 0;
+    position: static;
+    margin-top: 2cqw;
   }
 
   .pc-head__intro {

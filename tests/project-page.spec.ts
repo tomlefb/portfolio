@@ -59,3 +59,22 @@ for (const id of ['ialocal', 'xyz']) {
     await expect(page.getByRole('link', { name: "Retour à l’accueil" })).toBeVisible();
   });
 }
+
+for (const id of ['vizly', 'tti', 'cyna']) {
+  test(`sur mobile, l’aplat de l’en-tête de ${id} ne coupe aucune lettre du titre`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(`/projets/${id}`);
+    await page.evaluate(() => document.fonts.ready);
+    const { titleRight, blockLeft } = await page.evaluate(() => {
+      const title = document.querySelector('.pj-head__title')!;
+      const range = document.createRange();
+      range.selectNodeContents(title);
+      const rects = [...range.getClientRects()];
+      return {
+        titleRight: Math.max(...rects.map((r) => r.right)),
+        blockLeft: document.querySelector('.pj-head__block')!.getBoundingClientRect().left,
+      };
+    });
+    expect(blockLeft).toBeGreaterThanOrEqual(titleRight - 1);
+  });
+}

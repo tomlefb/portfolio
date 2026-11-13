@@ -91,7 +91,6 @@
 .hm-block {
   position: absolute;
   background: var(--pc);
-  transition: inset 0.35s ease;
 }
 
 /* Au-dessus du texte, dont la marge haute s'étend sous le titre. */
@@ -140,12 +139,9 @@
 }
 
 .hm-vizly .hm-block {
-  inset: 9.5cqw 40cqw 0 0;
-}
-
-.hm-vizly:hover .hm-block {
   inset: 0 40cqw 0 0;
 }
+
 
 .hm-vizly .hm-title {
   top: 1.4cqw;
@@ -186,21 +182,14 @@
   padding-top: 23cqw;
 }
 
-/* TTI, en miroir de Vizly et CYNA : le titre à droite, le premier « T » sur l'aplat qui part de la gauche. */
+/* TTI, en miroir de Vizly et CYNA : l'aplat derrière les chiffres à gauche, le titre et le texte à droite sur le papier. */
 .hm-tti {
   min-height: 38cqw;
   justify-content: flex-end;
 }
 
 .hm-tti .hm-block {
-  inset: 5cqw calc(var(--g) + 20.9cqw) 0 0;
-  /* Angle découpé sous le titre : le texte, à droite, repose entièrement sur le papier. */
-  clip-path: polygon(-100vw 0, 100% 0, 100% 20cqw, calc(100% - 13.4cqw) 20cqw, calc(100% - 13.4cqw) 100%, -100vw 100%);
-}
-
-.hm-tti:hover .hm-block {
-  inset: 0 calc(var(--g) + 20.9cqw) 0 0;
-  clip-path: polygon(-100vw 0, 100% 0, 100% 25cqw, calc(100% - 13.4cqw) 25cqw, calc(100% - 13.4cqw) 100%, -100vw 100%);
+  inset: 0 calc(var(--g) + 34cqw) 0 0;
 }
 
 .hm-tti .hm-title {
@@ -256,12 +245,9 @@
 }
 
 .hm-cyna .hm-block {
-  inset: 8cqw 0 0 34cqw;
+  inset: 0 0 0 35.3cqw;
 }
 
-.hm-cyna:hover .hm-block {
-  inset: 0 0 0 34cqw;
-}
 
 .hm-cyna .hm-title {
   top: 2cqw;
@@ -435,9 +421,8 @@
     overflow: hidden;
   }
 
-  .hm-vizly .hm-block,
-  .hm-vizly:hover .hm-block {
-    inset: 13cqw 0 0 0;
+  .hm-vizly .hm-block {
+    inset: 0;
   }
 
   .hm-vizly .hm-title {
@@ -489,14 +474,9 @@
   }
 
   .hm-tti .hm-block {
-    inset: 5cqw calc(var(--g) + 28.5cqw) 0 0;
-    clip-path: none;
+    inset: 0 calc(var(--g) + 28.5cqw) 0 0;
   }
 
-  .hm-tti:hover .hm-block {
-    inset: 0 calc(var(--g) + 28.5cqw) 0 0;
-    clip-path: none;
-  }
 
   .hm-tti .hm-title {
     top: 1.5cqw;
@@ -531,12 +511,9 @@
   }
 
   .hm-cyna .hm-block {
-    inset: 12cqw 0 0 calc(var(--g) + 39cqw);
-  }
-
-  .hm-cyna:hover .hm-block {
     inset: 0 0 0 calc(var(--g) + 39cqw);
   }
+
 
   .hm-cyna .hm-title {
     top: 1cqw;
@@ -628,9 +605,8 @@
     height: 86cqw;
   }
 
-  .hm-vizly .hm-block,
-  .hm-vizly:hover .hm-block {
-    inset: 15cqw 0 0 0;
+  .hm-vizly .hm-block {
+    inset: 0;
   }
 
   .hm-vizly .hm-title {
@@ -659,9 +635,8 @@
     height: 102cqw;
   }
 
-  .hm-tti .hm-block,
-  .hm-tti:hover .hm-block {
-    inset: 20cqw 0 0 0;
+  .hm-tti .hm-block {
+    inset: 0;
   }
 
   .hm-tti .hm-title {
@@ -689,9 +664,8 @@
     height: 88cqw;
   }
 
-  .hm-cyna .hm-block,
-  .hm-cyna:hover .hm-block {
-    inset: 17cqw 0 0 22cqw;
+  .hm-cyna .hm-block {
+    inset: 0 0 0 22cqw;
   }
 
   .hm-cyna .hm-title {
@@ -744,7 +718,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hm-block,
   .hm-index__row,
   .hm-index__go {
     transition: none;

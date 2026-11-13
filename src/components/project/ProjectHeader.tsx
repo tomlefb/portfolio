@@ -17,6 +17,11 @@ function titleSize(title: string, width: number, max: number): string {
   return `${Math.min(max, width / titleEm(title)).toFixed(2)}cqw`;
 }
 
+/** Titre court (TTI) : il plafonne à sa taille maximale et laisserait une colonne trop étroite à la phrase. */
+function isShortTitle(title: string): boolean {
+  return 50 / titleEm(title) > 30;
+}
+
 export function ProjectHeader({ project }: ProjectHeaderProps) {
   const style = {
     '--pc': project.color,
@@ -26,7 +31,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
   } as CSSProperties;
 
   return (
-    <header className="pj-head" style={style}>
+    <header className={`pj-head${isShortTitle(project.title) ? ' pj-head--short' : ''}`} style={style}>
       <div className="pj-head__block">
         {project.figures && (
           <ul className="pj-head__figures">

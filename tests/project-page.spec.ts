@@ -78,3 +78,44 @@ for (const id of ['vizly', 'tti', 'cyna']) {
     expect(blockLeft).toBeGreaterThanOrEqual(titleRight - 1);
   });
 }
+
+for (const id of ['vizly', 'tti', 'cyna']) {
+  for (const width of [1024, 1280, 1440]) {
+    test(`l’aplat de l’en-tête de ${id} n’a pas de vide entre ses chiffres et ses technos à ${width} px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto(`/projets/${id}`);
+      await page.evaluate(() => document.fonts.ready);
+      const gap = await page.evaluate(() => {
+        const figures = document.querySelector('.pj-head__figures')!.getBoundingClientRect();
+        const meta = document.querySelector('.pj-head__meta')!.getBoundingClientRect();
+        return meta.top - figures.bottom;
+      });
+      expect(gap).toBeLessThanOrEqual(100);
+    });
+  }
+}
+
+test('la phrase de TTI, au titre court, passe sous l’aplat sur toute la largeur', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/projets/tti');
+  await page.evaluate(() => document.fonts.ready);
+  const { blockBottom, taglineTop, taglineWidth } = await page.evaluate(() => {
+    const block = document.querySelector('.pj-head__block')!.getBoundingClientRect();
+    const tagline = document.querySelector('.pj-head__tagline')!.getBoundingClientRect();
+    return { blockBottom: block.bottom, taglineTop: tagline.top, taglineWidth: tagline.width };
+  });
+  expect(taglineTop).toBeGreaterThanOrEqual(blockBottom);
+  expect(taglineWidth).toBeGreaterThan(700);
+});
+
+for (const id of ['vizly', 'tti', 'cyna']) {
+  test(`les chiffres de ${id} ne sont montrés qu’une fois : dans l’aplat sur grand écran, en bande sur mobile`, async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(`/projets/${id}`);
+    await expect(page.locator('.pj-head__figures')).toBeVisible();
+    await expect(page.locator('.pj-figures')).toBeHidden();
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect(page.locator('.pj-head__figures')).toBeHidden();
+    await expect(page.locator('.pj-figures')).toBeVisible();
+  });
+}

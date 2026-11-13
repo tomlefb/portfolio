@@ -186,30 +186,35 @@
   padding-top: 23cqw;
 }
 
-/* TTI : « TT » sur le papier, « I » sur l'aplat. */
+/* TTI, en miroir de Vizly et CYNA : le titre à droite, le premier « T » sur l'aplat qui part de la gauche. */
 .hm-tti {
   min-height: 38cqw;
   justify-content: flex-end;
 }
 
 .hm-tti .hm-block {
-  inset: 5cqw 0 0 calc(var(--g) + 27cqw);
+  inset: 5cqw calc(var(--g) + 20.9cqw) 0 0;
+  /* Angle découpé sous le titre : le texte, à droite, repose entièrement sur le papier. */
+  clip-path: polygon(-100vw 0, 100% 0, 100% 20cqw, calc(100% - 13.4cqw) 20cqw, calc(100% - 13.4cqw) 100%, -100vw 100%);
 }
 
 .hm-tti:hover .hm-block {
-  inset: 0 0 0 calc(var(--g) + 27cqw);
+  inset: 0 calc(var(--g) + 20.9cqw) 0 0;
+  clip-path: polygon(-100vw 0, 100% 0, 100% 25cqw, calc(100% - 13.4cqw) 25cqw, calc(100% - 13.4cqw) 100%, -100vw 100%);
 }
 
 .hm-tti .hm-title {
   top: 2cqw;
+  left: auto;
+  right: var(--g);
   font-size: 26cqw;
 }
 
 .hm-tti__figures {
   position: absolute;
   z-index: 3;
-  left: calc(var(--g) + 40cqw);
-  right: var(--g);
+  left: var(--g);
+  right: calc(var(--g) + 36cqw);
   top: 8cqw;
   bottom: 3.4cqw;
   color: var(--pon);
@@ -239,7 +244,9 @@
 }
 
 .hm-tti .hm-cap {
-  width: 25cqw;
+  align-self: flex-end;
+  width: 32.8cqw;
+  margin: 0 var(--g) 2.6cqw 0;
   padding-top: 25.5cqw;
 }
 
@@ -482,11 +489,13 @@
   }
 
   .hm-tti .hm-block {
-    inset: 5cqw 0 0 calc(var(--g) + 37.4cqw);
+    inset: 5cqw calc(var(--g) + 28.5cqw) 0 0;
+    clip-path: none;
   }
 
   .hm-tti:hover .hm-block {
-    inset: 0 0 0 calc(var(--g) + 37.4cqw);
+    inset: 0 calc(var(--g) + 28.5cqw) 0 0;
+    clip-path: none;
   }
 
   .hm-tti .hm-title {
@@ -495,7 +504,8 @@
   }
 
   .hm-tti__figures {
-    left: calc(var(--g) + 51cqw);
+    left: var(--g);
+    right: calc(var(--g) + 48cqw);
     top: 8.5cqw;
     bottom: 4cqw;
     gap: 2cqw 3cqw;

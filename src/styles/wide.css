@@ -54,11 +54,11 @@
 
 
   /* Aplats de couleur : chacun file vers le bord qu'il touche. */
-  .hm-vizly .hm-block {
+  .hm-vizly .hm-block,
+  .hm-tti .hm-block {
     border-image: conic-gradient(var(--pc) 0 0) fill 0 / 0 / 0 0 0 100vw;
   }
 
-  .hm-tti .hm-block,
   .hm-cyna .hm-block,
   .pj-head__block,
   .pj-band__block,

@@ -269,3 +269,17 @@ test.describe('mobile : en-têtes et accordéon', () => {
     expect(midway).toBeLessThan(full);
   });
 });
+
+for (const width of [390, 768]) {
+  test(`sur mobile, les deux téléphones de Stages sont centrés à ${width} px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/autres-projets#lycee-hotelier');
+    const { left, right } = await page.locator('#lycee-hotelier .mn-art').evaluate((art) => {
+      const box = art.getBoundingClientRect();
+      const phones = [...art.querySelectorAll('.mn-phone')].map((p) => p.getBoundingClientRect());
+      return { left: Math.min(...phones.map((p) => p.left)) - box.left, right: box.right - Math.max(...phones.map((p) => p.right)) };
+    });
+    expect(Math.abs(left - right)).toBeLessThanOrEqual(4);
+  });
+}

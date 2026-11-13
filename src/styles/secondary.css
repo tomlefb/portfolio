@@ -352,6 +352,16 @@
   .mn-art .mn-phone--2 { left: 36%; top: 11%; }
   .mn-art .mn-phone--3 { left: 66%; top: 16%; }
 
+  /* Stages n'a que deux écrans : la paire est centrée, avec le même décalage en escalier. */
+  .mn-art--lycee-hotelier {
+    --phone-w: min(26cqw, 190px);
+    --phone-gap: 5cqw;
+  }
+
+  .mn-art--lycee-hotelier .mn-phone { width: var(--phone-w); }
+  .mn-art--lycee-hotelier .mn-phone--1 { left: calc(50% - var(--phone-w) - var(--phone-gap) / 2); top: 6%; }
+  .mn-art--lycee-hotelier .mn-phone--2 { left: calc(50% + var(--phone-gap) / 2); top: 12%; }
+
   .mn-art .mn-frag--1 { left: 5%; top: 6%; width: 90%; }
   .mn-art .mn-frag--2 { left: 40%; top: 42%; width: 52%; }
   .mn-art .mn-frag--3 { display: none; }

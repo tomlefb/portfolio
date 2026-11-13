@@ -95,17 +95,17 @@ for (const id of ['vizly', 'tti', 'cyna']) {
   }
 }
 
-test('la phrase de TTI, au titre court, passe sous l’aplat sur toute la largeur', async ({ page }) => {
+test('l’aplat de chaque projet descend jusqu’à la ligne des faits', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto('/projets/tti');
-  await page.evaluate(() => document.fonts.ready);
-  const { blockBottom, taglineTop, taglineWidth } = await page.evaluate(() => {
-    const block = document.querySelector('.pj-head__block')!.getBoundingClientRect();
-    const tagline = document.querySelector('.pj-head__tagline')!.getBoundingClientRect();
-    return { blockBottom: block.bottom, taglineTop: tagline.top, taglineWidth: tagline.width };
-  });
-  expect(taglineTop).toBeGreaterThanOrEqual(blockBottom);
-  expect(taglineWidth).toBeGreaterThan(700);
+  for (const id of ['vizly', 'tti', 'cyna']) {
+    await page.goto(`/projets/${id}`);
+    await page.evaluate(() => document.fonts.ready);
+    const { blockBottom, headBottom } = await page.evaluate(() => ({
+      blockBottom: document.querySelector('.pj-head__block')!.getBoundingClientRect().bottom,
+      headBottom: document.querySelector('.pj-head')!.getBoundingClientRect().bottom,
+    }));
+    expect(Math.abs(blockBottom - headBottom), id).toBeLessThanOrEqual(1);
+  }
 });
 
 for (const id of ['vizly', 'tti', 'cyna']) {

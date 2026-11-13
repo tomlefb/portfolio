@@ -119,3 +119,26 @@ for (const id of ['vizly', 'tti', 'cyna']) {
     await expect(page.locator('.pj-figures')).toBeVisible();
   });
 }
+
+for (const width of [390, 1440]) {
+  test(`les liens vers le site et le code sont visibles à ${width} px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/projets/vizly');
+    await expect(page.getByRole('link', { name: 'Voir le site' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Voir le site' })).toHaveCount(1);
+    await page.goto('/projets/cyna');
+    const code = page.getByRole('link', { name: 'Voir le code' });
+    await expect(code).toBeVisible();
+    await expect(code).toHaveAttribute('href', 'https://github.com/CynaOrg/cyna-api');
+  });
+}
+
+test('sur mobile, les liens sortants passent sous la phrase, hors de l’aplat', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/projets/vizly');
+  const { linkTop, taglineBottom } = await page.evaluate(() => ({
+    linkTop: [...document.querySelectorAll('a')].find((a) => a.textContent?.includes('Voir le site') && a.offsetParent)!.getBoundingClientRect().top,
+    taglineBottom: document.querySelector('.pj-head__tagline')!.getBoundingClientRect().bottom,
+  }));
+  expect(linkTop).toBeGreaterThan(taglineBottom);
+});

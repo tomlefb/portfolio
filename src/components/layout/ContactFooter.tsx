@@ -10,7 +10,7 @@ export function ContactFooter() {
   const elsewhere = [
     { label: 'LinkedIn', href: contactInfo.linkedin, external: true },
     { label: 'GitHub', href: contactInfo.github, external: true },
-    { label: 'CV (PDF)', href: site.cv, external: false },
+    { label: 'CV (PDF)', href: site.cv, external: true },
     { label: contactInfo.phone, href: `tel:${contactInfo.phone.replace(/\s/g, '')}`, external: false },
   ];
 

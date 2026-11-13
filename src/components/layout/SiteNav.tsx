@@ -42,7 +42,7 @@ export function SiteNav({ label }: SiteNavProps) {
         >
           Contact
         </a>
-        <a href={site.cv} download className={linkClass}>
+        <a href={site.cv} target="_blank" rel="noopener noreferrer" className={linkClass}>
           CV
         </a>
       </div>

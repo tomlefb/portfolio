@@ -12,7 +12,7 @@ export function NotFoundPage({ title = 'Page introuvable' }: NotFoundPageProps) 
   useDocumentTitle(title);
   return (
     <PageShell navLabel={site.name}>
-      <section className="gutter rule-3 pb-16 pt-10">
+      <section className="gutter pb-16 pt-10">
         <BigTitle as="h1" className="text-[15cqw] min-[860px]:text-[9cqw]">
           {title}
         </BigTitle>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import type { Project } from '../../types';
 import { titleEm } from '../../lib/titleMetrics';
 import { BigTitle } from '../ui/BigTitle';
+import { ProjectLinks } from './ProjectLinks';
 
 interface ProjectHeaderProps {
   project: Project;
@@ -45,11 +46,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
             <li key={tech}>{tech}</li>
           ))}
         </ul>
-        {project.liveUrl && (
-          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="pj-head__link">
-            Voir le site
-          </a>
-        )}
+        <ProjectLinks project={project} className="pj-head__links" />
       </div>
       <p className="pj-head__back">
         <Link to="/#projets">Tous les projets</Link>
@@ -58,6 +55,8 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
         {project.title}
       </BigTitle>
       <p className="pj-head__tagline">{project.tagline}</p>
+      {/* Sur mobile, l’aplat ne montre pas son contenu : les liens passent sous la phrase. */}
+      <ProjectLinks project={project} className="pj-head__links pj-head__links--mobile" />
     </header>
   );
 }

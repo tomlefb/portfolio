@@ -61,11 +61,11 @@ export function VizlyParcours({ color }: VizlyParcoursProps) {
 
         {/* Chemin de confirmation du paiement. */}
         <Edge name="Stripe → webhook" points={[[492, 128], [492, 176]]} />
-        <Node x={432} y={176} w={120} h={56} variant="accent" label="Webhook" />
+        <Node x={432} y={176} w={120} h={56} variant="plain" label="Webhook" />
         <Edge name="webhook → base" points={[[552, 204], [576, 204]]} />
-        <Node x={576} y={176} w={120} h={56} variant="accent" label="Base" sub="plan du compte" />
+        <Node x={576} y={176} w={120} h={56} variant="plain" label="Base" sub="plan du compte" />
         <Edge name="base → e-mail" points={[[696, 204], [720, 204]]} />
-        <Node x={720} y={176} w={144} h={56} variant="accent" label="E-mail" sub="Resend" />
+        <Node x={720} y={176} w={144} h={56} variant="plain" label="E-mail" sub="Resend" />
       </DiagramFrame>
 
       <DiagramFrame layout="narrow" width={360} height={528} title={TITLE} accent={color}>
@@ -91,11 +91,11 @@ export function VizlyParcours({ color }: VizlyParcoursProps) {
         ))}
 
         <Edge name="Stripe → webhook" points={[[248, rowY(PAYMENT) + 34], [272, rowY(PAYMENT) + 34]]} />
-        <Node x={272} y={rowY(3)} w={88} h={68} variant="accent" label="Webhook" />
+        <Node x={272} y={rowY(3)} w={88} h={68} variant="plain" label="Webhook" />
         <Edge name="webhook → base" points={[[316, rowY(3) + 68], [316, rowY(4)]]} />
-        <Node x={272} y={rowY(4)} w={88} h={68} variant="accent" label="Base" sub={['plan du', 'compte']} />
+        <Node x={272} y={rowY(4)} w={88} h={68} variant="plain" label="Base" sub={['plan du', 'compte']} />
         <Edge name="base → e-mail" points={[[316, rowY(4) + 68], [316, rowY(5)]]} />
-        <Node x={272} y={rowY(5)} w={88} h={68} variant="accent" label="E-mail" sub="Resend" />
+        <Node x={272} y={rowY(5)} w={88} h={68} variant="plain" label="E-mail" sub="Resend" />
       </DiagramFrame>
     </>
   );

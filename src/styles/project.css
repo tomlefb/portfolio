@@ -401,6 +401,17 @@
     display: none;
   }
 
+  /* Sélecteurs renforcés : les règles de base des liens sont écrites plus bas dans le fichier. */
+  .pj-head__block .pj-head__links {
+    display: none;
+  }
+
+  .pj-head .pj-head__links--mobile {
+    display: flex;
+    grid-column: 1 / -1;
+    margin: -8px 0 22px;
+  }
+
   .pj-head__title {
     font-size: var(--title-size-sm);
     margin-top: 3cqw;
@@ -492,6 +503,17 @@
   .pj-next__title {
     font-size: 16cqw;
   }
+}
+
+/* Les liens sortants : dans l'aplat sur grand écran, sous la phrase sur mobile. */
+.pj-head__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+}
+
+.pj-head__links--mobile {
+  display: none;
 }
 
 .pj-head__link {

@@ -7,6 +7,7 @@ export const cyna: Project = {
   tagline:
     'Une plateforme e-commerce B2B de solutions de cybersécurité, conçue en équipe de quatre : site web, application mobile et back-office.',
   meta: "Projet d’école, équipe de 4 · 2025–2026",
+  githubUrl: 'https://github.com/CynaOrg/cyna-api',
   color: '#5B3FF0',
   onColor: '#FFFFFF',
   stack: [
@@ -78,7 +79,7 @@ export const cyna: Project = {
     },
     {
       title: 'Le plus dur',
-      body: 'Le plus dur n’a pas été technique. J’ai peu délégué : à deux, nous avons porté l’essentiel du développement au lieu de faire monter toute l’équipe en compétence. Avec le recul, une passerelle et huit services, c’était beaucoup pour une équipe de quatre.',
+      body: 'Le plus dur n’a pas été technique : tenir une architecture ambitieuse avec une équipe de quatre. Une passerelle et huit services, c’était beaucoup ; à deux, nous avons porté l’essentiel du backend pour livrer. Sur un prochain projet, je découperais le travail plus tôt pour que chacun prenne en main un service.',
     },
   ],
 };

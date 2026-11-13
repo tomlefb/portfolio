@@ -57,10 +57,12 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  /* Le nom part du haut, sous l'étiquette de couleur : il reste lisible même quand le bas de l'étagère
+     tombe sous le pli. */
+  justify-content: flex-start;
   align-items: center;
   width: var(--spine);
-  padding: 0 0 2.4cqw;
+  padding: 4cqw 0 0;
   border: 0;
   background: var(--paper);
   color: var(--ink);
@@ -228,9 +230,9 @@
 }
 
 .mn-art--nutriai .mn-phone { width: 11cqw; }
-.mn-art--nutriai .mn-phone--1 { left: 1cqw; top: 5cqw; }
-.mn-art--nutriai .mn-phone--2 { left: 12.5cqw; top: 9cqw; }
-.mn-art--nutriai .mn-phone--3 { left: 24cqw; top: 13cqw; }
+.mn-art--nutriai .mn-phone--1 { left: 3cqw; top: 5cqw; }
+.mn-art--nutriai .mn-phone--2 { left: 14cqw; top: 9cqw; }
+.mn-art--nutriai .mn-phone--3 { left: 25cqw; top: 13cqw; }
 
 .mn-art--lycee-hotelier .mn-phone { width: 13cqw; }
 .mn-art--lycee-hotelier .mn-phone--1 { left: 5cqw; top: 6cqw; }
@@ -284,6 +286,22 @@
     right: auto;
     width: clamp(10px, 2.4cqw, 16px);
     height: auto;
+  }
+
+  /* Un signe à droite dit que la tranche s'ouvre ; il devient « − » quand elle est ouverte. */
+  .mn-spine::after {
+    content: '+';
+    position: absolute;
+    right: var(--g);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .mn-slice.is-open .mn-spine::after {
+    content: '−';
   }
 
   .mn-spine__name,

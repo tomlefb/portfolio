@@ -23,7 +23,7 @@ export interface Metrics {
 
 export const METRICS: Record<Layout, Metrics> = {
   wide: { label: 17, sub: 15.5, arrow: 10 },
-  narrow: { label: 14, sub: 12.5, arrow: 8 },
+  narrow: { label: 14.5, sub: 13.5, arrow: 8 },
 };
 
 export interface DiagramTheme {

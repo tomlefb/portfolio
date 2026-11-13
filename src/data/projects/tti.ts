@@ -34,7 +34,7 @@ export const tti: Project = {
     { value: '1 738', label: 'stratégies testées sur l’historique' },
     { value: '18', label: 'pistes de recherche explorées' },
     { value: '147', label: 'résultats corrigés après vérification' },
-    { value: '0', label: 'stratégie retenue à ce jour' },
+    { value: '381', label: 'tests automatisés sur le moteur et le labo' },
   ],
   sections: [
     {

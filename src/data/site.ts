@@ -20,6 +20,6 @@ export const site: Site = {
   cv: '/CV_TOM.pdf',
   facts: [
     { label: "Aujourd’hui", value: 'Alternant développeur, Capgemini' },
-    { label: 'Études', value: 'Mastère Développement Full Stack, Sup de Vinci' },
+    { label: 'Études', value: 'Mastère Développement Full Stack, Sup de Vinci' },
   ],
 };

@@ -8,7 +8,7 @@ export const parcoursTeaser = {
 };
 
 export const parcoursIntro =
-  'Développeur à Rennes. BTS SIO, puis bachelor et mastère à Sup de Vinci, en alternance chez Capgemini depuis 2025.';
+  'Développeur à Rennes. BTS SIO, puis bachelor et mastère à Sup de Vinci, en alternance chez Capgemini depuis 2025.';
 
 export const parcoursGroups: ParcoursGroup[] = [
   { kind: 'formation', label: 'Formation' },
@@ -23,8 +23,8 @@ export const timeline: Timeline = {
   bars: [
     { lane: 'formation', from: 2022, to: 2023.5, title: 'Lycée', detail: 'Bac 2023' },
     { lane: 'formation', from: 2023.67, to: 2025.5, title: 'BTS SIO', detail: 'Pôle Sup de la Salle' },
-    { lane: 'formation', from: 2025.67, to: 2026.5, title: 'Bachelor', detail: 'Sup de Vinci' },
-    { lane: 'formation', from: 2026.67, to: 2028.5, title: 'Mastère', detail: 'Sup de Vinci', ongoing: true },
+    { lane: 'formation', from: 2025.67, to: 2026.5, title: 'Bachelor', detail: 'Sup de Vinci' },
+    { lane: 'formation', from: 2026.67, to: 2028.5, title: 'Mastère', detail: 'Sup de Vinci', ongoing: true },
     {
       lane: 'experience',
       from: 2025.67,
@@ -58,10 +58,10 @@ export const parcoursHighlights: ParcoursHighlight[] = [
     label: 'Aujourd’hui · Capgemini',
     current: true,
     title: 'Alternant développeur',
-    text: "Migration d’un logiciel Java pour un client grand compte, chiffrage, suivi des mises en production.",
+    text: "À deux sur l’application legacy d’un opérateur télécom : maintenance, évolutions et migration vers Java 25, avec l’IA au quotidien.",
   },
   {
-    label: 'Aujourd’hui · Sup de Vinci',
+    label: 'Aujourd’hui · Sup de Vinci',
     current: true,
     title: 'Mastère Full Stack',
     text: "Deux ans en alternance, jusqu’en 2028.",
@@ -82,21 +82,21 @@ export const parcours: ParcoursItem[] = [
     period: 'Depuis sept. 2025',
     title: 'Alternant développeur',
     place: 'Capgemini, Cesson-Sévigné',
-    text: "Migration d’un logiciel Java pour un client grand compte. Je participe au chiffrage et au suivi des mises en production.",
+    text: "À deux sur l’application legacy de gestion des abonnements box d’un opérateur télécom : maintenance, évolutions et migration vers Java 25. Nous y testons l’IA dans le développement, que j’utilise au quotidien. Réunions régulières avec le client, chiffrage et suivi des mises en production.",
     current: true,
   },
   {
     kind: 'formation',
     period: 'Depuis sept. 2026',
     title: 'Mastère Développement Full Stack',
-    place: 'Sup de Vinci, Rennes',
+    place: 'Sup de Vinci, Rennes',
     text: 'En alternance, toujours chez Capgemini.',
   },
   {
     kind: 'formation',
     period: '2025 – 2026',
     title: 'Bachelor 3 Développement',
-    place: 'Sup de Vinci, Rennes',
+    place: 'Sup de Vinci, Rennes',
     text: 'Projet annuel CYNA en équipe de quatre, comme développeur backend et sous-chef de projet.',
   },
   {

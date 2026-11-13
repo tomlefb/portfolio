@@ -78,13 +78,10 @@
   left: calc(var(--now) * 100%);
   top: 2px;
   transform: translateX(calc(-100% + 3px));
-  padding: 4px 7px 3px;
-  background: var(--today);
-  color: var(--paper);
-  font-size: 12px;
-  font-weight: 800;
-  font-stretch: 80%;
-  text-transform: uppercase;
+  padding: 0 7px 0 0;
+  color: var(--today);
+  font-size: 14px;
+  font-weight: 700;
   line-height: 1;
   white-space: nowrap;
 }
@@ -385,9 +382,9 @@
     top: calc(var(--now) * 100%);
     transform: translateY(-50%);
     max-width: calc(var(--axis-w) - 8px);
-    padding: 3px 4px 2px;
-    font-size: 11px;
-    font-stretch: 68%;
+    padding: 0;
+    font-size: 12px;
+    background: var(--paper);
   }
 
   .tl__now {
@@ -482,7 +479,9 @@
     left: 22px;
     right: 0;
     top: -2px;
+    padding: 0 0 3px;
     text-align: left;
     white-space: normal;
+    background: var(--paper);
   }
 }

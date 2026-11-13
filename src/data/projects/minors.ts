@@ -7,6 +7,8 @@ export const minorProjects: Project[] = [
     tier: 'mineur',
     tagline:
       'Une application de suivi nutritionnel avec génération de repas par IA et scan de code-barres.',
+    indexLine: "Suivi nutritionnel, repas générés par IA et scan de code-barres.",
+    indexMeta: 'Perso · web et mobile',
     meta: 'Projet personnel, seul',
     color: '#22B573',
     onColor: '#0E0E0E',
@@ -23,6 +25,8 @@ export const minorProjects: Project[] = [
     tier: 'mineur',
     tagline:
       "Une interface de chat pour des modèles d'IA qui tournent en local avec Ollama, sans envoi de données.",
+    indexLine: "Un chat avec des modèles d'IA qui tournent en local, sans envoi de données.",
+    indexMeta: 'Perso · open source',
     meta: 'Projet personnel, seul',
     color: '#2456E6',
     onColor: '#FFFFFF',
@@ -39,6 +43,8 @@ export const minorProjects: Project[] = [
     tier: 'mineur',
     tagline:
       "Une application web de suivi des stages et des évaluations des élèves d'un lycée hôtelier.",
+    indexLine: "Le suivi des stages et des évaluations des élèves d'un lycée hôtelier.",
+    indexMeta: 'Stage · 2025',
     meta: 'Stage, lycée hôtelier Sainte-Thérèse · janv. – févr. 2025',
     color: '#E9C07A',
     onColor: '#0E0E0E',
@@ -54,6 +60,8 @@ export const minorProjects: Project[] = [
     tier: 'mineur',
     tagline:
       "Une application qui calcule l'empreinte carbone d'un site physique, réalisée en deux jours de hackathon sur un sujet Capgemini, qui a validé la solution.",
+    indexLine: "L'empreinte carbone d'un site physique, calculée en deux jours de hackathon.",
+    indexMeta: 'Hackathon · 2026',
     meta: 'Hackathon de 2 jours, équipe de 4 · mars 2026',
     color: '#0F7B45',
     onColor: '#FFFFFF',

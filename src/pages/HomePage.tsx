@@ -1,10 +1,10 @@
 import { Hero } from '../components/home/Hero';
-import { OthersTeaser } from '../components/home/OthersTeaser';
+import { OthersIndex } from '../components/home/OthersIndex';
 import { SpreadCyna } from '../components/home/SpreadCyna';
 import { SpreadTti } from '../components/home/SpreadTti';
 import { SpreadVizly } from '../components/home/SpreadVizly';
 import { PageShell } from '../components/layout/PageShell';
-import { getProject, minorProjects } from '../data/projects';
+import { getProject, minorProjects, othersIndexLabels } from '../data/projects';
 import { site } from '../data/site';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
@@ -22,7 +22,7 @@ export function HomePage() {
         {vizly && <SpreadVizly project={vizly} />}
         {tti && <SpreadTti project={tti} />}
         {cyna && <SpreadCyna project={cyna} />}
-        <OthersTeaser projects={minorProjects} />
+        <OthersIndex projects={minorProjects} title={othersIndexLabels.title} allLabel={othersIndexLabels.all} />
       </section>
     </PageShell>
   );

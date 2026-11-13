@@ -44,6 +44,10 @@ export interface Project {
   sections?: ProjectSection[];
   githubUrl?: string;
   liveUrl?: string;
+  /** Contexte très court, affiché dans l'index de l'accueil (ex. « Stage · 2025 »). */
+  indexMeta?: string;
+  /** Phrase courte pour l'index de l'accueil ; à défaut, l'accroche. */
+  indexLine?: string;
 }
 
 export type ParcoursKind = 'experience' | 'formation';

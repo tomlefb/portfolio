@@ -17,7 +17,7 @@ src/
 ├── pages/            # HomePage, ProjectPage, OtherProjectsPage, ParcoursPage, NotFoundPage, BricksPage
 ├── components/
 │   ├── layout/       # PageShell, SiteNav, ContactFooter, ScrollManager
-│   ├── home/         # Hero, SpreadVizly, SpreadTti, SpreadCyna, OthersTeaser
+│   ├── home/         # Hero, SpreadVizly, SpreadTti, SpreadCyna, OthersIndex
 │   ├── project/      # en-tête, faits, bande d'images, chiffres, sections, projet mineur
 │   ├── parcours/     # en-tête au portrait, tableau, lignes de technos
 │   ├── diagrams/     # kit SVG + un schéma par projet majeur
@@ -35,7 +35,7 @@ Commandes : `npm run dev`, `npm run build`, `npm run lint`, `npm test`, `npm run
 
 | Route | Contenu |
 |---|---|
-| `/` | Nom en très grand, présentation, les trois projets majeurs, renvoi vers les autres |
+| `/` | Nom en très grand, présentation, les trois projets majeurs, puis les autres projets en index (une ligne par projet, couleur du projet au survol, sans image) |
 | `/projets/:id` | Une page par projet majeur : `vizly`, `tti`, `cyna` |
 | `/autres-projets` | NutriAI, IALocal, Gestion des stages, EcoPursue |
 | `/parcours` | Portrait, frise du parcours (formation et expérience sur un axe en années), trois cases sur le présent, technos |

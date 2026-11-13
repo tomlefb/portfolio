@@ -286,41 +286,79 @@
   padding-top: 22cqw;
 }
 
-/* Renvoi vers les autres projets */
-.hm-others {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 18px 28px;
-  align-items: end;
-  padding: 26px var(--g) 30px;
+/* Autres projets : un sommaire en lignes */
+.hm-index__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  padding: 20px var(--g);
+  border-bottom: 3px solid var(--ink);
 }
 
-.hm-others__label {
-  grid-column: 1 / -1;
+.hm-index__title {
   font-size: 15px;
   font-weight: 600;
 }
 
-.hm-others__names {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.hm-index__all {
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: 2px solid currentColor;
 }
 
-.hm-others__names li {
-  font-size: 5.6cqw;
-  padding: 0.14em 0.16em 0.04em;
-}
-
-.hm-others__more {
-  font-size: 17px;
-  font-weight: 700;
-  border-bottom: 3px solid currentColor;
-  white-space: nowrap;
-}
-
-.hm-others__more::after {
+.hm-index__all::after {
   content: ' →';
+}
+
+.hm-index__row {
+  display: grid;
+  grid-template-columns: 1.1fr 1.7fr 0.8fr 48px;
+  gap: 28px;
+  align-items: center;
+  padding: clamp(18px, 1.7cqw, 26px) var(--g);
+  border-bottom: 1px solid var(--ink);
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.hm-index li:last-child .hm-index__row {
+  border-bottom: 3px solid var(--ink);
+}
+
+.hm-index__row:hover,
+.hm-index__row:focus-visible {
+  background-color: var(--pc);
+  color: var(--pon);
+}
+
+.hm-index__name {
+  font-size: clamp(28px, 3.2cqw, 48px);
+}
+
+.hm-index__line {
+  font-size: 17px;
+  line-height: 1.38;
+  font-weight: 500;
+  max-width: 52ch;
+}
+
+.hm-index__meta {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.72;
+}
+
+.hm-index__go {
+  justify-self: end;
+  font-size: 28px;
+  font-weight: 700;
+  transition: transform 0.2s;
+}
+
+.hm-index__row:hover .hm-index__go {
+  transform: translateX(6px);
 }
 
 /* Haut de page, jusqu'à 1199 px : les deux faits passent sous le nom, la phrase reste à droite de « TOM ». */
@@ -358,6 +396,25 @@
 
 /* Intermédiaire : mêmes imbrications, textes sortis des zones absolues. */
 @container (max-width: 999px) {
+  /* Index : le contexte passe sous la phrase. */
+  .hm-index__row {
+    grid-template-columns: 0.9fr 1.6fr 40px;
+    gap: 6px 24px;
+  }
+
+  .hm-index__name {
+    grid-row: span 2;
+  }
+
+  .hm-index__meta {
+    grid-column: 2;
+  }
+
+  .hm-index__go {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+
   /* Vizly : l'aplat porte les images puis le texte. */
   .hm-vizly {
     display: block;
@@ -502,9 +559,6 @@
     font-size: 16px;
   }
 
-  .hm-others__names li {
-    font-size: 7cqw;
-  }
 }
 
 /* Mobile */
@@ -654,22 +708,35 @@
     top: 38cqw;
   }
 
-  .hm-others {
-    grid-template-columns: 1fr;
-    padding: 22px var(--g) 26px;
+  .hm-index__row {
+    grid-template-columns: 1fr auto;
+    gap: 6px 12px;
   }
 
-  .hm-others__names li {
-    font-size: 10.5cqw;
+  .hm-index__line,
+  .hm-index__meta {
+    grid-column: 1 / -1;
   }
 
-  .hm-others__more {
-    justify-self: start;
+  .hm-index__go {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .hm-index__name {
+    grid-row: auto;
+    font-size: 9cqw;
+  }
+
+  .hm-index__line {
+    font-size: 16px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hm-block {
+  .hm-block,
+  .hm-index__row,
+  .hm-index__go {
     transition: none;
   }
 }

@@ -19,3 +19,9 @@ export function getNextMajor(id: string): Project {
   const index = majorProjects.findIndex((project) => project.id === id);
   return majorProjects[(index + 1) % majorProjects.length];
 }
+
+/** Libellés de l'index des autres projets sur l'accueil. */
+export const othersIndexLabels = {
+  title: 'Autres projets',
+  all: 'Tous les détails',
+};

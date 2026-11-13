@@ -29,12 +29,37 @@ test.describe('accueil', () => {
     }
   });
 
-  test('renvoie vers la page des autres projets en les nommant', async ({ page }) => {
-    const teaser = page.getByTestId('others-teaser');
-    await expect(teaser).toHaveAttribute('href', '/autres-projets');
-    for (const name of ['NutriAI', 'IALocal', 'Gestion des stages', 'EcoPursue']) {
-      await expect(teaser.getByText(name)).toBeVisible();
+  test('liste les autres projets en index, chacun menant à sa fiche', async ({ page }) => {
+    const index = page.getByTestId('others-index');
+    await expect(index.getByRole('link', { name: 'Tous les détails' })).toHaveAttribute('href', '/autres-projets');
+    const rows = index.getByTestId('others-row');
+    await expect(rows).toHaveCount(4);
+    const expected = [
+      ['NutriAI', '/autres-projets#nutriai'],
+      ['IALocal', '/autres-projets#ialocal'],
+      ['Gestion des stages', '/autres-projets#lycee-hotelier'],
+      ['EcoPursue', '/autres-projets#ecopursue'],
+    ];
+    for (const [i, [name, href]] of expected.entries()) {
+      await expect(rows.nth(i)).toHaveAttribute('href', href);
+      await expect(rows.nth(i).getByRole('heading', { level: 3 })).toHaveText(name);
     }
+    // Pas d'image qui surgit au survol : l'index reste typographique.
+    await expect(index.locator('img')).toHaveCount(0);
+  });
+
+  test('une ligne de l’index prend la couleur de son projet au survol', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    const row = page.getByTestId('others-row').first();
+    await row.scrollIntoViewIfNeeded();
+    await row.hover();
+    await expect(row).toHaveCSS('background-color', 'rgb(34, 181, 115)');
+  });
+
+  test('un lien de l’index amène au bon projet sur la page Autres projets', async ({ page }) => {
+    await page.getByTestId('others-row').nth(3).click();
+    await expect(page).toHaveURL(/\/autres-projets#ecopursue$/);
+    await expect(page.locator('#ecopursue')).toBeInViewport();
   });
 
   test('donne un nom court à chaque lien de projet', async ({ page }) => {

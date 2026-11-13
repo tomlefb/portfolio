@@ -15,7 +15,7 @@ export function MinorProject({ project }: MinorProjectProps) {
   const kind = desktop ? 'desktop' : 'phones';
 
   return (
-    <article className={`mn mn--${kind}`} style={style} data-testid="minor-project">
+    <article id={project.id} className={`mn mn--${kind}`} style={style} data-testid="minor-project">
       <div className="mn__art">
         <h2 className="title-xl mn__title">{project.title}</h2>
         {/* La scène remonte sous la dernière ligne du titre : l'aplat mord le bas des lettres. */}

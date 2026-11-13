@@ -29,6 +29,7 @@
 /* Deux projets côte à côte partagent les hauteurs de leurs lignes (sous-grille) :
    leurs textes commencent à la même hauteur même si un titre passe sur deux lignes. */
 .mn {
+  scroll-margin-top: 12px;
   border-bottom: 3px solid var(--ink);
   display: grid;
   grid-row: span 2;

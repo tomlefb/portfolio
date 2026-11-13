@@ -38,7 +38,7 @@ Commandes : `npm run dev`, `npm run build`, `npm run lint`, `npm test`, `npm run
 
 | Route | Contenu |
 |---|---|
-| `/` | Nom en très grand, présentation, les trois projets majeurs, puis les autres projets en index (une ligne par projet, couleur du projet au survol, sans image), puis « PARCOURS » en très grand sur un aplat anis qui mène à la page Parcours |
+| `/` | Nom en très grand, présentation, les trois projets majeurs, puis les autres projets en index (une ligne par projet, gris au survol, sans image : les couleurs des petits projets restent sur leur page), puis « PARCOURS » en très grand sur un aplat anis qui mène à la page Parcours |
 | `/projets/:id` | Une page par projet majeur : `vizly`, `tti`, `cyna` |
 | `/autres-projets` | NutriAI, IALocal, Stages (l’appli de gestion des stages du lycée hôtelier), EcoPursue, rangés en tranches : une seule ouverte à la fois |
 | `/parcours` | Portrait, frise du parcours (formation et expérience sur un axe en années), trois cases sur le présent, technos |

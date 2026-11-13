@@ -48,14 +48,16 @@ test.describe('accueil', () => {
     await expect(index.locator('img')).toHaveCount(0);
   });
 
-  test('une ligne de l’index prend la couleur de son projet au survol', async ({ page }) => {
+  test('une ligne de l’index passe en gris au survol', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     // Sans défilement doux : sinon la souris peut survoler une autre ligne pendant que la page défile.
     await page.emulateMedia({ reducedMotion: 'reduce' });
     const row = page.getByTestId('others-row').first();
     await row.scrollIntoViewIfNeeded();
     await row.hover();
-    await expect(row).toHaveCSS('background-color', 'rgb(244, 166, 192)');
+    // Sur l'accueil, le survol reste en gris : les couleurs des petits projets sont réservées à leur page.
+    await expect(row).toHaveCSS('background-color', 'rgb(211, 213, 215)');
+    await expect(row).toHaveCSS('color', 'rgb(14, 14, 14)');
   });
 
   test('un lien de l’index amène au bon projet sur la page Autres projets', async ({ page }) => {

@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import type { Project } from '../../types';
 
@@ -25,7 +24,6 @@ export function OthersIndex({ projects, title, allLabel }: OthersIndexProps) {
               to={`/autres-projets#${project.id}`}
               className="hm-index__row"
               data-testid="others-row"
-              style={{ '--pc': project.color, '--pon': project.onColor } as CSSProperties}
             >
               <h3 className="title-md hm-index__name">{project.title}</h3>
               <p className="hm-index__line">{project.indexLine ?? project.tagline}</p>

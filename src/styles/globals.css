@@ -8,6 +8,8 @@
   --g: 28px; /* marge latérale */
   /* La couleur du présent (Parcours) : barres en cours, cases « Aujourd’hui », renvoi depuis l’accueil. */
   --present: #c9e86a;
+  /* Un cran plus foncé que le fond : survol des lignes de l’index des autres projets. */
+  --paper-dim: #d3d5d7;
 }
 
 /* Trois largeurs : mobile (< 640 px), intermédiaire (640 à 999 px), large. */

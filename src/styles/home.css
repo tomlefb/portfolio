@@ -464,10 +464,10 @@
   border-bottom: 3px solid var(--ink);
 }
 
+/* Sur l'accueil, le survol reste en gris : les couleurs des petits projets sont réservées à leur page. */
 .hm-index__row:hover,
 .hm-index__row:focus-visible {
-  background-color: var(--pc);
-  color: var(--pon);
+  background-color: var(--paper-dim);
 }
 
 .hm-index__name {

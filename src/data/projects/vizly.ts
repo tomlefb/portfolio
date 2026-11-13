@@ -43,7 +43,7 @@ export const vizly: Project = {
     { label: 'Technos', value: 'Next.js 15, TypeScript, Supabase, Stripe, Resend, Railway' },
   ],
   figures: [
-    { value: '5', label: 'semaines de développement, seul' },
+    { value: '5', label: 'semaines de travail, seul, de mars à mai' },
     { value: '8', label: 'templates' },
     { value: '19', label: 'migrations de base' },
     { value: '33', label: 'tests de bout en bout' },

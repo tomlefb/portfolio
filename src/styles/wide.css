@@ -1,82 +1,83 @@
 /*
- * Écrans démesurés (au-delà de 3840 px), où la page a fini de grossir (voir index.html).
+ * Écrans où la page n'occupe plus toute la largeur : au-delà de 3840 px, ou écran très bas
+ * (le grossissement est limité par la hauteur). index.html pose alors data-capped sur <html>.
  * Le contenu reste centré, mais les filets, les aplats et le pied de page filent
  * jusqu'aux bords de l'écran : le site occupe toute la largeur, sans cadre.
- * La page étant agrandie deux fois ici, 100vw vaut le double de l'écran : c'est voulu,
- * les prolongements dépassent largement les bords.
+ * Les prolongements utilisent 100vw : grossis par le zoom, ils dépassent largement les bords, c'est voulu.
  */
 
-@media (min-width: 3841px) {
-  .shell {
-    overflow-x: visible;
-  }
+html[data-capped='true'] .shell {
+  overflow-x: visible;
+}
 
-  /* Filets horizontaux prolongés des deux côtés. */
-  .hm-rubric,
-  .hm-spread,
-  .pj-facts,
-  .pj-band,
-  .pj-figures,
-  .pj-section,
-  .pj-next,
-  .pc-head,
-  .tl,
-  .pc-high,
-  .pc-col__label--wide,
-  .mn-grid {
-    border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 100vw;
-  }
+/* Filets horizontaux prolongés des deux côtés. */
+html[data-capped='true'] .hm-rubric,
+html[data-capped='true'] .hm-spread,
+html[data-capped='true'] .pj-facts,
+html[data-capped='true'] .pj-band,
+html[data-capped='true'] .pj-figures,
+html[data-capped='true'] .pj-section,
+html[data-capped='true'] .pj-next,
+html[data-capped='true'] .pc-head,
+html[data-capped='true'] .tl,
+html[data-capped='true'] .pc-high,
+html[data-capped='true'] .pc-col__label--wide,
+html[data-capped='true'] .mn-grid,
+html[data-capped='true'] .hm-index__head,
+html[data-capped='true'] .hm-index__row,
+html[data-capped='true'] .pc-techs {
+  border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 100vw;
+}
 
-  /* Filets des colonnes : celle de gauche file à gauche, celle de droite à droite. */
-  .mn:nth-child(odd) {
-    border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 0 0 100vw;
-  }
+/* Filets des colonnes : celle de gauche file à gauche, celle de droite à droite. */
+html[data-capped='true'] .mn:nth-child(odd) {
+  border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 0 0 100vw;
+}
 
-  .mn:nth-child(even) {
-    border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 100vw 0 0;
-  }
+html[data-capped='true'] .mn:nth-child(even) {
+  border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 100vw 0 0;
+}
 
-  .mn:nth-child(odd) {
-    border-right: 3px solid var(--ink);
-  }
+html[data-capped='true'] .mn:nth-child(odd) {
+  border-right: 3px solid var(--ink);
+}
 
-  /* Fonds pleins prolongés des deux côtés. */
-  .ft {
-    box-shadow: 0 0 0 100vmax var(--ink);
-    clip-path: inset(0 -100vmax);
-  }
+/* Fonds pleins prolongés des deux côtés. */
+html[data-capped='true'] .ft {
+  box-shadow: 0 0 0 100vmax var(--ink);
+  clip-path: inset(0 -100vmax);
+}
 
-  .pj-next,
-  .pj-figures--color {
-    box-shadow: 0 0 0 100vmax var(--pc);
-    clip-path: inset(0 -100vmax);
-  }
+html[data-capped='true'] .pj-next,
+html[data-capped='true'] .pj-figures--color {
+  box-shadow: 0 0 0 100vmax var(--pc);
+  clip-path: inset(0 -100vmax);
+}
 
 
-  /* Aplats de couleur : chacun file vers le bord qu'il touche. */
-  .hm-vizly .hm-block,
-  .hm-tti .hm-block {
-    border-image: conic-gradient(var(--pc) 0 0) fill 0 / 0 / 0 0 0 100vw;
-  }
+/* Aplats de couleur : chacun file vers le bord qu'il touche. */
+html[data-capped='true'] .hm-vizly .hm-block,
+html[data-capped='true'] .hm-tti .hm-block {
+  border-image: conic-gradient(var(--pc) 0 0) fill 0 / 0 / 0 0 0 100vw;
+}
 
-  .hm-cyna .hm-block,
-  .pj-head__block,
-  .pj-band__block,
-  .mn:nth-child(even) .mn__block {
-    border-image: conic-gradient(var(--pc) 0 0) fill 0 / 0 / 0 100vw 0 0;
-  }
+html[data-capped='true'] .hm-cyna .hm-block,
+html[data-capped='true'] .pj-head__block,
+html[data-capped='true'] .pj-band__block,
+html[data-capped='true'] .mn:nth-child(even) .mn__block {
+  border-image: conic-gradient(var(--pc) 0 0) fill 0 / 0 / 0 100vw 0 0;
+}
 
-  /* Les zones rognées ne le sont plus qu'en hauteur, pour laisser filer aplats et images. */
-  .hm-spread,
-  .pj-band,
-  .pc-head,
-  .mn:nth-child(even) .mn__stage {
-    overflow: visible;
-    clip-path: inset(0 -100vw);
-  }
+/* Les zones rognées ne le sont plus qu'en hauteur, pour laisser filer aplats et images. */
+html[data-capped='true'] .hm-spread,
+html[data-capped='true'] .pj-band,
+html[data-capped='true'] .pc-head,
+html[data-capped='true'] .mn:nth-child(even) .mn__stage {
+  overflow: visible;
+  clip-path: inset(0 -100vw);
+}
 
-  /* Le portrait reste calé contre le bord de l'écran. */
-  .pc-head__portrait {
-    right: calc((100cqw - 50vw) / 2);
-  }
+/* Le portrait reste calé contre le bord de l'écran. */
+html[data-capped='true'] .pc-head__portrait {
+  right: calc((100cqw - 100vw / var(--page-zoom, 1)) / 2);
 }

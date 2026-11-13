@@ -15,13 +15,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet" />
 
-    <!-- Au-delà de 1920 px, la page entière grossit en proportion de l'écran (jusqu'à ×2). -->
+    <!--
+      Au-delà de 1600 px de large, la page entière grossit en proportion de l'écran (jusqu'à ×2,4).
+      Le grossissement est aussi limité par la hauteur, pour qu'un écran très bas montre encore un projet.
+      Quand la page n'occupe plus toute la largeur, data-capped active les prolongements de styles/wide.css.
+    -->
     <script>
       (function () {
+        var BASE = 1600, MAX = 2.4, MIN_HEIGHT = 760;
         var root = document.documentElement;
         function setZoom() {
           var width = root.clientWidth || window.innerWidth;
-          root.style.setProperty('--page-zoom', Math.min(2, Math.max(1, width / 1920)).toFixed(4));
+          var height = window.innerHeight || width;
+          var zoom = Math.max(1, Math.min(MAX, width / BASE, height / MIN_HEIGHT));
+          root.style.setProperty('--page-zoom', zoom.toFixed(4));
+          if (BASE * zoom < width - 1) root.dataset.capped = 'true';
+          else delete root.dataset.capped;
         }
         setZoom();
         window.addEventListener('resize', setZoom);

@@ -50,6 +50,8 @@ test.describe('accueil', () => {
 
   test('une ligne de l’index prend la couleur de son projet au survol', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
+    // Sans défilement doux : sinon la souris peut survoler une autre ligne pendant que la page défile.
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     const row = page.getByTestId('others-row').first();
     await row.scrollIntoViewIfNeeded();
     await row.hover();

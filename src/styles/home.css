@@ -46,7 +46,7 @@
 .hm-hero__text dl {
   display: grid;
   gap: 1.2cqw;
-  font-size: 15px;
+  font-size: 16px;
   padding-top: 0.3cqw;
 }
 
@@ -117,7 +117,7 @@
 }
 
 .hm-cap__meta {
-  font-size: 14px;
+  font-size: 15px;
   opacity: 0.78;
   margin: 6px 0 14px;
 }
@@ -169,7 +169,7 @@
   right: 5cqw;
   top: 19cqw;
   width: 52cqw;
-  height: 32.5cqw;
+  height: 29.25cqw;
   z-index: 2;
 }
 
@@ -455,7 +455,7 @@
     right: -3px;
     top: 26cqw;
     width: 68cqw;
-    height: 42.5cqw;
+    height: 38.25cqw;
   }
 
   .hm-vizly__phone {
@@ -646,7 +646,7 @@
     right: -3px;
     top: 31cqw;
     width: 72cqw;
-    height: 50cqw;
+    height: 40.5cqw;
   }
 
   .hm-vizly__phone {

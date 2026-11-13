@@ -26,6 +26,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
+    /* Ce qui file jusqu'au bord de l'écran (captures, aplats) est coupé net, sans défilement horizontal. */
+    overflow-x: clip;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -39,7 +41,7 @@
     color: var(--ink);
     font-family: Archivo, system-ui, sans-serif;
     font-size: 16px;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   ::selection {
@@ -57,8 +59,8 @@
   /* Conteneur de page : les compositions se règlent en unités cqw. */
   .shell {
     container-type: inline-size;
-    max-width: 1920px;
-    /* Sur plus grand que 1920 px, tout grossit ensemble : voir le script de index.html. */
+    max-width: 1600px;
+    /* Au-delà de 1600 px, tout grossit ensemble : voir le script de index.html. */
     zoom: var(--page-zoom, 1);
     margin-inline: auto;
     overflow-x: clip;

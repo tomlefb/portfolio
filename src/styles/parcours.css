@@ -259,6 +259,9 @@
 .pc-techs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  /* Un espace avant le pied de page : leurs colonnes ne tombent pas au même endroit. */
+  border-bottom: 3px solid var(--ink);
+  margin-bottom: clamp(40px, 4cqw, 72px);
 }
 
 .pc-tech {

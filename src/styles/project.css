@@ -107,7 +107,7 @@
 }
 
 .pj-facts dt {
-  font-size: 14px;
+  font-size: 15px;
   opacity: 0.66;
   margin-bottom: 6px;
 }
@@ -245,6 +245,7 @@
 }
 
 .pj-section__text > p {
+  max-width: 62ch;
   font-size: clamp(19px, 1.9cqw, 27px);
   line-height: 1.38;
   font-weight: 500;

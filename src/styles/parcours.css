@@ -341,7 +341,8 @@
 
   .pc-head__title {
     position: static;
-    margin-top: 2cqw;
+    /* Un peu d'air sous la grille de navigation. */
+    margin-top: 22px;
   }
 
   .pc-head__intro {

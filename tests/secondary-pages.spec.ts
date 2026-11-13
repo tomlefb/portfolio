@@ -235,3 +235,37 @@ test.describe('parcours', () => {
     await expect(page.getByAltText('Portrait de Tom Lefevre-Bonzon')).toBeHidden();
   });
 });
+
+test.describe('mobile : en-têtes et accordéon', () => {
+  for (const route of ['/parcours', '/autres-projets']) {
+    test(`le titre de ${route} respire sous la navigation`, async ({ page }) => {
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.goto(route);
+      await page.evaluate(() => document.fonts.ready);
+      const gap = await page.evaluate(() => {
+        const nav = document.querySelector('nav[aria-label="Navigation principale"]')!.getBoundingClientRect();
+        const h1 = document.querySelector('main h1')!.getBoundingClientRect();
+        return h1.top - nav.bottom;
+      });
+      expect(gap).toBeGreaterThanOrEqual(16);
+    });
+  }
+
+  test('le titre « Autres projets » n’est pas souligné par un filet sur mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/autres-projets');
+    await expect(page.locator('.mn-head p')).toHaveCSS('border-top-width', '0px');
+  });
+
+  test('sur mobile, la tranche se déplie progressivement', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/autres-projets');
+    await page.getByRole('button', { name: 'IALocal' }).click();
+    await page.waitForTimeout(150);
+    const midway = await page.locator('#ialocal .mn-body').evaluate((el) => el.getBoundingClientRect().height);
+    await page.waitForTimeout(700);
+    const full = await page.locator('#ialocal .mn-body').evaluate((el) => el.getBoundingClientRect().height);
+    expect(midway).toBeGreaterThan(0);
+    expect(midway).toBeLessThan(full);
+  });
+});

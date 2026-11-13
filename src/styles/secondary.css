@@ -248,6 +248,7 @@
   .mn-slice,
   .mn-spine,
   .mn-spine__name,
+  .mn-body,
   .mn-body[aria-hidden='true'] {
     transition: none;
   }
@@ -293,13 +294,26 @@
     opacity: 1;
   }
 
+  /* La tranche se déplie en douceur, comme sur grand écran (hauteur animée de 0 à son contenu). */
+  .mn-body {
+    display: grid;
+    flex: none;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
   .mn-body[aria-hidden='true'] {
-    display: none;
+    grid-template-rows: 0fr;
+    transition:
+      grid-template-rows 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+      visibility 0s 0.5s;
   }
 
   .mn-body__inner {
     position: relative;
     width: 100%;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .mn-body__plate,
@@ -342,7 +356,19 @@
 }
 
 @container (max-width: 639px) {
+  /* Un peu d'air sous la grille de navigation. */
+  .mn-head {
+    padding-top: 22px;
+  }
+
   .mn-head h1 {
     font-size: 12.4cqw;
+  }
+
+  /* Sous le titre, un filet se lirait comme un soulignement : sur mobile, la phrase suit sans filet. */
+  .mn-head p {
+    margin-top: 10px;
+    padding-top: 0;
+    border-top: 0;
   }
 }

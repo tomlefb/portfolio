@@ -2,7 +2,7 @@
 
 .ft {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   background: var(--ink);
   color: var(--paper);
 }
@@ -32,45 +32,50 @@
 }
 
 .ft-mail {
-  display: inline-flex;
+  display: flex;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 6px 14px;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: inherit;
-  font-family: inherit;
+}
+
+.ft-mail__address {
   font-size: clamp(26px, 2.9cqw, 44px);
   font-weight: 800;
   font-stretch: 76%;
   letter-spacing: -0.01em;
   line-height: 1;
-  text-align: left;
-  cursor: pointer;
-}
-
-.ft-mail__address {
   border-bottom: 3px solid transparent;
   transition: border-color 0.15s;
 }
 
-.ft-mail:hover .ft-mail__address,
-.ft-mail:focus-visible .ft-mail__address {
+.ft-mail__address:hover,
+.ft-mail__address:focus-visible {
   border-color: currentColor;
 }
 
-.ft-mail:focus-visible {
-  outline-color: var(--paper);
-}
-
-.ft-mail__hint {
+.ft-mail__copy {
+  padding: 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: inherit;
+  font-family: inherit;
   font-size: 14px;
   font-weight: 600;
-  font-stretch: 100%;
-  letter-spacing: 0;
-  opacity: 0.62;
+  opacity: 0.72;
+  cursor: pointer;
   white-space: nowrap;
+}
+
+.ft-mail__copy:hover,
+.ft-mail__copy:focus-visible {
+  opacity: 1;
+  border-color: currentColor;
+}
+
+.ft-mail__copy:focus-visible,
+.ft-mail__address:focus-visible {
+  outline-color: var(--paper);
 }
 
 .ft__links {
@@ -105,7 +110,7 @@
 
 @container (max-width: 859px) {
   .ft {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .ft__cell--contact {
@@ -121,17 +126,22 @@
   }
 
   .ft-mail {
-    font-size: 6.4cqw;
     flex-direction: column;
+  }
+
+  .ft-mail__address {
+    font-size: 6.4cqw;
   }
 }
 
+/* Mobile : Ailleurs et Pages côte à côte, Ce site en dessous sur toute la largeur. */
 @container (max-width: 479px) {
   .ft {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .ft__cell + .ft__cell {
+  .ft__cell:last-child {
+    grid-column: 1 / -1;
     border-left: 0;
   }
 }

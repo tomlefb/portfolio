@@ -8,7 +8,7 @@ interface SpreadCynaProps {
   project: Project;
 }
 
-/** CYNA : trois écrans de l'application mobile en escalier sur l'aplat. */
+/** CYNA : trois écrans de l’application mobile en escalier sur l’aplat. */
 export function SpreadCyna({ project }: SpreadCynaProps) {
   const phones = project.images.filter((image) => image.kind === 'phone').slice(0, 3);
   const style = { '--pc': project.color, '--pon': project.onColor } as CSSProperties;

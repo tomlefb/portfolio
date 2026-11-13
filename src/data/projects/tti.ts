@@ -5,8 +5,8 @@ export const tti: Project = {
   title: 'TTI',
   tier: 'majeur',
   tagline:
-    'Un laboratoire de recherche de stratégies de trading : formuler une idée, la tester, la réfuter, et comprendre le marché.',
-  meta: 'Projet personnel de recherche, seul · depuis 2026',
+    'Un laboratoire de recherche de stratégies de trading : j’en ai conçu la méthode et l’architecture, des agents IA écrivent le code et lancent les tests.',
+  meta: 'Projet personnel de recherche · depuis 2026',
   color: '#F2431D',
   onColor: '#0E0E0E',
   stack: [
@@ -25,40 +25,40 @@ export const tti: Project = {
   ],
   images: [],
   facts: [
-    { label: 'Mon rôle', value: 'Conception, développement, direction de la recherche' },
-    { label: 'Équipe', value: 'Seul, avec des agents IA' },
+    { label: 'Mon rôle', value: 'Méthode de recherche, architecture, direction des agents IA' },
+    { label: 'Équipe', value: 'Seul ; le code est écrit par des agents IA' },
     { label: 'Période', value: 'Depuis avril 2026' },
     { label: 'Technos', value: 'Python, pandas, Databento, Quantower, pytest, Claude Code' },
   ],
   figures: [
-    { value: '1 738', label: 'sprints de recherche' },
-    { value: '147', label: 'rétractations' },
-    { value: '6', label: 'familles au cimetière' },
-    { value: '18', label: 'familles de stratégies explorées' },
+    { value: '1 738', label: 'stratégies testées sur l’historique' },
+    { value: '18', label: 'pistes de recherche explorées' },
+    { value: '147', label: 'résultats corrigés après vérification' },
+    { value: '0', label: 'stratégie retenue à ce jour' },
   ],
   sections: [
     {
       title: 'La méthode',
       items: [
         {
-          lead: 'Une idée par sprint',
-          text: 'Chaque sprint teste une famille de stratégies et n’y change qu’une seule chose concrète.',
+          lead: 'Une hypothèse à la fois',
+          text: 'Chaque série de tests porte sur une seule idée et n’en change qu’un paramètre, pour savoir ce qui fait vraiment la différence.',
         },
         {
           lead: 'Trois lectures',
-          text: 'Je lis les statistiques, les images des trades gagnants et perdants, puis le code, avant de choisir la modification suivante.',
+          text: 'Les statistiques, puis les graphiques des trades gagnants et perdants, puis le code, avant de décider de la suite.',
         },
         {
-          lead: 'Un entonnoir de portes',
-          text: 'Cohérence, causalité, significativité, viabilité, processus. On vérifie qu’une stratégie n’utilise aucune information du futur avant de juger son résultat.',
+          lead: 'Cinq contrôles successifs',
+          text: 'Cohérence, aucune information du futur, significativité statistique, viabilité, processus : une stratégie doit tous les passer.',
         },
         {
           lead: 'Rien sans preuve',
-          text: 'Tout chiffre cite un fichier témoin, et chaque sprint entre dans un journal que l’on ne peut qu’allonger, vérifié à chaque commit.',
+          text: 'Chaque chiffre renvoie à un fichier de résultats, et chaque test est consigné dans un journal qu’on ne peut pas réécrire, vérifié à chaque commit.',
         },
         {
-          lead: 'Un cerveau, des mains',
-          text: 'Un agent IA cadre l’hypothèse et audite ; d’autres, sans mémoire du contexte, lancent les calculs lourds.',
+          lead: 'Des agents IA comme équipe',
+          text: 'J’ai défini leurs rôles : un agent cadre l’hypothèse et vérifie les résultats, d’autres écrivent le code et lancent les calculs. Mon travail, c’est la méthode, l’architecture et les décisions.',
         },
       ],
     },
@@ -69,11 +69,11 @@ export const tti: Project = {
     },
     {
       title: 'Ce qui n’a pas marché',
-      body: 'Quatre familles de stratégies sont mortes sur le même mur : leur avantage reposait sur un prix d’exécution que le marché n’offrait pas réellement. Une stratégie prête à déployer a été réfutée quand je l’ai rejouée minute par minute : elle sortait parfois sur un prix antérieur à son entrée. Un audit interne a aussi montré que des centaines de sprints reposaient sur un outil de mesure mal calibré, et j’ai reconstruit l’infrastructure.',
+      body: 'Quatre pistes sont mortes sur le même mur : leur avantage reposait sur un prix d’exécution que le marché n’offrait pas réellement. Une stratégie prête à déployer a été réfutée quand je l’ai rejouée minute par minute : elle sortait parfois sur un prix antérieur à son entrée. Un audit interne a aussi montré que des centaines de tests reposaient sur un outil de mesure mal calibré, et j’ai reconstruit l’infrastructure.',
     },
     {
       title: 'Le plus dur',
-      body: 'Ne pas croire un bon résultat. Plusieurs pistes prometteuses venaient d’une erreur de mesure, pas du marché. J’ai appris à valider l’outil sur des réponses connues avant de mesurer quoi que ce soit, et à garder une mémoire fiable sur plus de 1 700 sprints.',
+      body: 'Ne pas croire un bon résultat. Plusieurs pistes prometteuses venaient d’une erreur de mesure, pas du marché. J’ai appris à valider l’outil sur des réponses connues avant de mesurer quoi que ce soit, et à garder une mémoire fiable sur plus de 1 700 tests.',
     },
   ],
 };

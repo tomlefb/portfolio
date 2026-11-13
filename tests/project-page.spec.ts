@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
 
 const MAJORS = [
-  { id: 'vizly', title: 'Vizly', next: 'TTI', nextHref: '/projets/tti', sections: ["Ce que j'ai fait", 'Comment c’est construit', 'Le plus dur'] },
+  { id: 'vizly', title: 'Vizly', next: 'TTI', nextHref: '/projets/tti', sections: ["Ce que j’ai fait", 'Comment c’est construit', 'Le plus dur'] },
   { id: 'tti', title: 'TTI', next: 'CYNA', nextHref: '/projets/cyna', sections: ['La méthode', 'Comment c’est construit', 'Ce qui n’a pas marché', 'Le plus dur'] },
-  { id: 'cyna', title: 'CYNA', next: 'Vizly', nextHref: '/projets/vizly', sections: ["Ce que j'ai fait", 'Comment c’est construit', "L'organisation", 'Le plus dur'] },
+  { id: 'cyna', title: 'CYNA', next: 'Vizly', nextHref: '/projets/vizly', sections: ["Ce que j’ai fait", 'Comment c’est construit', "L’organisation", 'Le plus dur'] },
 ];
 
 for (const project of MAJORS) {
@@ -56,6 +56,6 @@ for (const id of ['ialocal', 'xyz']) {
   test(`/projets/${id} affiche « Projet introuvable »`, async ({ page }) => {
     await page.goto(`/projets/${id}`);
     await expect(page.getByRole('heading', { name: 'Projet introuvable' })).toBeVisible();
-    await expect(page.getByRole('link', { name: "Retour à l'accueil" })).toBeVisible();
+    await expect(page.getByRole('link', { name: "Retour à l’accueil" })).toBeVisible();
   });
 }

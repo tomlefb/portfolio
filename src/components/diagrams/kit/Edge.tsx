@@ -1,4 +1,4 @@
-import { INK, useDiagram, type Point } from './theme';
+import { INK, STROKE, useDiagram, type Point } from './theme';
 
 interface EdgeProps {
   /** Points successifs ; chaque segment doit être horizontal ou vertical. */
@@ -6,13 +6,11 @@ interface EdgeProps {
   /** Nom lisible, utilisé par les tests et le débogage. */
   name: string;
   arrow?: boolean;
-  /** Liaison du chemin mis en avant : bande de couleur sous le filet. */
-  accent?: boolean;
 }
 
-/** Liaison orthogonale, filet encre de 2 px, petite flèche pleine à l'arrivée. */
-export function Edge({ points, name, arrow = true, accent = false }: EdgeProps) {
-  const { m, accent: color } = useDiagram();
+/** Liaison orthogonale, filet encre de 1,5 px, petite flèche pleine à l’arrivée. */
+export function Edge({ points, name, arrow = true }: EdgeProps) {
+  const { m } = useDiagram();
 
   if (import.meta.env.DEV) {
     points.forEach((p, i) => {
@@ -32,25 +30,14 @@ export function Edge({ points, name, arrow = true, accent = false }: EdgeProps) 
   const half = m.arrow * 0.45;
   const line = arrow ? [...points.slice(0, -1), base] : points;
   const d = line.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p[0]} ${p[1]}`).join(' ');
-  const full = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p[0]} ${p[1]}`).join(' ');
 
   return (
     <g data-dg="edge" data-name={name} data-points={points.map((p) => p.join(',')).join(' ')}>
-      {accent && (
-        <path
-          d={full}
-          fill="none"
-          stroke={color}
-          strokeWidth={10}
-          strokeLinejoin="miter"
-          vectorEffect="non-scaling-stroke"
-        />
-      )}
       <path
         d={d}
         fill="none"
         stroke={INK}
-        strokeWidth={2}
+        strokeWidth={STROKE}
         strokeLinejoin="miter"
         vectorEffect="non-scaling-stroke"
       />

@@ -1,5 +1,5 @@
 import { NodeText } from './NodeText';
-import { INK, PAPER, toLines } from './theme';
+import { INK, PAPER, STROKE, toLines } from './theme';
 
 interface CylinderProps {
   x: number;
@@ -23,7 +23,7 @@ export function Cylinder({ x, y, w, h, label, sub }: CylinderProps) {
     'Z',
   ].join(' ');
   const rim = `M ${x} ${y + ry} A ${rx} ${ry} 0 0 0 ${x + w} ${y + ry}`;
-  const stroke = { stroke: INK, strokeWidth: 2, vectorEffect: 'non-scaling-stroke' as const };
+  const stroke = { stroke: INK, strokeWidth: STROKE, vectorEffect: 'non-scaling-stroke' as const };
 
   return (
     <g data-dg="node">

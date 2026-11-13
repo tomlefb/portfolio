@@ -4,10 +4,11 @@ interface CopyEmailProps {
   email: string;
   copyHint: string;
   copiedHint: string;
+  copyLabel: string;
 }
 
-/** L'adresse e-mail : un clic la copie. Sans presse-papiers disponible, la messagerie s'ouvre. */
-export function CopyEmail({ email, copyHint, copiedHint }: CopyEmailProps) {
+/** L'adresse e-mail ouvre la messagerie ; le bouton à côté la copie. */
+export function CopyEmail({ email, copyHint, copiedHint, copyLabel }: CopyEmailProps) {
   const [copied, setCopied] = useState(false);
   const timer = useRef<number>();
 
@@ -20,16 +21,18 @@ export function CopyEmail({ email, copyHint, copiedHint }: CopyEmailProps) {
       window.clearTimeout(timer.current);
       timer.current = window.setTimeout(() => setCopied(false), 2200);
     } catch {
-      window.location.href = `mailto:${email}`;
+      // Sans presse-papiers disponible, le lien mailto reste là.
     }
   }
 
   return (
-    <button type="button" className="ft-mail" onClick={copy}>
-      <span className="ft-mail__address">{email}</span>
-      <span className="ft-mail__hint" aria-live="polite">
-        {copied ? copiedHint : copyHint}
-      </span>
-    </button>
+    <div className="ft-mail">
+      <a className="ft-mail__address" href={`mailto:${email}`}>
+        {email}
+      </a>
+      <button type="button" className="ft-mail__copy" onClick={copy} aria-label={copyLabel}>
+        <span aria-live="polite">{copied ? copiedHint : copyHint}</span>
+      </button>
+    </div>
   );
 }

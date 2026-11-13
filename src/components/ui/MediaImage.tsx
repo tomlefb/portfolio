@@ -6,7 +6,7 @@ interface MediaImageProps {
   eager?: boolean;
 }
 
-/** Image d'une composition. Si elle ne charge pas, son texte de remplacement s'affiche à sa place. */
+/** Image d’une composition. Si elle ne charge pas, son texte de remplacement s’affiche à sa place. */
 export function MediaImage({ image, eager = false }: MediaImageProps) {
   const [failed, setFailed] = useState(false);
 

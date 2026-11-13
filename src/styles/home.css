@@ -127,6 +127,18 @@
   border-bottom: 3px solid currentColor;
 }
 
+/* Seul signe au survol d'un projet : la flèche avance. Les aplats ne bougent pas. */
+.hm-cap__more::after {
+  content: ' →';
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.hm-spread:hover .hm-cap__more::after,
+.hm-spread:focus-visible .hm-cap__more::after {
+  transform: translateX(6px);
+}
+
 .hm-spread .shot,
 .hm-spread .phone {
   position: absolute;
@@ -224,6 +236,7 @@
 .hm-tti__figures strong {
   font-size: 10cqw;
   white-space: nowrap;
+  word-spacing: 0.12em;
 }
 
 .hm-tti__figures span {
@@ -728,6 +741,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hm-cap__more::after,
   .hm-index__row,
   .hm-index__go {
     transition: none;

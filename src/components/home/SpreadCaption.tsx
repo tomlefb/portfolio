@@ -5,7 +5,7 @@ interface SpreadCaptionProps {
   onBlock?: boolean;
 }
 
-/** Texte court d'un projet sur l'accueil. */
+/** Texte court d’un projet sur l’accueil. */
 export function SpreadCaption({ project, onBlock = false }: SpreadCaptionProps) {
   return (
     <div className={`hm-cap ${onBlock ? 'hm-cap--on' : ''}`}>

@@ -18,7 +18,7 @@ export function MinorProject({ project }: MinorProjectProps) {
     <article id={project.id} className={`mn mn--${kind}`} style={style} data-testid="minor-project">
       <div className="mn__art">
         <h2 className="title-xl mn__title">{project.title}</h2>
-        {/* La scène remonte sous la dernière ligne du titre : l'aplat mord le bas des lettres. */}
+        {/* La scène remonte sous la dernière ligne du titre : l’aplat mord le bas des lettres. */}
         <div className="mn__stage">
           <span className="mn__block" aria-hidden="true" />
           {desktop && <Shot image={desktop} className="mn__shot" />}

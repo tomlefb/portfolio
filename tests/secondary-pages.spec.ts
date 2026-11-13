@@ -61,7 +61,7 @@ test.describe('parcours', () => {
       await page.setViewportSize({ width, height: 900 });
       await page.goto('/parcours');
       const overflow = await page.evaluate(() =>
-        [...document.querySelectorAll('[data-testid="tl-bar"]')].flatMap((bar) => {
+        [...document.querySelectorAll('[data-testid="tl-bar"], [data-testid="tl-next"]')].flatMap((bar) => {
           const b = bar.getBoundingClientRect();
           return [...bar.querySelectorAll('.tl__label > *')]
             .filter((el) => {
@@ -93,12 +93,23 @@ test.describe('parcours', () => {
     });
   }
 
-  test('résume le présent en trois cases', async ({ page }) => {
+  test('annonce la suite après l’alternance au bout de la frise', async ({ page }) => {
+    await page.goto('/parcours');
+    const next = page.getByTestId('tl-next');
+    await expect(next).toBeVisible();
+    await expect(next).toContainText('Ensuite');
+    await expect(next).toContainText('CDI');
+    await expect(page.getByText('À la fin de l’alternance, un CDI de développeur full stack, à Rennes ou en télétravail.')).toBeVisible();
+  });
+
+  test('résume le parcours en quatre cases, dans l’ordre du temps', async ({ page }) => {
     await page.goto('/parcours');
     const cards = page.getByTestId('parcours-highlight');
-    await expect(cards).toHaveCount(3);
-    await expect(cards.nth(0)).toContainText('Alternant développeur');
-    await expect(cards.nth(1)).toContainText('Mastère');
+    await expect(cards).toHaveCount(4);
+    await expect(cards.nth(0)).toContainText('Avant');
+    await expect(cards.nth(1)).toContainText('Alternant développeur');
+    await expect(cards.nth(2)).toContainText('Mastère');
+    await expect(cards.nth(3)).toContainText('Après 2028');
   });
 
   test('range les technos sur trois lignes', async ({ page }) => {
@@ -115,9 +126,15 @@ test.describe('parcours', () => {
     await expect(page.getByAltText('Portrait de Tom Lefevre-Bonzon')).toBeVisible();
   });
 
-  test('masque le portrait sur mobile', async ({ page }) => {
+  test('montre aussi le portrait sur mobile, sans masquer le titre ni le texte', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/parcours');
-    await expect(page.getByAltText('Portrait de Tom Lefevre-Bonzon')).toBeHidden();
+    const portrait = page.getByAltText('Portrait de Tom Lefevre-Bonzon');
+    await expect(portrait).toBeVisible();
+    const box = await portrait.boundingBox();
+    expect(box!.x + box!.width).toBeLessThanOrEqual(391);
+    const intro = await page.locator('.pc-head__intro').boundingBox();
+    // Le portrait ne recouvre pas le texte d'introduction.
+    expect(box!.y + box!.height).toBeLessThanOrEqual(intro!.y + 1);
   });
 });

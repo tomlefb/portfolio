@@ -1,5 +1,5 @@
 import { site } from '../../data/site';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 interface SiteNavProps {
   label: string;
@@ -8,6 +8,9 @@ interface SiteNavProps {
 const linkClass = 'py-1 border-b-[3px] border-transparent hover:border-ink';
 
 export function SiteNav({ label }: SiteNavProps) {
+  const { pathname } = useLocation();
+  const onProjects = pathname.startsWith('/projets/') || pathname === '/autres-projets';
+
   return (
     <nav
       aria-label="Navigation principale"
@@ -15,7 +18,11 @@ export function SiteNav({ label }: SiteNavProps) {
     >
       <Link to="/">{label}</Link>
       <div className="flex gap-x-5 sm:gap-x-7">
-        <Link to="/#projets" className={linkClass}>
+        <Link
+          to="/#projets"
+          className={`${linkClass} ${onProjects ? '!border-ink' : ''}`}
+          aria-current={onProjects ? 'page' : undefined}
+        >
           Projets
         </Link>
         <NavLink

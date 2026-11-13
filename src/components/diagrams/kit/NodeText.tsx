@@ -9,14 +9,14 @@ interface NodeTextProps {
   sub: readonly string[];
   color: string;
   align: 'start' | 'middle';
-  /** Texte tourné d'un quart de tour, lu de bas en haut. */
+  /** Texte tourné d’un quart de tour, lu de bas en haut. */
   rotate?: boolean;
 }
 
-/** Hauteur des capitales d'Archivo, en fraction du corps. */
+/** Hauteur des capitales d’Archivo, en fraction du corps. */
 const CAP = 0.71;
 
-/** Bloc de texte d'un nœud : étiquette en capitales, sous-texte en dessous, centré verticalement. */
+/** Bloc de texte d’un nœud : étiquette en capitales, sous-texte en dessous, centré verticalement. */
 export function NodeText({ x, y, w, h, label, sub, color, align, rotate = false }: NodeTextProps) {
   const { m } = useDiagram();
   const lines = [

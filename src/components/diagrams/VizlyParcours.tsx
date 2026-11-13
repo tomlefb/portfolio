@@ -1,7 +1,6 @@
 import { DiagramFrame } from './kit/DiagramFrame';
 import { Edge } from './kit/Edge';
 import { Node } from './kit/Node';
-import { Note } from './kit/Note';
 
 interface VizlyParcoursProps {
   color: string;
@@ -13,7 +12,7 @@ const TITLE =
 interface Step {
   step: string;
   brick: string | readonly string[];
-  /** Coupure de l'étiquette quand la colonne large est trop étroite. */
+  /** Coupure de l’étiquette quand la colonne large est trop étroite. */
   brickWide?: readonly string[];
   detail?: string | readonly string[];
 }
@@ -61,13 +60,12 @@ export function VizlyParcours({ color }: VizlyParcoursProps) {
         ))}
 
         {/* Chemin de confirmation du paiement. */}
-        <Edge name="Stripe → webhook" accent points={[[492, 128], [492, 176]]} />
+        <Edge name="Stripe → webhook" points={[[492, 128], [492, 176]]} />
         <Node x={432} y={176} w={120} h={56} variant="accent" label="Webhook" />
-        <Edge name="webhook → base" accent points={[[552, 204], [576, 204]]} />
+        <Edge name="webhook → base" points={[[552, 204], [576, 204]]} />
         <Node x={576} y={176} w={120} h={56} variant="accent" label="Base" sub="plan du compte" />
-        <Edge name="base → e-mail" accent points={[[696, 204], [720, 204]]} />
+        <Edge name="base → e-mail" points={[[696, 204], [720, 204]]} />
         <Node x={720} y={176} w={144} h={56} variant="accent" label="E-mail" sub="Resend" />
-        <Note x={408} y={210} lines={['le plan ne change qu’à la confirmation de Stripe']} anchor="end" />
       </DiagramFrame>
 
       <DiagramFrame layout="narrow" width={360} height={528} title={TITLE} accent={color}>
@@ -92,12 +90,11 @@ export function VizlyParcours({ color }: VizlyParcoursProps) {
           </g>
         ))}
 
-        <Note x={272} y={206} lines={['le plan ne', 'change qu’à la', 'confirmation', 'de Stripe']} />
-        <Edge name="Stripe → webhook" accent points={[[248, rowY(PAYMENT) + 34], [272, rowY(PAYMENT) + 34]]} />
+        <Edge name="Stripe → webhook" points={[[248, rowY(PAYMENT) + 34], [272, rowY(PAYMENT) + 34]]} />
         <Node x={272} y={rowY(3)} w={88} h={68} variant="accent" label="Webhook" />
-        <Edge name="webhook → base" accent points={[[316, rowY(3) + 68], [316, rowY(4)]]} />
+        <Edge name="webhook → base" points={[[316, rowY(3) + 68], [316, rowY(4)]]} />
         <Node x={272} y={rowY(4)} w={88} h={68} variant="accent" label="Base" sub={['plan du', 'compte']} />
-        <Edge name="base → e-mail" accent points={[[316, rowY(4) + 68], [316, rowY(5)]]} />
+        <Edge name="base → e-mail" points={[[316, rowY(4) + 68], [316, rowY(5)]]} />
         <Node x={272} y={rowY(5)} w={88} h={68} variant="accent" label="E-mail" sub="Resend" />
       </DiagramFrame>
     </>

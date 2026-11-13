@@ -7,7 +7,7 @@ interface ImageBandProps {
   project: Project;
 }
 
-/** Bande d'images imbriquées : une capture large qui sort du bord, des téléphones posés dessus. */
+/** Bande d’images imbriquées : une capture large qui sort du bord, des téléphones posés dessus. */
 export function ImageBand({ project }: ImageBandProps) {
   const desktops = project.images.filter((image) => image.kind === 'desktop').slice(0, 2);
   const phones = project.images.filter((image) => image.kind === 'phone').slice(0, 2);

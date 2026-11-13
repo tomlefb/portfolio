@@ -60,10 +60,39 @@
   .shell {
     container-type: inline-size;
     max-width: 1600px;
+    /* Le pied de page reste en bas même sur une page courte (le zoom agrandit aussi la hauteur). */
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100dvh / var(--page-zoom, 1));
     /* Au-delà de 1600 px, tout grossit ensemble : voir le script de index.html. */
     zoom: var(--page-zoom, 1);
     margin-inline: auto;
     overflow-x: clip;
+  }
+
+  .shell > main {
+    flex: 1 0 auto;
+  }
+
+  .shell > main:focus {
+    outline: none;
+  }
+
+  .skip-link {
+    position: absolute;
+    z-index: 100;
+    left: var(--g);
+    top: 8px;
+    padding: 10px 14px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 15px;
+    font-weight: 700;
+    transform: translateY(-160%);
+  }
+
+  .skip-link:focus {
+    transform: none;
   }
 
   .title-xl {

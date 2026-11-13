@@ -25,14 +25,14 @@ export const vizly: Project = {
   ],
   liveUrl: 'https://www.vizly.fr',
   images: [
-    { src: '/images/projects/vizly/landing.webp', alt: "Page d'accueil de Vizly : « Crée ton portfolio en 5 minutes »", kind: 'desktop' },
+    { src: '/images/projects/vizly/landing.webp', alt: "Page d’accueil de Vizly : « Crée ton portfolio en 5 minutes »", kind: 'desktop' },
     { src: '/images/projects/vizly/dashboard.webp', alt: "Tableau de bord Vizly listant un portfolio en ligne", kind: 'desktop' },
     { src: '/images/projects/vizly/templates.webp', alt: "Catalogue des templates Vizly, filtres gratuits et premium", kind: 'desktop' },
     { src: '/images/projects/vizly/tarifs.webp', alt: "Page tarifs Vizly : offres Gratuit, Starter et Pro", kind: 'desktop' },
     { src: '/images/projects/vizly/portfolio-brutalist.webp', alt: "Portfolio généré avec le template Brutalist, fond noir et typographie massive", kind: 'desktop' },
     { src: '/images/projects/vizly/portfolio-colore.webp', alt: "Portfolio généré avec le template Coloré, tons roses et projets illustrés", kind: 'desktop' },
     { src: '/images/projects/vizly/editeur.webp', alt: "Éditeur Vizly, étape de publication avec récapitulatif et adresse personnalisée", kind: 'desktop' },
-    { src: '/images/projects/vizly/mobile-landing.webp', alt: "Page d'accueil Vizly sur mobile", kind: 'phone' },
+    { src: '/images/projects/vizly/mobile-landing.webp', alt: "Page d’accueil Vizly sur mobile", kind: 'phone' },
     { src: '/images/projects/vizly/mobile-portfolio.webp', alt: "Portfolio Créatif généré par Vizly, affiché sur mobile", kind: 'phone' },
     { src: '/images/projects/vizly/mobile-editeur.webp', alt: "Éditeur Vizly sur mobile, étape identité du formulaire", kind: 'phone' },
   ],
@@ -43,14 +43,14 @@ export const vizly: Project = {
     { label: 'Technos', value: 'Next.js 15, TypeScript, Supabase, Stripe, Resend, Railway' },
   ],
   figures: [
-    { value: '400', label: 'commits' },
+    { value: '5', label: 'semaines de développement, seul' },
     { value: '8', label: 'templates' },
     { value: '19', label: 'migrations de base' },
     { value: '33', label: 'tests de bout en bout' },
   ],
   sections: [
     {
-      title: "Ce que j'ai fait",
+      title: "Ce que j’ai fait",
       items: [
         {
           lead: 'Un éditeur en quatre étapes',

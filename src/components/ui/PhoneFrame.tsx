@@ -8,7 +8,7 @@ interface PhoneFrameProps {
   testId?: string;
 }
 
-/** Écran d'application dans un cadre de téléphone. */
+/** Écran d’application dans un cadre de téléphone. */
 export function PhoneFrame({ image, className = '', eager = false, testId }: PhoneFrameProps) {
   return (
     <span className={`phone ${className}`} data-testid={testId}>

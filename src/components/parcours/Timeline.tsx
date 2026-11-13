@@ -42,7 +42,7 @@ export function Timeline({ data, caption, todayLabel, ongoingLabel, today }: Tim
       <div className="tl__lanes">
         {data.lanes.map((lane) => (
           <section key={lane.kind} className="tl__lane">
-            <h3 className="tl__lane-title">{lane.label}</h3>
+            <h2 className="tl__lane-title">{lane.label}</h2>
             <ol className="tl__track">
               {years.map((year) => (
                 <li key={`grid-${year}`} className="tl__grid" style={pos(year, year)} aria-hidden="true" />
@@ -54,8 +54,8 @@ export function Timeline({ data, caption, todayLabel, ongoingLabel, today }: Tim
                   return (
                     <li
                       key={bar.title}
-                      className={`tl__bar${bar.ongoing ? ' tl__bar--ongoing' : ''}`}
-                      data-testid="tl-bar"
+                      className={`tl__bar${bar.ongoing ? ' tl__bar--ongoing' : ''}${bar.upcoming ? ' tl__bar--next' : ''}`}
+                      data-testid={bar.upcoming ? 'tl-next' : 'tl-bar'}
                       data-ongoing={bar.ongoing ? 'true' : undefined}
                       style={pos(bar.from, bar.to, { '--done': `${(Math.max(0, Math.min(1, done)) * 100).toFixed(1)}%` })}
                     >

@@ -1,5 +1,5 @@
 import { NodeText } from './NodeText';
-import { INK, PAPER, toLines, useDiagram, type NodeVariant } from './theme';
+import { INK, PAPER, STROKE, toLines, useDiagram, type NodeVariant } from './theme';
 
 interface NodeProps {
   x: number;
@@ -13,7 +13,7 @@ interface NodeProps {
   rotate?: boolean;
 }
 
-/** Boîte à angles droits, filet encre de 2 px. */
+/** Boîte à angles droits, filet encre de 1,5 px. */
 export function Node({ x, y, w, h, label, sub, variant = 'plain', align = 'middle', rotate }: NodeProps) {
   const { accent, onAccent } = useDiagram();
   const fill = variant === 'solid' ? INK : variant === 'accent' ? accent : PAPER;
@@ -29,7 +29,7 @@ export function Node({ x, y, w, h, label, sub, variant = 'plain', align = 'middl
         height={h}
         fill={fill}
         stroke={INK}
-        strokeWidth={2}
+        strokeWidth={STROKE}
         vectorEffect="non-scaling-stroke"
       />
       <NodeText

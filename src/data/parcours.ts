@@ -11,7 +11,7 @@ export const parcoursGroups: ParcoursGroup[] = [
 /** Frise : dates en années décimales (2025.67 ≈ septembre 2025). */
 export const timeline: Timeline = {
   start: 2022,
-  end: 2028.75,
+  end: 2029.75,
   lanes: parcoursGroups,
   bars: [
     { lane: 'formation', from: 2022, to: 2023.5, title: 'Lycée', detail: 'Bac 2023' },
@@ -26,6 +26,7 @@ export const timeline: Timeline = {
       detail: 'Développeur',
       ongoing: true,
     },
+    { lane: 'experience', from: 2028.6, to: 2029.75, title: 'Ensuite', detail: 'CDI full stack', upcoming: true },
   ],
   stages: [
     { from: 2024.33, to: 2024.5, title: 'Stage Ouest-France', detail: 'Java · mai – juin 2024' },
@@ -34,27 +35,32 @@ export const timeline: Timeline = {
 };
 
 export const timelineLabels = {
-  caption: 'Frise du parcours, de 2022 à 2028',
+  caption: 'Frise du parcours, de 2022 à 2028 et après',
   today: 'Aujourd’hui',
   ongoing: 'en cours',
 };
 
-/** Les trois cases sous la frise. */
+/** Les quatre cases sous la frise, dans l’ordre du temps. */
 export const parcoursHighlights: ParcoursHighlight[] = [
-  {
-    label: 'Aujourd’hui · Capgemini',
-    title: 'Alternant développeur',
-    text: "Migration d'un logiciel Java pour un client grand compte, chiffrage, suivi des mises en production.",
-  },
-  {
-    label: 'Aujourd’hui · Sup de Vinci',
-    title: 'Mastère Full Stack',
-    text: "Deux ans en alternance, jusqu'en 2028.",
-  },
   {
     label: 'Avant',
     title: 'BTS, Bachelor, deux stages',
     text: 'Ouest-France (Java, outils internes) et un lycée hôtelier (application livrée seul).',
+  },
+  {
+    label: 'Aujourd’hui · Capgemini',
+    title: 'Alternant développeur',
+    text: "Migration d’un logiciel Java pour un client grand compte, chiffrage, suivi des mises en production.",
+  },
+  {
+    label: 'Aujourd’hui · Sup de Vinci',
+    title: 'Mastère Full Stack',
+    text: "Deux ans en alternance, jusqu’en 2028.",
+  },
+  {
+    label: 'Après 2028',
+    title: 'Un CDI full stack',
+    text: 'À la fin de l’alternance, un CDI de développeur full stack, à Rennes ou en télétravail.',
   },
 ];
 
@@ -67,7 +73,7 @@ export const parcours: ParcoursItem[] = [
     period: 'Depuis sept. 2025',
     title: 'Alternant développeur',
     place: 'Capgemini, Cesson-Sévigné',
-    text: "Migration d'un logiciel Java pour un client grand compte. Je participe au chiffrage et au suivi des mises en production.",
+    text: "Migration d’un logiciel Java pour un client grand compte. Je participe au chiffrage et au suivi des mises en production.",
     current: true,
   },
   {
@@ -89,14 +95,14 @@ export const parcours: ParcoursItem[] = [
     period: 'Janv. – févr. 2025',
     title: 'Stage développeur web',
     place: 'Lycée hôtelier Sainte-Thérèse, La Guerche-de-Bretagne',
-    text: "Conception et livraison, seul, de l'application de gestion des stages de l'établissement.",
+    text: "Conception et livraison, seul, de l’application de gestion des stages de l’établissement.",
   },
   {
     kind: 'experience',
     period: 'Mai – juin 2024',
     title: 'Stage développeur Java',
     place: 'Ouest-France, Rennes',
-    text: "Développement d'outils internes au sein du service informatique.",
+    text: "Développement d’outils internes au sein du service informatique.",
   },
   {
     kind: 'formation',
@@ -114,7 +120,7 @@ export const parcours: ParcoursItem[] = [
   },
 ];
 
-/** Répartition proposée, à valider par Tom. */
+/** Les technos, par fréquence d'usage. */
 export const technos: TechnoGroup[] = [
   { label: 'Au quotidien', items: ['Java', 'TypeScript', 'Python', 'PostgreSQL', 'Git', 'Docker'] },
   {

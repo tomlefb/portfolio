@@ -23,6 +23,43 @@
   gap: 12px;
 }
 
+/* Les chiffres clés remplissent l'aplat, en haut ; le contexte et les technos restent en bas. */
+.pj-head__figures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.8cqw 2.4cqw;
+  margin-bottom: auto;
+  padding-bottom: 2.4cqw;
+}
+
+.pj-head__figures li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 0.8cqw;
+  border-top: 3px solid currentColor;
+}
+
+.pj-head__figures strong {
+  font-size: 5.2cqw;
+  white-space: nowrap;
+  /* L'espace des milliers reste visible malgré l'interlettrage serré. */
+  word-spacing: 0.12em;
+}
+
+.pj-head__figures span {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* La bande de chiffres ne sert plus que sur mobile, où l'aplat de l'en-tête est réduit. */
+@container (min-width: 640px) {
+  .pj-figures {
+    display: none;
+  }
+}
+
 .pj-head__meta {
   font-size: 16px;
   font-weight: 700;
@@ -219,6 +256,7 @@
 .pj-figures strong {
   font-size: 9cqw;
   white-space: nowrap;
+  word-spacing: 0.12em;
 }
 
 .pj-figures span {

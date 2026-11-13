@@ -6,7 +6,7 @@ import { VizlyParcours } from './VizlyParcours';
 
 interface DiagramProps {
   id: DiagramId;
-  /** Couleur du projet, utilisée pour l'unique élément mis en avant. */
+  /** Couleur du projet, utilisée pour l’unique élément mis en avant. */
   color: string;
 }
 
@@ -20,7 +20,7 @@ const DIAGRAMS: Record<DiagramId, ComponentType<DiagramComponentProps>> = {
   'vizly-parcours': VizlyParcours,
 };
 
-/** Schéma d'un projet, en composition large ou étroite selon la place disponible. */
+/** Schéma d’un projet, en composition large ou étroite selon la place disponible. */
 export function Diagram({ id, color }: DiagramProps) {
   const Component = DIAGRAMS[id];
   return (

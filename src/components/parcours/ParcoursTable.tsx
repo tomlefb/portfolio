@@ -4,7 +4,7 @@ interface ParcoursTableProps {
   items: ParcoursItem[];
 }
 
-/** Le parcours en liste, pour les lecteurs d'écran (la frise est un dessin). */
+/** Le parcours en liste, pour les lecteurs d’écran (la frise est un dessin). */
 export function ParcoursTable({ items }: ParcoursTableProps) {
   return (
     <ol className="sr-only" aria-label="Parcours détaillé">

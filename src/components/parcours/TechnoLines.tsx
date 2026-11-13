@@ -5,7 +5,7 @@ interface TechnoLinesProps {
   groups: TechnoGroup[];
 }
 
-/** Les technos en texte, par fréquence d'usage. */
+/** Les technos en texte, par fréquence d’usage. */
 export function TechnoLines({ label, groups }: TechnoLinesProps) {
   return (
     <section aria-label="Technologies">

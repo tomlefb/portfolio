@@ -12,7 +12,7 @@ function titleEm(title: string): number {
   return [...title.toUpperCase()].reduce((width, char) => width + (char === 'I' ? 0.23 : char === ' ' ? 0.2 : 0.53), 0);
 }
 
-/** Taille du titre pour qu'il occupe à peu près la même largeur quel que soit le projet. */
+/** Taille du titre pour qu’il occupe à peu près la même largeur quel que soit le projet. */
 function titleSize(title: string, width: number, max: number): string {
   return `${Math.min(max, width / titleEm(title)).toFixed(2)}cqw`;
 }
@@ -28,6 +28,16 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
   return (
     <header className="pj-head" style={style}>
       <div className="pj-head__block">
+        {project.figures && (
+          <ul className="pj-head__figures">
+            {project.figures.map((figure) => (
+              <li key={figure.label}>
+                <strong className="title-xl">{figure.value}</strong>
+                <span>{figure.label}</span>
+              </li>
+            ))}
+          </ul>
+        )}
         <p className="pj-head__meta">{project.meta}</p>
         <ul className="pj-head__stack" aria-label="Technologies">
           {project.stack.map((tech) => (

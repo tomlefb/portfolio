@@ -3,7 +3,7 @@ import type { ProjectFact } from '../../types';
 
 interface FigureStripProps {
   figures: ProjectFact[];
-  /** Couleurs du projet : quand la page n'a pas d'images, les chiffres prennent l'aplat. */
+  /** Couleurs du projet : quand la page n’a pas d’images, les chiffres prennent l’aplat. */
   color?: string;
   onColor?: string;
 }

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-/** Remonte en haut à chaque changement de page, ou va à l'ancre demandée. */
+/** Remonte en haut à chaque changement de page, ou va à l’ancre demandée. */
 export function ScrollManager() {
   const { pathname, hash, key } = useLocation();
 

@@ -9,7 +9,7 @@ interface SpreadVizlyProps {
   project: Project;
 }
 
-/** Vizly : le titre à cheval sur l'aplat, la landing qui sort à droite, un téléphone posé dessus. */
+/** Vizly : le titre à cheval sur l’aplat, la landing qui sort à droite, un téléphone posé dessus. */
 export function SpreadVizly({ project }: SpreadVizlyProps) {
   const desktops = project.images.filter((image) => image.kind === 'desktop');
   const phone = project.images.filter((image) => image.kind === 'phone')[1] ?? project.images.find((image) => image.kind === 'phone');

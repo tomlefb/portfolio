@@ -88,6 +88,8 @@ export interface TimelineBar {
   detail: string;
   /** En cours : plein jusqu'à aujourd'hui, hachuré ensuite. */
   ongoing?: boolean;
+  /** Prévu après l’alternance : contour pointillé. */
+  upcoming?: boolean;
 }
 
 /** Période courte (stage), dessinée comme un trait fin avec son libellé à côté. */

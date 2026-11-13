@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { PhoneFrame } from '../components/ui/PhoneFrame';
 import { Shot } from '../components/ui/Shot';
 import { Diagram } from '../components/diagrams/Diagram';
@@ -28,6 +29,15 @@ const present: ProjectImage = {
 
 /** Page de contrôle des briques visuelles, non liée depuis le site. */
 export function BricksPage() {
+  // Page technique de contrôle : jamais indexée.
+  useEffect(() => {
+    const meta = document.createElement('meta');
+    meta.name = 'robots';
+    meta.content = 'noindex';
+    document.head.appendChild(meta);
+    return () => meta.remove();
+  }, []);
+
   return (
     <div className="shell gutter flex flex-wrap items-start gap-8 py-8">
       <h1 className="title-md w-full text-[28px]">Briques</h1>

@@ -2,6 +2,8 @@ import { createContext, useContext } from 'react';
 
 export const INK = '#0E0E0E';
 export const PAPER = '#E7E8E9';
+/** Épaisseur unique des filets (boîtes, cylindres, liaisons), en pixels d’écran. */
+export const STROKE = 1.5;
 
 export type Layout = 'wide' | 'narrow';
 export type NodeVariant = 'plain' | 'solid' | 'accent';

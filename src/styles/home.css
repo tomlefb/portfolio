@@ -816,25 +816,30 @@
     width: 22cqw;
   }
 
+  /* TTI : le titre en haut à gauche, mordu à mi-hauteur par l'aplat ; les chiffres débordent de l'aplat
+     sur la bande grise, comme les images des autres projets. */
   .hm-tti .hm-art {
-    height: 124cqw;
+    height: 112cqw;
   }
 
   .hm-tti .hm-block {
-    inset: 0 22cqw 0 0;
+    inset: 24cqw 22cqw 0 0;
   }
 
   .hm-tti .hm-title {
     top: 1cqw;
+    left: var(--g);
+    right: auto;
     font-size: 46cqw;
   }
 
   .hm-tti__figures {
     left: var(--g);
-    right: calc(22cqw + var(--g));
-    top: 44cqw;
-    bottom: 5cqw;
-    gap: 4cqw;
+    right: var(--g);
+    top: 47cqw;
+    bottom: auto;
+    align-content: start;
+    gap: 8cqw 4cqw;
   }
 
   .hm-tti__figures strong {

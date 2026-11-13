@@ -1,222 +1,348 @@
-/* Autres projets */
+/* Autres projets : le titre sur une ligne, puis les projets rangés en tranches, un seul ouvert à la fois. */
 
 .mn-head {
-  padding: 1cqw var(--g) 2.4cqw;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 28px;
+  padding: 1.4cqw var(--g) 0;
 }
 
 .mn-head h1 {
-  font-size: 13cqw;
+  font-size: 13.2cqw;
+  white-space: nowrap;
 }
 
 .mn-head p {
-  max-width: 24ch;
-  font-size: clamp(17px, 1.75cqw, 24px);
+  margin-top: 2cqw;
+  padding: 1.4cqw 0 2cqw;
+  border-top: 1px solid var(--ink);
+  font-size: clamp(17px, 1.7cqw, 24px);
   font-weight: 500;
   line-height: 1.28;
-  padding-bottom: 0.6cqw;
 }
 
-.mn-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-top: 3px solid var(--ink);
-}
+/* ---------- L'étagère : des tranches côte à côte, celle qu'on ouvre se déplie ---------- */
 
-/* Deux projets côte à côte partagent les hauteurs de leurs lignes (sous-grille) :
-   leurs textes commencent à la même hauteur même si un titre passe sur deux lignes. */
-.mn {
-  scroll-margin-top: 12px;
-  border-bottom: 3px solid var(--ink);
-  display: grid;
-  grid-row: span 2;
-  grid-template-rows: subgrid;
-}
-
-.mn:nth-child(odd) {
-  border-right: 3px solid var(--ink);
-}
-
-.mn:last-child:nth-child(odd) {
-  grid-column: 1 / -1;
-  border-right: 0;
-}
-
-.mn__art {
-  position: relative;
+.mn-shelf {
+  --spine: 9cqw;
   display: flex;
-  flex-direction: column;
-}
-
-.mn__title {
-  position: relative;
-  z-index: 3;
-  padding: 1.6cqw var(--g) 0;
-  font-size: 6.6cqw;
-}
-
-.mn__stage {
-  position: relative;
-  flex: 1 0 auto;
-  height: 24cqw;
-  margin-top: -2.2cqw;
+  height: max(46cqw, 600px);
+  border-top: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
   overflow: hidden;
 }
 
-.mn__block {
+.mn-slice {
+  position: relative;
+  display: flex;
+  flex: 0 0 var(--spine);
+  min-width: 0;
+  overflow: hidden;
+  scroll-margin-top: 12px;
+  transition: flex-basis 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.mn-slice + .mn-slice {
+  border-left: 3px solid var(--ink);
+}
+
+.mn-slice.is-open {
+  flex-basis: calc(100cqw - 3 * var(--spine) - 9px);
+}
+
+.mn-slice__heading {
+  display: flex;
+  flex: none;
+}
+
+/* Le dos : le nom à la verticale, une étiquette de couleur en tête. */
+.mn-spine {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: var(--spine);
+  padding: 0 0 2.4cqw;
+  border: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background-color 0.4s,
+    color 0.4s;
+}
+
+.mn-spine::before {
+  content: '';
   position: absolute;
-  inset: 0 0 0 8cqw;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.4cqw;
   background: var(--pc);
 }
 
-.mn__shot {
+.mn-spine:focus-visible {
+  outline-offset: -6px;
+}
+
+.mn-slice.is-open .mn-spine {
+  background: var(--pc);
+  color: var(--pon);
+  cursor: default;
+}
+
+.mn-spine__name {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: var(--spine-fs);
+  white-space: nowrap;
+  transition: opacity 0.3s;
+}
+
+/* Ouverte, la tranche perd son nom vertical : le grand nom horizontal prend le relais sur l'aplat. */
+.mn-slice.is-open .mn-spine__name {
+  opacity: 0;
+}
+
+/* ---------- La tranche ouverte : composée comme un projet de l'accueil ---------- */
+
+.mn-body {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Fermée, le contenu reste en place, coupé, et sort du parcours au clavier. */
+.mn-body[aria-hidden='true'] {
+  visibility: hidden;
+  transition: visibility 0s 0.55s;
+}
+
+.mn-body__inner {
   position: absolute;
-  left: 12cqw;
-  top: 4cqw;
-  width: 46cqw;
-  height: 28.75cqw;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: calc(100cqw - 4 * var(--spine) - 9px);
 }
 
-.mn__shot img {
-  object-position: left top;
-}
-
-.mn__phone {
+/* L'aplat prolonge le dos coloré ; le texte y est posé, les images en débordent sur le gris. */
+.mn-body__plate {
   position: absolute;
-  width: 11.5cqw;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 36cqw;
+  background: var(--pc);
 }
 
-.mn__phone--1 {
-  left: 15cqw;
-  top: 3.5cqw;
-  z-index: 2;
+.mn-body__copy {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 36cqw;
+  padding: 2cqw 2.4cqw 2.4cqw;
+  color: var(--pon);
 }
 
-.mn__phone--2 {
-  left: 29cqw;
-  top: 7cqw;
+.mn-body__title {
+  max-width: 33cqw;
+  font-size: var(--big);
 }
 
-.mn__text {
-  padding: 20px var(--g) 24px;
-  font-size: 17px;
-  line-height: 1.45;
+.mn-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2cqw;
+  max-width: 23.5cqw;
+  margin-top: 1.6cqw;
+}
+
+.mn-copy__tagline {
+  font-size: clamp(18px, 1.55cqw, 23px);
   font-weight: 500;
-  max-width: 62ch;
+  line-height: 1.3;
 }
 
-.mn__meta {
-  font-size: 14px;
-  opacity: 0.78;
-  margin-top: 6px;
+.mn-copy__facts > div {
+  padding: 0.8cqw 0 1cqw;
+  border-top: 1px solid currentColor;
 }
 
-.mn__stack {
-  margin-top: 12px;
+.mn-copy__facts > div:last-child {
+  border-bottom: 1px solid currentColor;
+}
+
+.mn-copy__facts dt {
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.72;
+}
+
+.mn-copy__facts dd {
+  margin-top: 4px;
+  font-size: clamp(17px, 1.6cqw, 24px);
+}
+
+.mn-copy__stack {
   font-size: 15px;
   font-weight: 600;
+  line-height: 1.45;
 }
 
-.mn__stack li {
+.mn-copy__stack li {
   display: inline;
 }
 
-.mn__stack li:not(:last-child)::after {
+.mn-copy__stack li:not(:last-child)::after {
   content: ', ';
 }
 
-.mn__link {
+.mn-copy__link {
   display: inline-block;
   margin-top: 14px;
   font-weight: 700;
   border-bottom: 3px solid currentColor;
 }
 
+.mn-copy__link:focus-visible {
+  outline-color: currentColor;
+}
 
+/* Les images chevauchent le bord de l'aplat et filent vers la droite. */
+.mn-art {
+  position: absolute;
+  z-index: 2;
+  inset: 0 0 0 27cqw;
+}
 
+.mn-frag.shot,
+.mn-phone.phone {
+  position: absolute;
+}
 
+.mn-art--nutriai .mn-phone { width: 11cqw; }
+.mn-art--nutriai .mn-phone--1 { left: 1cqw; top: 5cqw; }
+.mn-art--nutriai .mn-phone--2 { left: 12.5cqw; top: 9cqw; }
+.mn-art--nutriai .mn-phone--3 { left: 24cqw; top: 13cqw; }
 
+.mn-art--lycee-hotelier .mn-phone { width: 13cqw; }
+.mn-art--lycee-hotelier .mn-phone--1 { left: 5cqw; top: 6cqw; }
+.mn-art--lycee-hotelier .mn-phone--2 { left: 20.5cqw; top: 11cqw; }
 
-/* Le portrait passe devant le « S » final et n'en couvre que le dernier quart :
-   « PARCOURS » s'étend sur 4,26 em, le portrait commence à 4,15 em. */
+/* Les noms blancs ne passent jamais sur une capture blanche : les images commencent sous le nom. */
+.mn-art--ialocal .mn-frag--1 { left: 1cqw; top: 10.5cqw; width: 33cqw; }
+.mn-art--ialocal .mn-frag--2 { left: 22cqw; top: 20.5cqw; width: 15cqw; }
 
+.mn-art--ecopursue .mn-frag--1 { left: 1cqw; top: 10cqw; width: 30cqw; z-index: 3; }
+.mn-art--ecopursue .mn-frag--2 { left: 3cqw; top: 22.5cqw; width: 19cqw; z-index: 2; }
+.mn-art--ecopursue .mn-frag--3 { left: 18cqw; top: 25.5cqw; width: 20cqw; z-index: 1; }
 
+@media (prefers-reduced-motion: reduce) {
+  .mn-slice,
+  .mn-spine,
+  .mn-spine__name,
+  .mn-body[aria-hidden='true'] {
+    transition: none;
+  }
+}
 
-
-
-
-
-
-
+/* ---------- En dessous de 1000 px : un accordéon, les tranches empilées ---------- */
 
 @container (max-width: 999px) {
+  .mn-shelf {
+    flex-direction: column;
+    height: auto;
+  }
 
+  .mn-slice,
+  .mn-slice.is-open {
+    flex: none;
+    flex-direction: column;
+  }
 
+  .mn-slice + .mn-slice {
+    border-left: 0;
+    border-top: 3px solid var(--ink);
+  }
 
+  .mn-spine {
+    width: 100%;
+    align-items: flex-start;
+    padding: clamp(14px, 3cqw, 24px) var(--g) clamp(14px, 3cqw, 24px) calc(var(--g) + clamp(10px, 2.4cqw, 16px));
+  }
+
+  .mn-spine::before {
+    bottom: 0;
+    right: auto;
+    width: clamp(10px, 2.4cqw, 16px);
+    height: auto;
+  }
+
+  .mn-spine__name,
+  .mn-slice.is-open .mn-spine__name {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: min(11cqw, 64px);
+    opacity: 1;
+  }
+
+  .mn-body[aria-hidden='true'] {
+    display: none;
+  }
+
+  .mn-body__inner {
+    position: relative;
+    width: 100%;
+  }
+
+  .mn-body__plate,
+  .mn-body__title {
+    display: none;
+  }
+
+  .mn-art {
+    position: relative;
+    inset: auto;
+    height: clamp(280px, 70cqw, 520px);
+    overflow: hidden;
+    background: var(--pc);
+  }
+
+  .mn-art .mn-phone { width: min(26cqw, 190px); }
+  .mn-art .mn-phone--1 { left: 6%; top: 6%; }
+  .mn-art .mn-phone--2 { left: 36%; top: 11%; }
+  .mn-art .mn-phone--3 { left: 66%; top: 16%; }
+
+  .mn-art .mn-frag--1 { left: 5%; top: 6%; width: 90%; }
+  .mn-art .mn-frag--2 { left: 40%; top: 42%; width: 52%; }
+  .mn-art .mn-frag--3 { display: none; }
+
+  .mn-body__copy {
+    position: static;
+    width: auto;
+    padding: clamp(20px, 5cqw, 36px) var(--g);
+    color: var(--ink);
+  }
+
+  .mn-copy {
+    max-width: 62ch;
+    margin-top: 0;
+  }
+
+  .mn-copy__facts {
+    margin-block: 4px;
+  }
 }
 
 @container (max-width: 639px) {
-  .mn-head {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-    padding-bottom: 20px;
-  }
-
   .mn-head h1 {
-    font-size: 21cqw;
+    font-size: 12.4cqw;
   }
-
-  .mn-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .mn:nth-child(odd) {
-    border-right: 0;
-  }
-
-  .mn__title {
-    font-size: 12.5cqw;
-    padding-top: 3cqw;
-  }
-
-  .mn__stage {
-    height: 50cqw;
-    margin-top: -4cqw;
-  }
-
-  .mn__block {
-    inset: 0 0 0 14cqw;
-  }
-
-  .mn__shot {
-    left: 22cqw;
-    top: 7cqw;
-    width: 92cqw;
-    height: 57.5cqw;
-  }
-
-  .mn__phone {
-    width: 24cqw;
-  }
-
-  .mn__phone--1 {
-    left: 24cqw;
-    top: 6cqw;
-  }
-
-  .mn__phone--2 {
-    left: 54cqw;
-    top: 13cqw;
-  }
-
-
-
-
-
-
-
 }

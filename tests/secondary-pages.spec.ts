@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 const MINORS = [
   { title: 'NutriAI', tech: 'React Native', github: false },
   { title: 'IALocal', tech: 'Ollama', github: true },
-  { title: 'Gestion des stages', tech: 'Angular', github: false },
+  { title: 'Stages', tech: 'Angular', github: false },
   { title: 'EcoPursue', tech: 'Spring Boot', github: false },
 ];
 
@@ -23,10 +23,84 @@ test.describe('autres projets', () => {
     for (const [index, minor] of MINORS.entries()) {
       const card = cards.nth(index);
       await expect(card.getByRole('heading', { level: 2 })).toHaveText(minor.title);
+      await card.getByRole('button', { name: minor.title }).click();
       await expect(card.getByTestId('minor-tagline')).not.toBeEmpty();
       await expect(card.getByRole('list', { name: 'Technologies' })).toContainText(minor.tech);
       await expect(card.getByRole('link', { name: /GitHub/ })).toHaveCount(minor.github ? 1 : 0);
     }
+  });
+});
+
+test.describe('autres projets en tranches', () => {
+  test('une seule tranche est ouverte à la fois, la première au départ', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/autres-projets');
+    const spines = page.locator('.mn-spine');
+    const expanded = () => spines.evaluateAll((els) => els.map((el) => el.getAttribute('aria-expanded')));
+    expect(await expanded()).toEqual(['true', 'false', 'false', 'false']);
+    await spines.nth(2).click();
+    expect(await expanded()).toEqual(['false', 'false', 'true', 'false']);
+    await expect(page.locator('#lycee-hotelier').getByTestId('minor-tagline')).toBeVisible();
+    await expect(page.locator('#nutriai').getByTestId('minor-tagline')).toBeHidden();
+  });
+
+  test('une tranche s’ouvre au clavier et une tranche fermée sort du parcours au clavier', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/autres-projets');
+    const ialocal = page.getByRole('button', { name: 'IALocal' });
+    await ialocal.focus();
+    await page.keyboard.press('Enter');
+    await expect(ialocal).toHaveAttribute('aria-expanded', 'true');
+    await expect(page.locator('#ialocal').getByRole('link', { name: 'Voir sur GitHub' })).toBeVisible();
+    await page.getByRole('button', { name: 'NutriAI' }).click();
+    await expect(page.getByRole('link', { name: 'Voir sur GitHub' })).toHaveCount(0);
+  });
+
+  test('l’adresse #id ouvre la bonne tranche', async ({ page }) => {
+    await page.goto('/autres-projets#ecopursue');
+    await expect(page.getByRole('button', { name: 'EcoPursue' })).toHaveAttribute('aria-expanded', 'true');
+    await expect(page.getByRole('button', { name: 'NutriAI' })).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  for (const width of [1000, 1024, 1280, 1440, 1920]) {
+    test(`chaque tranche ouverte tient dans sa hauteur et chaque nom vertical dans son dos à ${width} px`, async ({ page }) => {
+      await page.emulateMedia({ reducedMotion: 'reduce' });
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/autres-projets');
+      await page.evaluate(() => document.fonts.ready);
+      for (const name of ['NutriAI', 'IALocal', 'Stages', 'EcoPursue']) {
+        await page.getByRole('button', { name }).click();
+        const slice = page.locator('.mn-slice.is-open');
+        await expect(slice).toHaveCount(1);
+        const overflow = await slice.evaluate((el) => {
+          const box = el.getBoundingClientRect();
+          const copy = el.querySelector('.mn-copy')!.getBoundingClientRect();
+          const title = el.querySelector('.mn-body__title')!.getBoundingClientRect();
+          return { copy: copy.bottom - box.bottom, title: title.right - box.right };
+        });
+        expect(overflow.copy, name).toBeLessThanOrEqual(0);
+        expect(overflow.title, name).toBeLessThanOrEqual(0);
+      }
+      const names = await page.locator('.mn-slice:not(.is-open) .mn-spine__name').evaluateAll((els) =>
+        els.map((el) => {
+          const box = el.getBoundingClientRect();
+          const spine = el.closest('.mn-slice')!.getBoundingClientRect();
+          return box.top >= spine.top - 1 && box.bottom <= spine.bottom + 1;
+        }),
+      );
+      expect(names).toEqual([true, true, true]);
+    });
+  }
+
+  test('sur mobile, les tranches deviennent un accordéon aux noms horizontaux', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/autres-projets');
+    const name = page.locator('#ialocal .mn-spine__name');
+    const box = await name.boundingBox();
+    expect(box!.width).toBeGreaterThan(box!.height);
+    await page.getByRole('button', { name: 'IALocal' }).click();
+    await expect(page.locator('#ialocal').getByTestId('minor-tagline')).toBeVisible();
+    await expect(page.locator('#nutriai').getByTestId('minor-tagline')).toBeHidden();
   });
 });
 

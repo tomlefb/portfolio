@@ -7,7 +7,7 @@
 - CYNA : sous-chef de projet et réunions hebdomadaires conservés.
 - EcoPursue : hackathon de 2 jours, équipe de 4, solution validée par Capgemini.
 - FairsonJob Notifier : retiré du site.
-- NutriAI, IALocal, Gestion des stages, parcours, portrait masqué sur mobile : validés.
+- NutriAI, IALocal, Stages (ex-« Gestion des stages »), parcours, portrait masqué sur mobile : validés.
 
 ## Reste à relire sur le site
 

@@ -22,24 +22,12 @@ html[data-capped='true'] .pc-head,
 html[data-capped='true'] .tl,
 html[data-capped='true'] .pc-high,
 html[data-capped='true'] .pc-col__label--wide,
-html[data-capped='true'] .mn-grid,
+html[data-capped='true'] .mn-head p,
+html[data-capped='true'] .mn-shelf,
 html[data-capped='true'] .hm-index__head,
 html[data-capped='true'] .hm-index__row,
 html[data-capped='true'] .pc-techs {
   border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 100vw;
-}
-
-/* Filets des colonnes : celle de gauche file à gauche, celle de droite à droite. */
-html[data-capped='true'] .mn:nth-child(odd) {
-  border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 0 0 100vw;
-}
-
-html[data-capped='true'] .mn:nth-child(even) {
-  border-image: conic-gradient(var(--ink) 0 0) 1 / 1 / 0 100vw 0 0;
-}
-
-html[data-capped='true'] .mn:nth-child(odd) {
-  border-right: 3px solid var(--ink);
 }
 
 /* Fonds pleins prolongés des deux côtés. */
@@ -63,16 +51,14 @@ html[data-capped='true'] .hm-cyna .hm-block {
 
 html[data-capped='true'] .hm-tti .hm-block,
 html[data-capped='true'] .pj-head__block,
-html[data-capped='true'] .pj-band__block,
-html[data-capped='true'] .mn:nth-child(even) .mn__block {
+html[data-capped='true'] .pj-band__block {
   border-image: conic-gradient(var(--pc) 0 0) fill 0 / 0 / 0 100vw 0 0;
 }
 
 /* Les zones rognées ne le sont plus qu'en hauteur, pour laisser filer aplats et images. */
 html[data-capped='true'] .hm-spread,
 html[data-capped='true'] .pj-band,
-html[data-capped='true'] .pc-head,
-html[data-capped='true'] .mn:nth-child(even) .mn__stage {
+html[data-capped='true'] .pc-head {
   overflow: visible;
   clip-path: inset(0 -100vw);
 }

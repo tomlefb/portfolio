@@ -3,7 +3,8 @@ export type DiagramId = 'cyna-architecture' | 'tti-boucle' | 'vizly-parcours';
 export interface ProjectImage {
   src: string;
   alt: string;
-  kind: 'desktop' | 'phone';
+  /** fragment : un morceau d'écran recadré (carte, fenêtre), posé en éclaté. */
+  kind: 'desktop' | 'phone' | 'fragment';
 }
 
 export interface ProjectFact {

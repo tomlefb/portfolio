@@ -37,7 +37,7 @@ test.describe('accueil', () => {
     const expected = [
       ['NutriAI', '/autres-projets#nutriai'],
       ['IALocal', '/autres-projets#ialocal'],
-      ['Gestion des stages', '/autres-projets#lycee-hotelier'],
+      ['Stages', '/autres-projets#lycee-hotelier'],
       ['EcoPursue', '/autres-projets#ecopursue'],
     ];
     for (const [i, [name, href]] of expected.entries()) {
@@ -55,13 +55,14 @@ test.describe('accueil', () => {
     const row = page.getByTestId('others-row').first();
     await row.scrollIntoViewIfNeeded();
     await row.hover();
-    await expect(row).toHaveCSS('background-color', 'rgb(34, 181, 115)');
+    await expect(row).toHaveCSS('background-color', 'rgb(244, 166, 192)');
   });
 
   test('un lien de l’index amène au bon projet sur la page Autres projets', async ({ page }) => {
     await page.getByTestId('others-row').nth(3).click();
     await expect(page).toHaveURL(/\/autres-projets#ecopursue$/);
     await expect(page.locator('#ecopursue')).toBeInViewport();
+    await expect(page.locator('#ecopursue').getByRole('button', { name: 'EcoPursue' })).toHaveAttribute('aria-expanded', 'true');
   });
 
   test('donne un nom court à chaque lien de projet', async ({ page }) => {

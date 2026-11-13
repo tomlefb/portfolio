@@ -1,15 +1,11 @@
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import type { Project } from '../../types';
+import { titleEm } from '../../lib/titleMetrics';
 import { BigTitle } from '../ui/BigTitle';
 
 interface ProjectHeaderProps {
   project: Project;
-}
-
-/** Largeur approchée du titre en em (Archivo 900, largeur 68 %) : le « I » est étroit. */
-function titleEm(title: string): number {
-  return [...title.toUpperCase()].reduce((width, char) => width + (char === 'I' ? 0.23 : char === ' ' ? 0.2 : 0.53), 0);
 }
 
 /** Taille du titre pour qu’il occupe à peu près la même largeur quel que soit le projet. */

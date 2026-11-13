@@ -39,7 +39,7 @@ Commandes : `npm run dev`, `npm run build`, `npm run lint`, `npm test`, `npm run
 |---|---|
 | `/` | Nom en très grand, présentation, les trois projets majeurs, puis les autres projets en index (une ligne par projet, couleur du projet au survol, sans image) |
 | `/projets/:id` | Une page par projet majeur : `vizly`, `tti`, `cyna` |
-| `/autres-projets` | NutriAI, IALocal, Gestion des stages, EcoPursue |
+| `/autres-projets` | NutriAI, IALocal, Stages (l’appli de gestion des stages du lycée hôtelier), EcoPursue, rangés en tranches : une seule ouverte à la fois |
 | `/parcours` | Portrait, frise du parcours (formation et expérience sur un axe en années), trois cases sur le présent, technos |
 | `/__bricks` | Page de contrôle des briques visuelles et des schémas, non liée |
 
@@ -47,7 +47,7 @@ Le contact n'est pas une page : c'est le pied de page noir en colophon (Contact 
 
 ## Design : style « affiche »
 
-- **Couleurs** : fond gris froid `#E7E8E9`, encre `#0E0E0E`. Pas de couleur d'accent globale. Chaque projet porte la sienne (`color` / `onColor` dans ses données), tirée de ses propres écrans. Seule exception : sur Parcours, le présent (barres en cours de la frise, cases « Aujourd’hui ») est en anis `#C9E86A` (variable `--present`).
+- **Couleurs** : fond gris froid `#E7E8E9`, encre `#0E0E0E`. Pas de couleur d'accent globale. Chaque projet porte la sienne (`color` / `onColor` dans ses données), tirée de ses propres écrans. Exceptions : NutriAI est en rose (choix de Tom, pour ne pas doubler le vert d’EcoPursue) ; sur Parcours, le présent (barres en cours de la frise, cases « Aujourd’hui ») est en anis `#C9E86A` (variable `--present`).
 - **Typographie** : Archivo variable, seule police. Titres en graisse 900, largeur 68 %, capitales, interlignage 0.82 (classe `.title-xl`).
 - **Traits** : filets noirs de 3 px entre grandes zones, 1 px entre lignes. Aucun arrondi sauf les cadres de téléphone, aucune ombre sauf sous les téléphones, aucun dégradé.
 - **Imbrication** : titres, aplats de couleur et captures se chevauchent. Les compositions se règlent en unités `cqw` (le conteneur `.shell` a `container-type: inline-size`). Un chevauchement peut mordre une lettre, jamais rendre un mot illisible.

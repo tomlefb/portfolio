@@ -45,7 +45,7 @@ export const parcoursHighlights: ParcoursHighlight[] = [
   {
     label: 'Avant',
     title: 'BTS, Bachelor, deux stages',
-    text: 'Ouest-France (Java, outils internes) et un lycée hôtelier (application livrée seul).',
+    text: 'Ouest-France (Java, outils internes) et un lycée hôtelier (application livrée à deux).',
   },
   {
     label: 'Aujourd’hui · Capgemini',
@@ -97,7 +97,7 @@ export const parcours: ParcoursItem[] = [
     period: 'Janv. – févr. 2025',
     title: 'Stage développeur web',
     place: 'Lycée hôtelier Sainte-Thérèse, La Guerche-de-Bretagne',
-    text: "Conception et livraison, seul, de l’application de gestion des stages de l’établissement.",
+    text: "Conception et livraison, à deux développeurs, de l’application de gestion des stages de l’établissement.",
   },
   {
     kind: 'experience',

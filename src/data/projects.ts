@@ -21,6 +21,9 @@ export function getNextMajor(id: string): Project {
 }
 
 /** Libellés de l'index des autres projets sur l'accueil. */
+/** Phrase d’en-tête de la page Autres projets. */
+export const othersPageIntro = 'Des projets plus courts : personnels, de stage ou de hackathon.';
+
 export const othersIndexLabels = {
   title: 'Autres projets',
   all: 'Tous les détails',

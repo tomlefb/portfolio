@@ -47,7 +47,7 @@ Le contact n'est pas une page : c'est le pied de page noir en colophon (Contact 
 
 ## Design : style « affiche »
 
-- **Couleurs** : fond gris froid `#E7E8E9`, encre `#0E0E0E`. Pas de couleur d'accent globale. Chaque projet porte la sienne (`color` / `onColor` dans ses données), tirée de ses propres écrans.
+- **Couleurs** : fond gris froid `#E7E8E9`, encre `#0E0E0E`. Pas de couleur d'accent globale. Chaque projet porte la sienne (`color` / `onColor` dans ses données), tirée de ses propres écrans. Seule exception : sur Parcours, le présent (barres en cours de la frise, cases « Aujourd’hui ») est en anis `#C9E86A` (variable `--present`).
 - **Typographie** : Archivo variable, seule police. Titres en graisse 900, largeur 68 %, capitales, interlignage 0.82 (classe `.title-xl`).
 - **Traits** : filets noirs de 3 px entre grandes zones, 1 px entre lignes. Aucun arrondi sauf les cadres de téléphone, aucune ombre sauf sous les téléphones, aucun dégradé.
 - **Imbrication** : titres, aplats de couleur et captures se chevauchent. Les compositions se règlent en unités `cqw` (le conteneur `.shell` a `container-type: inline-size`). Un chevauchement peut mordre une lettre, jamais rendre un mot illisible.

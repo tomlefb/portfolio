@@ -184,3 +184,18 @@ for (const width of [360, 390, 430]) {
     }
   });
 }
+
+test('sur mobile, l’aplat de chaque projet laisse une bande grise et le texte est sur le gris', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  for (const id of ['vizly', 'tti', 'cyna']) {
+    const spread = page.locator(`.hm-${id}`);
+    const { block, art, cap } = await spread.evaluate((el) => ({
+      block: el.querySelector('.hm-block')!.getBoundingClientRect().width,
+      art: el.querySelector('.hm-art')!.getBoundingClientRect().width,
+      cap: getComputedStyle(el.querySelector('.hm-cap')!).backgroundColor,
+    }));
+    expect(block, id).toBeLessThan(art * 0.85);
+    expect(cap, id).toBe('rgba(0, 0, 0, 0)');
+  }
+});

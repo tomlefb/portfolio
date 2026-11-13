@@ -778,8 +778,11 @@
     font-size: 16px;
   }
 
-  .hm-cap--on {
-    background: var(--pc);
+  /* Sur mobile, comme pour CYNA : l'aplat ne couvre qu'une partie de la largeur et le texte est sur le gris. */
+  .hm-cap--on,
+  .hm-vizly .hm-cap {
+    color: var(--ink);
+    background: none;
   }
 
   .hm-vizly .hm-art {
@@ -787,7 +790,7 @@
   }
 
   .hm-vizly .hm-block {
-    inset: 0;
+    inset: 0 22cqw 0 0;
   }
 
   .hm-vizly .hm-title {
@@ -813,11 +816,11 @@
   }
 
   .hm-tti .hm-art {
-    height: 102cqw;
+    height: 124cqw;
   }
 
   .hm-tti .hm-block {
-    inset: 0;
+    inset: 0 0 0 22cqw;
   }
 
   .hm-tti .hm-title {
@@ -826,7 +829,7 @@
   }
 
   .hm-tti__figures {
-    left: var(--g);
+    left: calc(22cqw + var(--g));
     right: var(--g);
     top: 44cqw;
     bottom: 5cqw;

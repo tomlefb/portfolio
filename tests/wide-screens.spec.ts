@@ -47,9 +47,11 @@ test('sur un écran très bas, le grossissement est limité par la hauteur et la
   expect(ultra.capped).toBe(true);
   expect(ultra.shellWidth).toBeCloseTo(1600 * (1440 / 760), -1);
   expect(ultra.shellLeft).toBeCloseTo((ultra.view - ultra.shellWidth) / 2, -1);
-  // Un projet est visible dès le premier écran.
-  const vizlyTop = await page.locator('.hm-vizly').evaluate((el) => el.getBoundingClientRect().top);
-  expect(vizlyTop).toBeLessThan(1440);
+  // La page de garde tient tout l'écran : le nom en entier, les projets juste en dessous.
+  const nameBottom = await page.locator('.hm-hero h1').evaluate((el) => el.getBoundingClientRect().bottom);
+  expect(nameBottom).toBeLessThan(1440);
+  const fold = await page.locator('.hm-rubric').evaluate((el) => el.getBoundingClientRect().top);
+  expect(Math.abs(fold - 1440)).toBeLessThanOrEqual(2);
 });
 
 test('au-delà de 3840 px, la page s’arrête de grossir et reste centrée', async ({ page }) => {

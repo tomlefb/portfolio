@@ -110,3 +110,24 @@ test.describe('accueil', () => {
     });
   }
 });
+
+test.describe('page de garde', () => {
+  for (const [width, height] of [
+    [390, 844],
+    [768, 1024],
+    [1280, 800],
+    [1440, 900],
+    [1920, 1080],
+    [2560, 1440],
+  ]) {
+    test(`occupe tout l’écran en ${width}×${height}, les projets ne viennent qu’en défilant`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto('/');
+      await page.evaluate(() => document.fonts.ready);
+      const fold = await page.locator('.hm-rubric').evaluate((el) => el.getBoundingClientRect().top);
+      expect(Math.abs(fold - height)).toBeLessThanOrEqual(2);
+      const nameBottom = await page.locator('.hm-hero h1').evaluate((el) => el.getBoundingClientRect().bottom);
+      expect(nameBottom).toBeLessThan(height);
+    });
+  }
+});

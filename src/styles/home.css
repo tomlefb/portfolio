@@ -1,8 +1,18 @@
 /* Accueil */
 
+/* Page de garde : exactement la hauteur de l'écran sous la navigation, le nom posé en bas comme sur une affiche ;
+   les projets arrivent en défilant. */
 .hm-hero {
-  position: relative;
+  --nav-h: 65.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: calc(100svh / var(--page-zoom, 1) - var(--nav-h));
   padding: 0 var(--g) 5cqw;
+}
+
+.hm-hero__inner {
+  position: relative;
 }
 
 .hm-hero h1 {
@@ -574,7 +584,9 @@
   }
 
   .hm-hero {
-    padding-bottom: 0;
+    /* Sur mobile, la navigation passe sur deux lignes. */
+    --nav-h: 92px;
+    padding-bottom: 28px;
   }
 
   .hm-hero__first {

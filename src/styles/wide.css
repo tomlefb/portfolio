@@ -57,11 +57,11 @@ html[data-capped='true'] .pj-figures--color {
 
 /* Aplats de couleur : chacun file vers le bord qu'il touche. */
 html[data-capped='true'] .hm-vizly .hm-block,
-html[data-capped='true'] .hm-tti .hm-block {
+html[data-capped='true'] .hm-cyna .hm-block {
   border-image: conic-gradient(var(--pc) 0 0) fill 0 / 0 / 0 0 0 100vw;
 }
 
-html[data-capped='true'] .hm-cyna .hm-block,
+html[data-capped='true'] .hm-tti .hm-block,
 html[data-capped='true'] .pj-head__block,
 html[data-capped='true'] .pj-band__block,
 html[data-capped='true'] .mn:nth-child(even) .mn__block {

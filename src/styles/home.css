@@ -182,14 +182,14 @@
   padding-top: 23cqw;
 }
 
-/* TTI, en miroir de Vizly et CYNA : l'aplat derrière les chiffres à gauche, le titre et le texte à droite sur le papier. */
+/* TTI, en miroir de Vizly et CYNA : les chiffres sur le papier à gauche, la couleur à droite derrière le titre et le texte. */
 .hm-tti {
   min-height: 38cqw;
   justify-content: flex-end;
 }
 
 .hm-tti .hm-block {
-  inset: 0 calc(var(--g) + 34cqw) 0 0;
+  inset: 0 0 0 calc(100cqw - var(--g) - 35.5cqw);
 }
 
 .hm-tti .hm-title {
@@ -245,7 +245,13 @@
 }
 
 .hm-cyna .hm-block {
-  inset: 0 0 0 35.3cqw;
+  inset: 0 35.3cqw 0 0;
+}
+
+/* Sur le violet, le titre et le texte passent en blanc. */
+.hm-cyna .hm-title,
+.hm-cyna .hm-cap {
+  color: var(--pon);
 }
 
 
@@ -474,7 +480,7 @@
   }
 
   .hm-tti .hm-block {
-    inset: 0 calc(var(--g) + 28.5cqw) 0 0;
+    inset: 0 0 0 calc(100cqw - var(--g) - 47cqw);
   }
 
 
@@ -511,7 +517,7 @@
   }
 
   .hm-cyna .hm-block {
-    inset: 0 0 0 calc(var(--g) + 39cqw);
+    inset: 0 calc(100cqw - var(--g) - 61cqw) 0 0;
   }
 
 
@@ -550,6 +556,10 @@
 
 /* Mobile */
 @container (max-width: 639px) {
+  .hm-cyna .hm-cap {
+    color: var(--ink);
+  }
+
   .hm-hero {
     padding-bottom: 0;
   }
@@ -665,7 +675,7 @@
   }
 
   .hm-cyna .hm-block {
-    inset: 0 0 0 22cqw;
+    inset: 0 22cqw 0 0;
   }
 
   .hm-cyna .hm-title {

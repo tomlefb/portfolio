@@ -112,4 +112,6 @@ export interface ParcoursHighlight {
   label: string;
   title: string;
   text: string;
+  /** Ce qui est en cours : la case passe dans la couleur du présent. */
+  current?: boolean;
 }

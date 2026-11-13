@@ -1,5 +1,11 @@
 /* Parcours */
 
+/* La couleur du présent, propre à cette page : les barres en cours et les cases « Aujourd’hui ». */
+.tl,
+.pc-high {
+  --present: #c9e86a;
+}
+
 .pc-head {
   --pc-title: 17.6cqw;
   position: relative;
@@ -144,14 +150,18 @@
   color: var(--paper);
 }
 
-/* En cours : plein jusqu'à aujourd'hui, hachuré ensuite, sur un fond opaque. */
+/* En cours : en anis, plein jusqu'à aujourd'hui, hachuré ensuite, sur un fond opaque.
+   Le cartouche blanc est centré en hauteur. */
 .tl__bar--ongoing {
+  display: flex;
+  align-items: center;
+  padding-block: 0;
   overflow: visible;
   border: 2px solid var(--ink);
   color: var(--ink);
   background:
-    linear-gradient(to right, var(--ink) 0 var(--done), transparent var(--done)),
-    repeating-linear-gradient(-45deg, var(--ink) 0 2px, transparent 2px 9px),
+    linear-gradient(to right, var(--present) 0 var(--done), transparent var(--done)),
+    repeating-linear-gradient(-45deg, var(--present) 0 3px, transparent 3px 9px),
     var(--paper);
 }
 
@@ -172,7 +182,7 @@
 }
 
 .tl__bar--ongoing .tl__label {
-  margin: -2px 0 0 -2px;
+  margin-left: -2px;
   padding: 6px 9px 7px;
   border: 2px solid var(--ink);
   background: var(--paper);
@@ -249,6 +259,11 @@
 
 .pc-high__item + .pc-high__item {
   border-left: 1px solid var(--ink);
+}
+
+/* Les deux cases du présent, dans la couleur du présent. */
+.pc-high__item--now {
+  background: var(--present);
 }
 
 .pc-high__label {
@@ -432,8 +447,8 @@
 
   .tl__bar--ongoing {
     background:
-      linear-gradient(to bottom, var(--ink) 0 var(--done), transparent var(--done)),
-      repeating-linear-gradient(-45deg, var(--ink) 0 2px, transparent 2px 9px),
+      linear-gradient(to bottom, var(--present) 0 var(--done), transparent var(--done)),
+      repeating-linear-gradient(-45deg, var(--present) 0 3px, transparent 3px 9px),
       var(--paper);
   }
 

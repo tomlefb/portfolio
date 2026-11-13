@@ -120,6 +120,35 @@ test.describe('parcours', () => {
     await expect(lines.nth(2)).toContainText('Déjà utilisé');
   });
 
+  test('met le présent en couleur anis : les deux cases « Aujourd’hui » et les barres en cours', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/parcours');
+    const backgrounds = await page
+      .getByTestId('parcours-highlight')
+      .evaluateAll((els) => els.map((el) => getComputedStyle(el).backgroundColor));
+    expect(backgrounds).toEqual(['rgba(0, 0, 0, 0)', 'rgb(201, 232, 106)', 'rgb(201, 232, 106)', 'rgba(0, 0, 0, 0)']);
+    const ongoing = page.locator('[data-ongoing="true"]');
+    await expect(ongoing).toHaveCount(2);
+    for (const image of await ongoing.evaluateAll((els) => els.map((el) => getComputedStyle(el).backgroundImage))) {
+      expect(image).toContain('rgb(201, 232, 106)');
+    }
+  });
+
+  for (const width of [1440, 1280, 1024]) {
+    test(`le cartouche d’une barre en cours est centré en hauteur à ${width} px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/parcours');
+      const gaps = await page.locator('[data-ongoing="true"]').evaluateAll((bars) =>
+        bars.map((bar) => {
+          const outer = bar.getBoundingClientRect();
+          const label = bar.querySelector('.tl__label')!.getBoundingClientRect();
+          return { top: label.top - outer.top, bottom: outer.bottom - label.bottom };
+        }),
+      );
+      for (const gap of gaps) expect(Math.abs(gap.top - gap.bottom)).toBeLessThanOrEqual(1);
+    });
+  }
+
   test('montre le portrait sur grand écran', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/parcours');

@@ -49,11 +49,13 @@ export const parcoursHighlights: ParcoursHighlight[] = [
   },
   {
     label: 'Aujourd’hui · Capgemini',
+    current: true,
     title: 'Alternant développeur',
     text: "Migration d’un logiciel Java pour un client grand compte, chiffrage, suivi des mises en production.",
   },
   {
     label: 'Aujourd’hui · Sup de Vinci',
+    current: true,
     title: 'Mastère Full Stack',
     text: "Deux ans en alternance, jusqu’en 2028.",
   },

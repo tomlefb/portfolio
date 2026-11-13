@@ -789,8 +789,9 @@
     height: 86cqw;
   }
 
+  /* Sur mobile, les côtés s'inversent : Vizly à droite, TTI à gauche, CYNA à droite. */
   .hm-vizly .hm-block {
-    inset: 0 22cqw 0 0;
+    inset: 0 0 0 22cqw;
   }
 
   .hm-vizly .hm-title {
@@ -820,7 +821,7 @@
   }
 
   .hm-tti .hm-block {
-    inset: 0 0 0 22cqw;
+    inset: 0 22cqw 0 0;
   }
 
   .hm-tti .hm-title {
@@ -829,8 +830,8 @@
   }
 
   .hm-tti__figures {
-    left: calc(22cqw + var(--g));
-    right: var(--g);
+    left: var(--g);
+    right: calc(22cqw + var(--g));
     top: 44cqw;
     bottom: 5cqw;
     gap: 4cqw;
@@ -849,11 +850,14 @@
   }
 
   .hm-cyna .hm-block {
-    inset: 0 22cqw 0 0;
+    inset: 0 0 0 22cqw;
   }
 
+  /* Le titre blanc reste entièrement sur le violet. */
   .hm-cyna .hm-title {
     top: 1cqw;
+    left: auto;
+    right: var(--g);
     font-size: 30cqw;
   }
 
@@ -862,17 +866,17 @@
   }
 
   .hm-cyna__phone--1 {
-    left: 28cqw;
+    left: 6cqw;
     top: 26cqw;
   }
 
   .hm-cyna__phone--2 {
-    left: 53cqw;
+    left: 34cqw;
     top: 32cqw;
   }
 
   .hm-cyna__phone--3 {
-    left: 78cqw;
+    left: 62cqw;
     top: 38cqw;
   }
 

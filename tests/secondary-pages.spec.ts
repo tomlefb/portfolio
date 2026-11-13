@@ -283,3 +283,20 @@ for (const width of [390, 768]) {
     expect(Math.abs(left - right)).toBeLessThanOrEqual(4);
   });
 }
+
+test('sur mobile, le cadre de la barre « Alternance Capgemini » est entier en haut', async ({ page }) => {
+  await page.setViewportSize({ width: 393, height: 852 });
+  await page.goto('/parcours');
+  const bar = page.locator('.tl__bar').filter({ hasText: 'Alternance Capgemini' });
+  await bar.scrollIntoViewIfNeeded();
+  const covered = await bar.evaluate((el) => {
+    const r = el.getBoundingClientRect();
+    const hits = [];
+    for (let x = r.left + 4; x < r.right - 4; x += 10) {
+      const top = document.elementFromPoint(x, r.top + 1);
+      if (top && !el.contains(top)) hits.push(top.className);
+    }
+    return hits;
+  });
+  expect(covered).toEqual([]);
+});

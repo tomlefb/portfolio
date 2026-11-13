@@ -464,6 +464,8 @@
   }
 
   .tl__stage {
+    /* Sous les barres : le fond d'un libellé ne doit jamais couvrir le cadre d'une barre voisine. */
+    z-index: 1;
     left: 0;
     width: 100%;
     top: calc(var(--a) * 100%);

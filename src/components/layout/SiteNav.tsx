@@ -1,5 +1,6 @@
 import { site } from '../../data/site';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { callContact } from '../../lib/contactCall';
 
 interface SiteNavProps {
   label: string;
@@ -31,7 +32,14 @@ export function SiteNav({ label }: SiteNavProps) {
         >
           Parcours
         </NavLink>
-        <a href="#contact" className={linkClass}>
+        <a
+          href="#contact"
+          className={linkClass}
+          onClick={(event) => {
+            event.preventDefault();
+            callContact();
+          }}
+        >
           Contact
         </a>
         <a href={site.cv} download className={linkClass}>

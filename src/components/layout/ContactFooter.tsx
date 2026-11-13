@@ -1,4 +1,6 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CONTACT_CALL_EVENT } from '../../lib/contactCall';
 import { contactInfo, footerContent as text } from '../../data/contact';
 import { site } from '../../data/site';
 import { CopyEmail } from './CopyEmail';
@@ -12,8 +14,49 @@ export function ContactFooter() {
     { label: contactInfo.phone, href: `tel:${contactInfo.phone.replace(/\s/g, '')}`, external: false },
   ];
 
+  const footerRef = useRef<HTMLElement>(null);
+  const [called, setCalled] = useState(false);
+
+  // Au clic sur « Contact » : la page descend jusqu’ici, puis l’adresse s’allume un instant et prend le focus.
+  useEffect(() => {
+    let timer = 0;
+    let fallback = 0;
+    const signal = () => {
+      window.removeEventListener('scrollend', signal);
+      window.clearTimeout(fallback);
+      setCalled(false);
+      requestAnimationFrame(() => setCalled(true));
+      footerRef.current?.querySelector<HTMLAnchorElement>('.ft-mail__address')?.focus({ preventScroll: true });
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => setCalled(false), 1600);
+    };
+    const onCall = () => {
+      const footer = footerRef.current;
+      if (!footer) return;
+      if (footer.getBoundingClientRect().bottom <= window.innerHeight + 1) {
+        signal();
+        return;
+      }
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      footer.scrollIntoView({ behavior: reduced ? 'instant' : 'smooth', block: 'end' });
+      if (reduced) {
+        signal();
+        return;
+      }
+      window.addEventListener('scrollend', signal, { once: true });
+      fallback = window.setTimeout(signal, 900);
+    };
+    window.addEventListener(CONTACT_CALL_EVENT, onCall);
+    return () => {
+      window.removeEventListener(CONTACT_CALL_EVENT, onCall);
+      window.removeEventListener('scrollend', signal);
+      window.clearTimeout(timer);
+      window.clearTimeout(fallback);
+    };
+  }, []);
+
   return (
-    <footer id="contact" className="ft">
+    <footer id="contact" ref={footerRef} className={`ft${called ? ' ft--called' : ''}`}>
       <section className="ft__cell ft__cell--contact">
         <h2 className="ft__label">{text.contactLabel}</h2>
         <CopyEmail

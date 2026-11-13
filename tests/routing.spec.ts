@@ -103,3 +103,23 @@ test('la page introuvable a son titre d’onglet et son pied de page en bas', as
   const footerBottom = await page.locator('#contact').evaluate((el) => el.getBoundingClientRect().bottom);
   expect(footerBottom).toBeGreaterThanOrEqual(899);
 });
+
+for (const width of [1440, 390]) {
+  test(`« Contact » mène au pied de page et y signale l’adresse à ${width} px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/parcours');
+    await page.getByRole('navigation', { name: 'Navigation principale' }).getByRole('link', { name: 'Contact', exact: true }).click();
+    const footer = page.locator('#contact');
+    await expect(footer).toBeInViewport();
+    await expect(footer).toHaveClass(/ft--called/);
+    await expect(footer.getByRole('link', { name: 'tom.lefevrebonzon@gmail.com' })).toBeFocused();
+    await expect(footer).not.toHaveClass(/ft--called/, { timeout: 4000 });
+  });
+}
+
+test('« Contact » signale l’adresse même quand le pied de page est déjà visible', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/inconnu');
+  await page.getByRole('navigation', { name: 'Navigation principale' }).getByRole('link', { name: 'Contact', exact: true }).click();
+  await expect(page.locator('#contact')).toHaveClass(/ft--called/);
+});

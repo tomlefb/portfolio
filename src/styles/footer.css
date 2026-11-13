@@ -145,3 +145,32 @@
     border-left: 0;
   }
 }
+
+/* Après un clic sur « Contact » : l'adresse passe un instant en négatif, comme une sélection, puis revient. */
+.ft--called .ft-mail__address {
+  animation: ft-call 1.4s ease-out;
+}
+
+@keyframes ft-call {
+  0%,
+  40% {
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: 0.22em 0 0 var(--paper), -0.22em 0 0 var(--paper);
+  }
+
+  100% {
+    background: transparent;
+    color: inherit;
+    box-shadow: 0.22em 0 0 transparent, -0.22em 0 0 transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ft--called .ft-mail__address {
+    animation: none;
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: 0.22em 0 0 var(--paper), -0.22em 0 0 var(--paper);
+  }
+}

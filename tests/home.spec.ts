@@ -164,3 +164,23 @@ test.describe('renvoi vers le parcours', () => {
     });
   }
 });
+
+for (const width of [360, 390, 430]) {
+  test(`sur mobile, chaque ligne du nom prend toute la largeur sans déborder à ${width} px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto('/');
+    await page.evaluate(() => document.fonts.ready);
+    const lines = await page.locator('.hm-hero__first, .hm-hero__part').evaluateAll((els) =>
+      els.map((el) => {
+        const r = el.getBoundingClientRect();
+        return { left: r.left, right: r.right, text: el.textContent };
+      }),
+    );
+    expect(lines.map((l) => l.text)).toEqual(['Tom', 'Lefevre-', 'Bonzon']);
+    const available = width - 2 * 16;
+    for (const line of lines) {
+      expect(line.right, line.text!).toBeLessThanOrEqual(width - 16 + 1);
+      expect(line.right - line.left, line.text!).toBeGreaterThanOrEqual(available * 0.95);
+    }
+  });
+}

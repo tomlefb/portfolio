@@ -15,10 +15,10 @@ export function SiteNav({ label }: SiteNavProps) {
   return (
     <nav
       aria-label="Navigation principale"
-      className="gutter relative z-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-4 text-[15px] font-semibold"
+      className="site-nav gutter relative z-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-4 text-[15px] font-semibold"
     >
       <Link to="/">{label}</Link>
-      <div className="flex gap-x-5 sm:gap-x-7">
+      <div className="site-nav__links flex gap-x-5 sm:gap-x-7">
         <Link
           to="/#projets"
           className={`${linkClass} ${onProjects ? '!border-ink' : ''}`}

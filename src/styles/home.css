@@ -21,7 +21,7 @@
   max-width: 100%;
 }
 
-.hm-hero h1 span {
+.hm-hero h1 > span {
   display: block;
   width: max-content;
   max-width: 100%;
@@ -699,17 +699,48 @@
   }
 
   .hm-hero {
-    /* Sur mobile, la navigation passe sur deux lignes. */
-    --nav-h: 92px;
-    padding-block: 24px;
+    /* Sur mobile, la navigation fait deux étages : la mention, puis la grille des liens. */
+    --nav-h: 101px;
+    padding-block: 16px;
   }
 
+  /* L'espace libre se partage en trois parts égales : au-dessus du nom, entre le nom et le texte, sous le texte. */
+  .hm-hero__inner {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .hm-hero h1 {
+    margin-block: auto;
+  }
+
+  .hm-hero__text dl {
+    margin-bottom: auto !important;
+  }
+
+  /* Chaque ligne du nom prend toute la largeur, à sa propre taille, comme un titre d'affiche justifié.
+     Les diviseurs sont les largeurs mesurées des mots en em. */
   .hm-hero__first {
-    font-size: 30cqw;
+    font-size: calc((100cqw - 2 * var(--g)) / 1.8);
   }
 
   .hm-hero__last {
-    font-size: 19cqw;
+    margin-top: 0.05em;
+  }
+
+  .hm-hero__part {
+    display: block;
+    width: max-content;
+  }
+
+  .hm-hero__part:first-child {
+    font-size: calc((100cqw - 2 * var(--g)) / 3.75);
+  }
+
+  .hm-hero__part:last-child {
+    margin-top: 0.06em;
+    font-size: calc((100cqw - 2 * var(--g)) / 3.37);
   }
 
   .hm-hero__text p {

@@ -123,3 +123,14 @@ test('« Contact » signale l’adresse même quand le pied de page est déjà v
   await page.getByRole('navigation', { name: 'Navigation principale' }).getByRole('link', { name: 'Contact', exact: true }).click();
   await expect(page.locator('#contact')).toHaveClass(/ft--called/);
 });
+
+test('sur mobile, les liens forment une grille de quatre cases égales, la page active en noir', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/parcours');
+  const links = page.getByRole('navigation', { name: 'Navigation principale' }).locator('.site-nav__links a');
+  await expect(links).toHaveCount(4);
+  const boxes = await links.evaluateAll((els) => els.map((el) => el.getBoundingClientRect()).map((r) => ({ top: Math.round(r.top), width: Math.round(r.width) })));
+  expect(new Set(boxes.map((b) => b.top)).size).toBe(1);
+  expect(Math.max(...boxes.map((b) => b.width)) - Math.min(...boxes.map((b) => b.width))).toBeLessThanOrEqual(1);
+  await expect(links.filter({ hasText: 'Parcours' })).toHaveCSS('background-color', 'rgb(14, 14, 14)');
+});
